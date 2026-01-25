@@ -17,7 +17,7 @@
       "url": "https://sourceforge.net/projects/mxlinux-iso/files/MX-23.3_x64.iso",
       "filename": "MX-23.3_x64.iso",
       "size_mb": 1800,
-      "sha256": "2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7c6b5a4d3c2b1",
+      "sha256": "2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7c6b5a4d3c2b1a",
       "region": "global",
       "protocol": "https",
       "hosted": false
@@ -25,7 +25,7 @@
   ],
   "iso_sizes_mb": [1800],
   "sha256_checksums": [
-    "2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7c6b5a4d3c2b1"
+    "2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7c6b5a4d3c2b1a"
   ],
   "install_guide_markdown": "Boot ISO, run the Calamares installer with automatic partitioning, and complete setup. Very lightweight and fast.",
   "install_steps": [
