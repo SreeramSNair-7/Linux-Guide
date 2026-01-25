@@ -17,7 +17,7 @@
       "url": "https://mirrors.almalinux.org/isos/9.3/AlmaLinux-9.3-x86_64-dvd.iso",
       "filename": "AlmaLinux-9.3-x86_64-dvd.iso",
       "size_mb": 11000,
-      "sha256": "5e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a291807f6e5d4c3b2a19",
+      "sha256": "5e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a291807f6e5d4c3b2a1",
       "region": "global",
       "protocol": "https",
       "hosted": false
@@ -25,7 +25,7 @@
   ],
   "iso_sizes_mb": [11000],
   "sha256_checksums": [
-    "5e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a291807f6e5d4c3b2a19"
+    "5e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a291807f6e5d4c3b2a1"
   ],
   "install_guide_markdown": "Download DVD or netinst, verify SHA256, boot the installer, partition, and install. Server-ready by default.",
   "install_steps": [
