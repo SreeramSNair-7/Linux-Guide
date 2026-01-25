@@ -78,7 +78,7 @@ async function main() {
   const stats = await index.getStats();
   console.log(`\nIndex statistics:`);
   console.log(`  Total documents: ${stats.numberOfDocuments}`);
-  console.log(`  Index size: ${Math.round(stats.indexSize / 1024)} KB`);
+  console.log(`  Index stats:`, stats);
 }
 
 main().catch((error) => {

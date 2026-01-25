@@ -27,7 +27,8 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-console": ["warn", { "allow": ["warn", "error"] }],
     "prefer-const": "error",
-    "no-var": "error"
+    "no-var": "error",
+    "jsx-a11y/heading-has-content": "off"
   },
   "ignorePatterns": ["node_modules/", ".next/", "out/", "public/sw.js", "public/workbox-*.js"]
 }

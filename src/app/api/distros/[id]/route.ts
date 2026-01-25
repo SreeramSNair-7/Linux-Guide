@@ -1,9 +1,8 @@
-// file: src/app/api/distros/[id]/route.ts
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { loadDistro } from '@/lib/distro-loader';
 
 export async function GET(
-  request: NextRequest,
+  _request: unknown,
   { params }: { params: { id: string } }
 ) {
   try {

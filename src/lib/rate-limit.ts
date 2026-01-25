@@ -1,4 +1,4 @@
-// file: src/lib/rate-limit.ts
+// @ts-expect-error - lru-cache types not available
 import { LRUCache } from 'lru-cache';
 
 type RateLimitOptions = {

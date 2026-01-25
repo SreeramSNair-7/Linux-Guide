@@ -1,7 +1,5 @@
-// file: scripts/ingest.ts
 import fs from 'fs/promises';
 import path from 'path';
-import crypto from 'crypto';
 import { DistroSchema } from '../src/types/distro.schema';
 
 const DISTROS_DIR = path.join(process.cwd(), 'data', 'distros');
@@ -76,17 +74,6 @@ function isValidURL(url: string): boolean {
   } catch {
     return false;
   }
-}
-
-async function streamVerifyChecksum(url: string, expectedHash: string): Promise<boolean> {
-  // In a real implementation, this would stream download and verify
-  // For now, we'll simulate success
-  console.log(`  Verifying checksum for ${url}...`);
-  // const response = await fetch(url);
-  // const arrayBuffer = await response.arrayBuffer();
-  // const hash = crypto.createHash('sha256').update(Buffer.from(arrayBuffer)).digest('hex');
-  // return hash === expectedHash.toLowerCase();
-  return true; // Simulated
 }
 
 async function main() {

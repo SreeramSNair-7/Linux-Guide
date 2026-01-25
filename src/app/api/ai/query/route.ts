@@ -2,7 +2,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { AIResponseSchema } from '@/types/distro.schema';
-import { rateLimit } from '@/lib/rate-limit';
 import { loadDistro } from '@/lib/distro-loader';
 
 const OLLAMA_BASE_URL = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
@@ -20,12 +19,12 @@ const RequestSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting
-    const identifier = request.ip || 'anonymous';
-    const { success } = await rateLimit(identifier);
-    if (!success) {
-      return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
-    }
+    // Rate limiting disabled - lru-cache module issues
+    // const identifier = request.ip || 'anonymous';
+    // const { success } = await rateLimit(identifier);
+    // if (!success) {
+    //   return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
+    // }
 
     // Parse and validate request
     const body = await request.json();

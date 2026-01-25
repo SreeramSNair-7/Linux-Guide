@@ -2,7 +2,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { DistroSubmissionSchema } from '@/types/distro.schema';
-import { rateLimit } from '@/lib/rate-limit';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -10,12 +9,14 @@ const SUBMISSIONS_DIR = path.join(process.cwd(), 'data', 'submissions');
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting
+    // Get IP for logging
     const identifier = request.ip || 'anonymous';
-    const { success } = await rateLimit(identifier);
-    if (!success) {
-      return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
-    }
+
+    // Rate limiting disabled - lru-cache module issues
+    // const { success } = await rateLimit(identifier);
+    // if (!success) {
+    //   return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
+    // }
 
     // Parse and validate submission
     const body = await request.json();

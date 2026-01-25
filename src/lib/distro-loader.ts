@@ -45,7 +45,8 @@ export async function loadAllDistros(): Promise<Distro[]> {
         const validated = DistroSchema.parse(data);
         distros.push(validated);
       } catch (validationError) {
-        console.error(`Validation error for ${file}:`, validationError);
+        const message = validationError instanceof Error ? validationError.message : String(validationError);
+        console.error(`Validation error for ${file}:`, message);
       }
     }
 
