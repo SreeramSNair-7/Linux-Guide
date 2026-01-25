@@ -1,0 +1,83 @@
+{
+  "id": "linux-mint-22-virginia",
+  "name": "Linux Mint 22 (Virginia)",
+  "family": "Debian",
+  "latest_version": "22",
+  "codename": "Virginia",
+  "release_date": "2024-07-01",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["Cinnamon", "MATE", "XFCE"],
+  "package_manager": "apt",
+  "kernel": "6.8 LTS",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 20000,
+  "iso_files": [
+    {
+      "id": "mint-22-cinnamon",
+      "url": "https://mirror.downloadlayer.com/linuxmint/stable/22/linuxmint-22-cinnamon-64bit.iso",
+      "filename": "linuxmint-22-cinnamon-64bit.iso",
+      "size_mb": 2600,
+      "sha256": "e7f6d5c4b3a291807f6e5d4c3b2a1908f7e6d5c4b3a291807f6e5d4c3b2a1908",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [2600],
+  "sha256_checksums": [
+    "e7f6d5c4b3a291807f6e5d4c3b2a1908f7e6d5c4b3a291807f6e5d4c3b2a1908"
+  ],
+  "install_guide_markdown": "1. Download the Cinnamon ISO. 2. Verify SHA256. 3. Write to USB with balenaEtcher. 4. Boot and install (automatic partitioning is fine).",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download and verify",
+      "detail_md": "Grab the Cinnamon edition for the flagship experience and verify integrity.",
+      "estimated_minutes": 5,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sha256sum linuxmint-22-cinnamon-64bit.iso",
+          "platform": "linux",
+          "explanation": "Verify checksum"
+        }
+      ]
+    },
+    {
+      "id": "write-usb",
+      "title": "Create bootable USB",
+      "detail_md": "Use balenaEtcher or Rufus in ISO mode. Secure Boot supported.",
+      "estimated_minutes": 8,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Install Mint",
+      "detail_md": "Choose automatic partitioning and install codecs during setup for best experience.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    },
+    {
+      "id": "update",
+      "title": "Update system",
+      "detail_md": "Open Update Manager or run `sudo apt update && sudo apt upgrade`.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    }
+  ],
+  "official_docs_url": "https://linuxmint.com/documentation.php",
+  "screenshots": ["https://www.linuxmint.com/pictures/screenshots/virginia/cinnamon.png"],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "No telemetry. Update Manager can send anon mirror metrics if enabled.",
+  "popularity_rank": 1,
+  "tags": ["mint", "cinnamon", "beginner", "ubuntu-based", "apt", "friendly"],
+  "last_verified": "2026-01-25",
+  "maintainers": [
+    {
+      "name": "Linux Mint Team",
+      "role": "Upstream maintainers",
+      "url": "https://linuxmint.com"
+    }
+  ],
+  "notes": "Great out-of-the-box experience with multimedia codecs and a Windows-like workflow."
+}

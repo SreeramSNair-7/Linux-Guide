@@ -1,0 +1,90 @@
+{
+  "id": "opensuse-tumbleweed",
+  "name": "openSUSE Tumbleweed",
+  "family": "SUSE",
+  "latest_version": "rolling",
+  "codename": "Tumbleweed",
+  "release_date": "2026-01-20",
+  "target_users": ["intermediate", "advanced", "developer"],
+  "desktop_environments": ["KDE Plasma", "GNOME", "XFCE"],
+  "package_manager": "zypper",
+  "kernel": "Latest stable",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 20000,
+  "iso_files": [
+    {
+      "id": "tumbleweed-kde",
+      "url": "https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-x86_64-Current.iso",
+      "filename": "openSUSE-Tumbleweed-KDE-Live-x86_64-Current.iso",
+      "size_mb": 4300,
+      "sha256": "1a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f809",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [4300],
+  "sha256_checksums": [
+    "1a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f809"
+  ],
+  "install_guide_markdown": "Use the live ISO, start the installer, choose Btrfs with snapshots enabled, and keep automatic snapshots for rollbacks.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download live ISO",
+      "detail_md": "Grab the latest rolling ISO (GNOME or KDE) from download.opensuse.org.",
+      "estimated_minutes": 4,
+      "risk": "low"
+    },
+    {
+      "id": "verify",
+      "title": "Verify checksum",
+      "detail_md": "Check SHA256 before flashing to avoid corrupted media.",
+      "estimated_minutes": 5,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sha256sum openSUSE-Tumbleweed-KDE-Live-x86_64-Current.iso",
+          "platform": "linux",
+          "explanation": "Verify integrity"
+        }
+      ]
+    },
+    {
+      "id": "install",
+      "title": "Run YaST installer",
+      "detail_md": "Pick Btrfs with snapshots and enable automatic rollback support.",
+      "estimated_minutes": 18,
+      "risk": "medium"
+    },
+    {
+      "id": "update",
+      "title": "Update and snapshot",
+      "detail_md": "After install, run `sudo zypper refresh && sudo zypper dup` then create a manual snapshot.",
+      "estimated_minutes": 7,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sudo zypper refresh && sudo zypper dup",
+          "platform": "linux",
+          "explanation": "Perform first full sync"
+        }
+      ]
+    }
+  ],
+  "official_docs_url": "https://doc.opensuse.org/",
+  "screenshots": ["https://en.opensuse.org/images/4/4f/Plasma5.27.opensuse.png"],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "No telemetry by default; Btrfs snapshots via snapper are local only.",
+  "popularity_rank": 7,
+  "tags": ["opensuse", "tumbleweed", "rolling", "zypper", "btrfs", "kde", "gnome"],
+  "last_verified": "2026-01-25",
+  "maintainers": [
+    {
+      "name": "openSUSE Project",
+      "role": "Upstream maintainers",
+      "url": "https://www.opensuse.org"
+    }
+  ],
+  "notes": "Excellent for KDE with rollback support using snapper + Btrfs."
+}

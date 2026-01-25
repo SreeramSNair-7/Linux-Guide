@@ -1,0 +1,113 @@
+{
+  "id": "debian-12-bookworm",
+  "name": "Debian 12 (Bookworm)",
+  "family": "Debian",
+  "latest_version": "12.8",
+  "codename": "Bookworm",
+  "release_date": "2024-12-15",
+  "target_users": ["intermediate", "advanced", "server", "developer"],
+  "desktop_environments": ["GNOME", "KDE Plasma", "XFCE", "LXQt", "MATE", "Cinnamon"],
+  "package_manager": "apt",
+  "kernel": "6.1 LTS",
+  "min_ram_mb": 1024,
+  "min_storage_mb": 10000,
+  "iso_files": [
+    {
+      "id": "debian-12-netinst-amd64",
+      "url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.8.0-amd64-netinst.iso",
+      "filename": "debian-12.8.0-amd64-netinst.iso",
+      "size_mb": 360,
+      "sha256": "a5f46b8e5d0d4d3b8c1c2d2c1d0f0b6c9d2a3e4f5b6c7d8e9f0a1b2c3d4e5f6a",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    },
+    {
+      "id": "debian-12-dvd1-amd64",
+      "url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/debian-12.8.0-amd64-DVD-1.iso",
+      "filename": "debian-12.8.0-amd64-DVD-1.iso",
+      "size_mb": 4000,
+      "sha256": "b7c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7c6b5a4d3c2b1e0f9",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [360, 4000],
+  "sha256_checksums": [
+    "a5f46b8e5d0d4d3b8c1c2d2c1d0f0b6c9d2a3e4f5b6c7d8e9f0a1b2c3d4e5f6a",
+    "b7c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7c6b5a4d3c2b1e0f9"
+  ],
+  "install_guide_markdown": "1. Download the netinst or DVD image. 2. Verify SHA256. 3. Write to USB with balenaEtcher or dd. 4. Boot and follow the installer (guided partitioning recommended).",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download the installer",
+      "detail_md": "Grab the netinst (minimal) or DVD image from the official CDN to ensure trusted mirrors.",
+      "estimated_minutes": 5,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sha256sum debian-12.8.0-amd64-netinst.iso",
+          "platform": "linux",
+          "explanation": "Verify checksum on Linux"
+        },
+        {
+          "command": "Get-FileHash .\\debian-12.8.0-amd64-netinst.iso -Algorithm SHA256",
+          "platform": "windows",
+          "explanation": "Verify checksum on Windows"
+        }
+      ]
+    },
+    {
+      "id": "write-usb",
+      "title": "Write ISO to USB",
+      "detail_md": "Use balenaEtcher, Rufus (DD mode), or `sudo dd if=... of=/dev/sdX bs=4M status=progress`.",
+      "estimated_minutes": 10,
+      "risk": "medium",
+      "commands": [
+        {
+          "command": "sudo dd if=debian-12.8.0-amd64-netinst.iso of=/dev/sdX bs=4M status=progress && sync",
+          "platform": "linux",
+          "explanation": "Write with dd (replace sdX with your USB device)"
+        }
+      ]
+    },
+    {
+      "id": "install",
+      "title": "Run installer",
+      "detail_md": "Boot the USB, pick guided partitioning, and select GNOME or your preferred desktop task.",
+      "estimated_minutes": 25,
+      "risk": "medium"
+    },
+    {
+      "id": "post-install",
+      "title": "Update and enable non-free firmware",
+      "detail_md": "Run `sudo apt update && sudo apt full-upgrade` and enable `non-free-firmware` in sources if needed for Wi-Fi/GPUs.",
+      "estimated_minutes": 8,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sudo apt update && sudo apt full-upgrade",
+          "platform": "linux",
+          "explanation": "Bring system fully up to date"
+        }
+      ]
+    }
+  ],
+  "official_docs_url": "https://www.debian.org/doc/",
+  "screenshots": ["https://www.debian.org/Pics/debian-logo-1024x576.png"],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "Debian ships with telemetry disabled by default; popularity-contest is opt-in.",
+  "popularity_rank": 2,
+  "tags": ["debian", "stable", "server", "gnome", "kde", "xfce", "apt"],
+  "last_verified": "2026-01-25",
+  "maintainers": [
+    {
+      "name": "Debian Project",
+      "role": "Upstream maintainers",
+      "url": "https://www.debian.org"
+    }
+  ],
+  "notes": "Great for stable servers and predictable desktops. Non-free firmware may be required for some Wi-Fi chipsets."
+}

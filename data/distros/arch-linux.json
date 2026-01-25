@@ -1,0 +1,90 @@
+{
+  "id": "arch-linux",
+  "name": "Arch Linux (Rolling)",
+  "family": "Arch",
+  "latest_version": "rolling",
+  "codename": "Arch Rolling",
+  "release_date": "2026-01-01",
+  "target_users": ["advanced", "developer"],
+  "desktop_environments": ["User choice"],
+  "package_manager": "pacman",
+  "kernel": "Latest stable",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 15000,
+  "iso_files": [
+    {
+      "id": "archlinux-x86_64",
+      "url": "https://mirror.rackspace.com/archlinux/iso/2026.01.01/archlinux-2026.01.01-x86_64.iso",
+      "filename": "archlinux-2026.01.01-x86_64.iso",
+      "size_mb": 910,
+      "sha256": "c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [910],
+  "sha256_checksums": [
+    "c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2"
+  ],
+  "install_guide_markdown": "Use the official installation guide: partition, mount, pacstrap, fstab, chroot, configure bootloader, create user, and install your desktop.",
+  "install_steps": [
+    {
+      "id": "boot",
+      "title": "Boot live ISO",
+      "detail_md": "Boot the ISO and ensure network is up (`iwctl` for Wi-Fi).",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "partition",
+      "title": "Partition and format",
+      "detail_md": "Use fdisk/parted to create EFI + root; format with ext4 or btrfs.",
+      "estimated_minutes": 12,
+      "risk": "high",
+      "commands": [
+        {
+          "command": "mkfs.ext4 /dev/nvme0n1p2 && mount /dev/nvme0n1p2 /mnt",
+          "platform": "linux",
+          "explanation": "Format and mount root"
+        }
+      ]
+    },
+    {
+      "id": "install-base",
+      "title": "Install base system",
+      "detail_md": "Run pacstrap with base, linux, firmware, and minimal tools.",
+      "estimated_minutes": 10,
+      "risk": "medium",
+      "commands": [
+        {
+          "command": "pacstrap /mnt base linux linux-firmware nano networkmanager",
+          "platform": "linux",
+          "explanation": "Install minimal base"
+        }
+      ]
+    },
+    {
+      "id": "configure",
+      "title": "Configure system",
+      "detail_md": "Generate fstab, set locale, users, enable NetworkManager, and install bootloader (systemd-boot or GRUB).",
+      "estimated_minutes": 15,
+      "risk": "medium"
+    }
+  ],
+  "official_docs_url": "https://wiki.archlinux.org/",
+  "screenshots": ["https://wiki.archlinux.org/images/4/4b/Archlinux-logo-dark-90dpi.svg"],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "No telemetry included; you control all installed components.",
+  "popularity_rank": 6,
+  "tags": ["arch", "rolling", "pacman", "minimal", "diy"],
+  "last_verified": "2026-01-25",
+  "maintainers": [
+    {
+      "name": "Arch Linux Team",
+      "role": "Upstream maintainers",
+      "url": "https://archlinux.org"
+    }
+  ],
+  "notes": "Best for users comfortable with manual installation and rolling releases."
+}

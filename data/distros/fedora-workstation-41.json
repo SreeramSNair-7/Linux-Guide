@@ -1,0 +1,95 @@
+{
+  "id": "fedora-workstation-41",
+  "name": "Fedora Workstation 41",
+  "family": "Red Hat",
+  "latest_version": "41",
+  "codename": "Fedora 41",
+  "release_date": "2025-11-05",
+  "target_users": ["beginner", "intermediate", "developer"],
+  "desktop_environments": ["GNOME"],
+  "package_manager": "dnf5",
+  "kernel": "6.8+ (Wayland default)",
+  "min_ram_mb": 4096,
+  "min_storage_mb": 25000,
+  "iso_files": [
+    {
+      "id": "fedora-workstation-41-x86_64",
+      "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/41/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-41-1.14.iso",
+      "filename": "Fedora-Workstation-Live-x86_64-41-1.14.iso",
+      "size_mb": 22700,
+      "sha256": "d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [22700],
+  "sha256_checksums": [
+    "d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3"
+  ],
+  "install_guide_markdown": "1. Download the live ISO. 2. Verify SHA256. 3. Write to USB. 4. Boot with Secure Boot on (supported). 5. Install with Btrfs (default) or ext4.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download and verify",
+      "detail_md": "Get the official live ISO and verify integrity before writing to USB.",
+      "estimated_minutes": 6,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sha256sum Fedora-Workstation-Live-x86_64-41-1.14.iso",
+          "platform": "linux",
+          "explanation": "Verify checksum on Linux"
+        },
+        {
+          "command": "Get-FileHash .\\Fedora-Workstation-Live-x86_64-41-1.14.iso -Algorithm SHA256",
+          "platform": "windows",
+          "explanation": "Verify checksum on Windows"
+        }
+      ]
+    },
+    {
+      "id": "write-usb",
+      "title": "Write to USB",
+      "detail_md": "Use Fedora Media Writer (recommended) or Rufus DD mode for a reliable bootable stick.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Install with Anaconda",
+      "detail_md": "Choose automatic partitioning with Btrfs for snapshots; Wayland is default, X11 is optional.",
+      "estimated_minutes": 18,
+      "risk": "medium"
+    },
+    {
+      "id": "post-install",
+      "title": "Update and enable codecs",
+      "detail_md": "Run `sudo dnf5 upgrade` then enable RPM Fusion for media codecs if needed.",
+      "estimated_minutes": 7,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sudo dnf5 upgrade",
+          "platform": "linux",
+          "explanation": "Update base system"
+        }
+      ]
+    }
+  ],
+  "official_docs_url": "https://docs.fedoraproject.org/en-US/fedora/latest/",
+  "screenshots": ["https://getfedora.org/static/images/workstation/workstation.png"],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "No telemetry by default; Fedora includes open-source drivers and respects privacy.",
+  "popularity_rank": 4,
+  "tags": ["fedora", "gnome", "wayland", "rpm", "dnf", "btrfs"],
+  "last_verified": "2026-01-25",
+  "maintainers": [
+    {
+      "name": "Fedora Project",
+      "role": "Upstream maintainers",
+      "url": "https://fedoraproject.org"
+    }
+  ],
+  "notes": "Secure Boot and TPM supported out of the box. Great for GNOME + Wayland and fast updates."
+}

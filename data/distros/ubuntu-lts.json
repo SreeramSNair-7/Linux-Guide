@@ -1,4 +1,3 @@
-// file: data/distros/ubuntu-lts.json
 {
   "id": "ubuntu-24-04-lts",
   "name": "Ubuntu 24.04 LTS (Noble Numbat)",

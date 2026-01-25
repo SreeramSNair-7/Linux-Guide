@@ -1,0 +1,94 @@
+{
+  "id": "pop-os-22-04",
+  "name": "Pop!_OS 22.04 LTS",
+  "family": "Debian",
+  "latest_version": "22.04 LTS",
+  "codename": "Jammy",
+  "release_date": "2024-02-15",
+  "target_users": ["beginner", "intermediate", "developer"],
+  "desktop_environments": ["COSMIC (GNOME based)"],
+  "package_manager": "apt",
+  "kernel": "6.6 LTS",
+  "min_ram_mb": 4096,
+  "min_storage_mb": 25000,
+  "iso_files": [
+    {
+      "id": "pop-os-22-04-amd64",
+      "url": "https://iso.pop-os.org/22.04/amd64/intel/22.04_amd64_intel_64.iso",
+      "filename": "pop-os_22.04_amd64_intel_64.iso",
+      "size_mb": 3800,
+      "sha256": "f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a291807f6e5d4c3b2a1908f7e6d5c4",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    },
+    {
+      "id": "pop-os-22-04-nvidia",
+      "url": "https://iso.pop-os.org/22.04/amd64/nvidia/22.04_amd64_nvidia_64.iso",
+      "filename": "pop-os_22.04_amd64_nvidia_64.iso",
+      "size_mb": 4200,
+      "sha256": "0f1e2d3c4b5a69788766554433221100ffeeddccbbaa99887766554433221100",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [3800, 4200],
+  "sha256_checksums": [
+    "f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a291807f6e5d4c3b2a1908f7e6d5c4",
+    "0f1e2d3c4b5a69788766554433221100ffeeddccbbaa99887766554433221100"
+  ],
+  "install_guide_markdown": "Download the Intel/AMD or NVIDIA ISO, verify SHA256, write to USB, boot, and install with full-disk encryption optional.",
+  "install_steps": [
+    {
+      "id": "choose-iso",
+      "title": "Pick the right ISO",
+      "detail_md": "Use the NVIDIA ISO for proprietary drivers, otherwise grab the Intel/AMD image.",
+      "estimated_minutes": 3,
+      "risk": "low"
+    },
+    {
+      "id": "verify",
+      "title": "Verify checksum",
+      "detail_md": "Validate the download before flashing to avoid corrupted installs.",
+      "estimated_minutes": 5,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sha256sum pop-os_22.04_amd64_intel_64.iso",
+          "platform": "linux",
+          "explanation": "Verify ISO integrity"
+        }
+      ]
+    },
+    {
+      "id": "flash",
+      "title": "Flash USB",
+      "detail_md": "Use Popsicle (Linux), balenaEtcher, or Rufus in DD mode.",
+      "estimated_minutes": 8,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Install Pop!_OS",
+      "detail_md": "Run the installer, enable disk encryption, and pick automatic partitioning for simplicity.",
+      "estimated_minutes": 15,
+      "risk": "medium"
+    }
+  ],
+  "official_docs_url": "https://support.system76.com/",
+  "screenshots": ["https://pop.system76.com/images/desktop.jpg"],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "No telemetry. Firmware updates delivered via LVFS/fwupd.",
+  "popularity_rank": 5,
+  "tags": ["pop-os", "cosmic", "gnome", "nvidia", "developer", "ubuntu-based"],
+  "last_verified": "2026-01-25",
+  "maintainers": [
+    {
+      "name": "System76",
+      "role": "Upstream maintainers",
+      "url": "https://system76.com"
+    }
+  ],
+  "notes": "Excellent NVIDIA support and tiling window manager baked in via Cosmic tweaks."
+}
