@@ -1,0 +1,160 @@
+// file: src/app/api/ai/query/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
+import { AIQueryContextSchema, AIResponseSchema } from '@/types/distro.schema';
+import { rateLimit } from '@/lib/rate-limit';
+import { loadDistro } from '@/lib/distro-loader';
+
+const OLLAMA_BASE_URL = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
+const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'mistral-small-3';
+
+const RequestSchema = z.object({
+  query: z.string().min(1).max(500),
+  distro_id: z.string().optional(),
+  platform: z.enum(['windows', 'wsl', 'macos', 'linux']),
+  user_profile: z.object({
+    skill_level: z.enum(['beginner', 'intermediate', 'advanced']),
+  }),
+  allow_hosted_iso: z.boolean().default(false),
+});
+
+export async function POST(request: NextRequest) {
+  try {
+    // Rate limiting
+    const identifier = request.ip || 'anonymous';
+    const { success } = await rateLimit(identifier);
+    if (!success) {
+      return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
+    }
+
+    // Parse and validate request
+    const body = await request.json();
+    const validated = RequestSchema.parse(body);
+
+    // Load distro context if provided
+    let distro = null;
+    if (validated.distro_id) {
+      distro = await loadDistro(validated.distro_id);
+    }
+
+    // Build context for AI
+    const context = {
+      distro,
+      platform: validated.platform,
+      user_profile: validated.user_profile,
+      allow_hosted_iso: validated.allow_hosted_iso,
+    };
+
+    // Load system prompt
+    const systemPrompt = await getSystemPrompt();
+
+    // Build full prompt
+    const fullPrompt = buildPrompt(systemPrompt, validated.query, context);
+
+    // Call Ollama API
+    const ollamaResponse = await fetch(`${OLLAMA_BASE_URL}/api/generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: OLLAMA_MODEL,
+        prompt: fullPrompt,
+        stream: false,
+      }),
+    });
+
+    if (!ollamaResponse.ok) {
+      throw new Error('Ollama API request failed');
+    }
+
+    const ollamaData = await ollamaResponse.json();
+    const aiText = ollamaData.response;
+
+    // Parse AI response
+    let aiResponse;
+    try {
+      // Try to extract JSON from response
+      const jsonMatch = aiText.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        aiResponse = JSON.parse(jsonMatch[0]);
+      } else {
+        // Fallback: create structured response from text
+        aiResponse = {
+          answer_md: aiText,
+          steps: [],
+          commands: [],
+          sources: distro
+            ? [{ label: distro.name, url: distro.official_docs_url }]
+            : [],
+          followup: null,
+          verification: null,
+        };
+      }
+    } catch {
+      aiResponse = {
+        answer_md: aiText,
+        steps: [],
+        commands: [],
+        sources: [],
+        followup: null,
+        verification: null,
+      };
+    }
+
+    // Validate response schema
+    const validatedResponse = AIResponseSchema.parse(aiResponse);
+
+    return NextResponse.json(validatedResponse);
+  } catch (error) {
+    console.error('AI query error:', error);
+
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: 'Invalid request', details: error.errors },
+        { status: 400 }
+      );
+    }
+
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+
+async function getSystemPrompt(): Promise<string> {
+  // This would load from /tools/ai/system_prompt.txt in production
+  return `You are an expert, safety‑first Linux distribution assistant for a website cataloging all Linux‑based OSes. Use ONLY the provided CONTEXT (one distro or distros[] JSON entries, iso_files, install_steps, official URLs) plus general Linux knowledge. Be concise, factual, and always cite CONTEXT URLs for factual claims.
+
+Required single‑object JSON response (no extra keys):
+{
+"answer_md": string,
+"steps": [{id:string,title:string,detail_md:string,estimated_minutes:int,risk:"low"|"medium"|"high"}],
+"commands": [{command:string,platform:string,explanation:string,confirm_required:boolean}],
+"sources": [{label:string,url:string}],
+"followup": string|null,
+"verification": {checksum:string|null, iso_url:string|null, last_verified:string|null}
+}
+
+Behavior rules:
+- Use only CONTEXT for facts
+- Download section: if iso_files present, list filename, size, region, protocol, sha256
+- Safety: NEVER provide destructive disk/partition commands unless user types exactly "I confirm I want destructive commands"
+- Concision: default reply length — short (3–10 sentences or 3–8 steps)
+- Citations: append [source: ] after each factual claim`;
+}
+
+function buildPrompt(
+  systemPrompt: string,
+  userQuery: string,
+  context: any
+): string {
+  const contextStr = JSON.stringify(context, null, 2);
+  return `${systemPrompt}
+
+CONTEXT:
+${contextStr}
+
+USER QUERY: ${userQuery}
+
+Please respond with valid JSON only.`;
+}

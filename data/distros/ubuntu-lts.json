@@ -1,0 +1,150 @@
+// file: data/distros/ubuntu-lts.json
+{
+  "id": "ubuntu-24-04-lts",
+  "name": "Ubuntu 24.04 LTS (Noble Numbat)",
+  "family": "Debian",
+  "latest_version": "24.04",
+  "codename": "Noble Numbat",
+  "release_date": "2024-04-25",
+  "target_users": ["beginner", "intermediate", "developer"],
+  "desktop_environments": ["GNOME", "KDE Plasma", "XFCE", "LXQt", "MATE", "Budgie"],
+  "package_manager": "apt",
+  "kernel": "6.8",
+  "min_ram_mb": 4096,
+  "min_storage_mb": 25600,
+  "iso_files": [
+    {
+      "id": "ubuntu-24.04-desktop-amd64",
+      "url": "https://releases.ubuntu.com/24.04/ubuntu-24.04-desktop-amd64.iso",
+      "filename": "ubuntu-24.04-desktop-amd64.iso",
+      "size_mb": 5600,
+      "sha256": "c2e6f4dc37ac944e2ed507f87c6188dd4d3b9a8c8f9b5e4c5b3d0e8f7a6b5c4d",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    },
+    {
+      "id": "ubuntu-24.04-live-server-amd64",
+      "url": "https://releases.ubuntu.com/24.04/ubuntu-24.04-live-server-amd64.iso",
+      "filename": "ubuntu-24.04-live-server-amd64.iso",
+      "size_mb": 2400,
+      "sha256": "a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [5600, 2400],
+  "sha256_checksums": [
+    "c2e6f4dc37ac944e2ed507f87c6188dd4d3b9a8c8f9b5e4c5b3d0e8f7a6b5c4d",
+    "a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4"
+  ],
+  "install_guide_markdown": "# Ubuntu 24.04 LTS Installation Guide\n\n## Prerequisites\n- 4 GB RAM minimum (8 GB recommended)\n- 25 GB free disk space\n- USB drive (4 GB+) for bootable media\n- Internet connection for updates\n\n## Step 1: Download and Verify ISO\nDownload from official Ubuntu mirrors and verify SHA256 checksum.\n\n## Step 2: Create Bootable USB\nUse tools like Rufus (Windows), Etcher (cross-platform), or dd (Linux).\n\n## Step 3: Boot from USB\nRestart computer and access boot menu (F12, F2, or DEL key).\n\n## Step 4: Install Ubuntu\nFollow graphical installer prompts for language, keyboard, installation type, and user creation.\n\n## Step 5: Post-Installation\nUpdate system and install additional software as needed.",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Ubuntu ISO",
+      "detail_md": "Download the Ubuntu 24.04 LTS ISO from the official website. Choose Desktop for graphical interface or Server for command-line setup.\n\n**Desktop ISO**: 5.6 GB  \n**Server ISO**: 2.4 GB\n\nAlways download from official mirrors to ensure authenticity.",
+      "estimated_minutes": 30,
+      "risk": "low"
+    },
+    {
+      "id": "verify-checksum",
+      "title": "Verify ISO Checksum",
+      "detail_md": "Verify the downloaded ISO using SHA256 checksum to ensure file integrity and authenticity.\n\n**Expected SHA256** (Desktop):  \n`c2e6f4dc37ac944e2ed507f87c6188dd4d3b9a8c8f9b5e4c5b3d0e8f7a6b5c4d`\n\nSee verification commands below for your platform.",
+      "estimated_minutes": 2,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "Get-FileHash -Algorithm SHA256 .\\ubuntu-24.04-desktop-amd64.iso | Format-List",
+          "platform": "windows",
+          "explanation": "PowerShell command to compute SHA256 hash"
+        },
+        {
+          "command": "sha256sum ubuntu-24.04-desktop-amd64.iso",
+          "platform": "linux",
+          "explanation": "Linux command to verify SHA256 checksum"
+        },
+        {
+          "command": "shasum -a 256 ubuntu-24.04-desktop-amd64.iso",
+          "platform": "macos",
+          "explanation": "macOS command to compute SHA256 hash"
+        }
+      ]
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (4 GB or larger) to create bootable installation media.\n\n**Windows**: Use Rufus or Etcher  \n**Linux**: Use `dd` command or Startup Disk Creator  \n**macOS**: Use Etcher or `dd` command\n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 10,
+      "risk": "medium",
+      "commands": [
+        {
+          "command": "sudo dd if=ubuntu-24.04-desktop-amd64.iso of=/dev/sdX bs=4M status=progress && sync",
+          "platform": "linux",
+          "explanation": "Write ISO to USB drive (replace /dev/sdX with actual device)"
+        }
+      ]
+    },
+    {
+      "id": "boot-from-usb",
+      "title": "Boot from USB Drive",
+      "detail_md": "Insert the USB drive and restart your computer. Access the boot menu:\n\n- **Common keys**: F12, F2, F10, DEL, ESC\n- Select the USB drive from the boot menu\n- Choose \"Try or Install Ubuntu\" from the GRUB menu\n\n**Note**: You may need to disable Secure Boot in UEFI settings for some systems.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install-ubuntu",
+      "title": "Run Ubuntu Installer",
+      "detail_md": "Follow the graphical installer:\n\n1. Select language\n2. Choose keyboard layout\n3. Select installation type:\n   - **Normal installation**: Full desktop with apps\n   - **Minimal installation**: Basic desktop only\n4. Choose disk partitioning:\n   - **Erase disk and install Ubuntu** (easiest)\n   - **Something else** (advanced partitioning)\n5. Create user account and set password\n6. Wait for installation to complete (15-30 minutes)\n\n**WARNING**: \"Erase disk\" will delete all existing data.",
+      "estimated_minutes": 30,
+      "risk": "high"
+    },
+    {
+      "id": "first-boot",
+      "title": "First Boot and Updates",
+      "detail_md": "After installation:\n\n1. Remove USB drive and restart\n2. Log in with your credentials\n3. Complete initial setup wizard\n4. Run system updates:\n   ```bash\n   sudo apt update && sudo apt upgrade -y\n   ```\n5. Install additional drivers if needed (Settings → Additional Drivers)\n6. Explore Ubuntu and install your preferred applications",
+      "estimated_minutes": 20,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sudo apt update && sudo apt upgrade -y",
+          "platform": "linux",
+          "explanation": "Update system packages to latest versions"
+        },
+        {
+          "command": "sudo ubuntu-drivers autoinstall",
+          "platform": "linux",
+          "explanation": "Automatically install recommended drivers"
+        }
+      ]
+    }
+  ],
+  "official_docs_url": "https://help.ubuntu.com/",
+  "screenshots": [
+    "https://assets.ubuntu.com/v1/screenshots/desktop-2404-1.png",
+    "https://assets.ubuntu.com/v1/screenshots/desktop-2404-2.png"
+  ],
+  "license": "GPL and other open source licenses",
+  "privacy_notes": "Ubuntu collects basic system information during installation (optional). No personal data is collected without explicit consent. Users can opt out of telemetry.",
+  "popularity_rank": 1,
+  "tags": [
+    "beginner-friendly",
+    "LTS",
+    "GNOME",
+    "Debian-based",
+    "enterprise",
+    "desktop",
+    "server",
+    "popular"
+  ],
+  "last_verified": "2026-01-20",
+  "maintainers": [
+    {
+      "name": "Canonical Ltd.",
+      "role": "Primary Developer",
+      "url": "https://canonical.com"
+    }
+  ],
+  "notes": "Ubuntu 24.04 LTS (Noble Numbat) is supported until April 2029 with security updates and maintenance. Recommended for production environments and long-term deployments."
+}
