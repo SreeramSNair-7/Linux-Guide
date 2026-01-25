@@ -47,5 +47,7 @@
   "official_docs_url": "https://docs.voidlinux.org/",
   "screenshots": ["https://voidlinux.org/assets/img/void-logo.png"],
   "license": "Various open-source",
-  "privacy_notes": "Minimal, no telemetry, community-driven."
+  "privacy_notes": "Minimal, no telemetry, community-driven.",
+  "tags": ["rolling-release", "independent", "minimal"],
+  "last_verified": "2024-12-01"
 }

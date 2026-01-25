@@ -47,5 +47,7 @@
   "official_docs_url": "https://www.linuxliteos.com/",
   "screenshots": ["https://www.linuxliteos.com/images/screenshots/desktop.png"],
   "license": "GPL-2.0",
-  "privacy_notes": "Lightweight, no tracking, community-driven."
+  "privacy_notes": "Lightweight, no tracking, community-driven.",
+  "tags": ["lightweight", "beginner-friendly", "xfce"],
+  "last_verified": "2024-12-01"
 }

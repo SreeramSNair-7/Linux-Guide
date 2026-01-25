@@ -47,5 +47,7 @@
   "official_docs_url": "https://getsol.us/",
   "screenshots": ["https://getsol.us/imgs/budgie-desktop.png"],
   "license": "GPL-2.0",
-  "privacy_notes": "Independent project, privacy-focused."
+  "privacy_notes": "Independent project, privacy-focused.",
+  "tags": ["independent", "budgie", "modern"],
+  "last_verified": "2024-12-01"
 }

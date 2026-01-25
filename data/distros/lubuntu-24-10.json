@@ -47,5 +47,7 @@
   "official_docs_url": "https://lubuntu.me/",
   "screenshots": ["https://lubuntu.me/images/lubuntu-lxqt.png"],
   "license": "GPL-2.0",
-  "privacy_notes": "Ubuntu-based with privacy controls."
+  "privacy_notes": "Ubuntu-based with privacy controls.",
+  "tags": ["lightweight", "lxqt", "ubuntu"],
+  "last_verified": "2024-12-01"
 }

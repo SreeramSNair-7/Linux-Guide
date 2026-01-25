@@ -47,5 +47,7 @@
   "official_docs_url": "https://docs.centos.org/en-US/stream/",
   "screenshots": ["https://www.centos.org/assets/img/screenshot-gnome.png"],
   "license": "GPL-2.0",
-  "privacy_notes": "Enterprise-focused, minimal telemetry."
+  "privacy_notes": "Enterprise-focused, minimal telemetry.",
+  "tags": ["enterprise", "server", "stable"],
+  "last_verified": "2024-12-01"
 }

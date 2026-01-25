@@ -47,5 +47,7 @@
   "official_docs_url": "https://xubuntu.org/",
   "screenshots": ["https://xubuntu.org/wp-content/uploads/xubuntu-24.10-desktop.png"],
   "license": "GPL-2.0",
-  "privacy_notes": "Ubuntu-based with community support."
+  "privacy_notes": "Ubuntu-based with community support.",
+  "tags": ["lightweight", "xfce", "ubuntu"],
+  "last_verified": "2024-12-01"
 }
