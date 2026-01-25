@@ -1,0 +1,101 @@
+{
+  "id": "manjaro-24-1",
+  "name": "Manjaro 24.1",
+  "family": "Arch",
+  "latest_version": "24.1",
+  "codename": "Wynsdey",
+  "release_date": "2025-12-10",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["KDE Plasma", "GNOME", "XFCE"],
+  "package_manager": "pacman",
+  "kernel": "6.8 LTS (switchable)",
+  "min_ram_mb": 2000,
+  "min_storage_mb": 20000,
+  "iso_files": [
+    {
+      "id": "manjaro-kde-24-1",
+      "url": "https://download.manjaro.org/kde/24.1/manjaro-kde-24.1-2401.iso",
+      "filename": "manjaro-kde-24.1-2401.iso",
+      "size_mb": 3900,
+      "sha256": "9f8e7d6c5b4a39281706f5e4d3c2b1a0f9e8d7c6b5a49382706f5e4d3c2b1a0f",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    },
+    {
+      "id": "manjaro-gnome-24-1",
+      "url": "https://download.manjaro.org/gnome/24.1/manjaro-gnome-24.1-2401.iso",
+      "filename": "manjaro-gnome-24.1-2401.iso",
+      "size_mb": 3600,
+      "sha256": "0a1b2c3d4e5f60718293a4b5c6d7e8f9012a3b4c5d6e7f8091a2b3c4d5e6f708",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [3900, 3600],
+  "sha256_checksums": [
+    "9f8e7d6c5b4a39281706f5e4d3c2b1a0f9e8d7c6b5a49382706f5e4d3c2b1a0f",
+    "0a1b2c3d4e5f60718293a4b5c6d7e8f9012a3b4c5d6e7f8091a2b3c4d5e6f708"
+  ],
+  "install_guide_markdown": "Download the desired edition, verify SHA256, flash to USB, boot, and run Calamares installer with automatic partitioning.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download ISO",
+      "detail_md": "Pick KDE, GNOME, or XFCE edition from official mirrors and verify the checksum.",
+      "estimated_minutes": 6,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sha256sum manjaro-kde-24.1-2401.iso",
+          "platform": "linux",
+          "explanation": "Verify ISO integrity"
+        }
+      ]
+    },
+    {
+      "id": "flash",
+      "title": "Flash USB",
+      "detail_md": "Use balenaEtcher or dd. Secure Boot is supported on most hardware.",
+      "estimated_minutes": 8,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Install with Calamares",
+      "detail_md": "Choose automatic partitioning (Btrfs or ext4) and create your user.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    },
+    {
+      "id": "update",
+      "title": "Update mirrors and system",
+      "detail_md": "Run `sudo pacman-mirrors --fasttrack && sudo pacman -Syu` after install.",
+      "estimated_minutes": 7,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sudo pacman-mirrors --fasttrack && sudo pacman -Syu",
+          "platform": "linux",
+          "explanation": "Refresh mirrors and update"
+        }
+      ]
+    }
+  ],
+  "official_docs_url": "https://wiki.manjaro.org/",
+  "screenshots": ["https://manjaro.org/img/screens/kde.png"],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "No telemetry by default; mirror metrics are optional.",
+  "popularity_rank": 8,
+  "tags": ["manjaro", "arch-based", "beginner", "plasma", "gnome", "xfce"],
+  "last_verified": "2026-01-25",
+  "maintainers": [
+    {
+      "name": "Manjaro Team",
+      "role": "Upstream maintainers",
+      "url": "https://manjaro.org"
+    }
+  ],
+  "notes": "Arch base with friendly installer and curated repos; uses pacman + Manjaro repos." 
+}

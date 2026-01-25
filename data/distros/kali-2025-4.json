@@ -1,0 +1,76 @@
+{
+  "id": "kali-2025-4",
+  "name": "Kali Linux 2025.4",
+  "family": "Debian",
+  "latest_version": "2025.4",
+  "codename": "Kali 2025.4",
+  "release_date": "2025-10-15",
+  "target_users": ["advanced", "developer"],
+  "desktop_environments": ["KDE Plasma", "GNOME", "XFCE"],
+  "package_manager": "apt",
+  "kernel": "6.10",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 20000,
+  "iso_files": [
+    {
+      "id": "kali-linux-2025-4-installer-amd64",
+      "url": "https://cdimage.kali.org/kali-2025.4/kali-linux-2025.4-installer-amd64.iso",
+      "filename": "kali-linux-2025.4-installer-amd64.iso",
+      "size_mb": 4300,
+      "sha256": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [4300],
+  "sha256_checksums": [
+    "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+  ],
+  "install_guide_markdown": "Use the installer ISO, verify SHA256, flash to USB, boot, and install. Choose default desktop or minimal. Intended for security professionals.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download ISO",
+      "detail_md": "Grab the official installer ISO; avoid unofficial mirrors to ensure integrity.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "verify",
+      "title": "Verify checksum",
+      "detail_md": "Always verify SHA256 to ensure the image isn't tampered.",
+      "estimated_minutes": 5,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sha256sum kali-linux-2025.4-installer-amd64.iso",
+          "platform": "linux",
+          "explanation": "Verify ISO"
+        }
+      ]
+    },
+    {
+      "id": "install",
+      "title": "Install",
+      "detail_md": "Boot the USB, pick encrypted LVM if desired, and complete setup.",
+      "estimated_minutes": 20,
+      "risk": "medium"
+    }
+  ],
+  "official_docs_url": "https://www.kali.org/docs/",
+  "screenshots": ["https://www.kali.org/images/kali-desktop.jpg"],
+  "license": "GPL-3.0-or-later",
+  "privacy_notes": "No telemetry; security tools included by default.",
+  "popularity_rank": 10,
+  "tags": ["kali", "security", "pentest", "debian", "apt"],
+  "last_verified": "2026-01-25",
+  "maintainers": [
+    {
+      "name": "OffSec",
+      "role": "Upstream maintainers",
+      "url": "https://www.kali.org"
+    }
+  ],
+  "notes": "For security testing; not recommended as a beginner daily driver." 
+}

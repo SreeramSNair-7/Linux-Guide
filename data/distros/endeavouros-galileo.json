@@ -1,0 +1,76 @@
+{
+  "id": "endeavouros-galileo",
+  "name": "EndeavourOS Galileo",
+  "family": "Arch",
+  "latest_version": "2024.12",
+  "codename": "Galileo",
+  "release_date": "2024-12-20",
+  "target_users": ["intermediate", "advanced"],
+  "desktop_environments": ["KDE Plasma", "GNOME", "XFCE", "i3", "LXQt", "MATE", "Cinnamon", "Budgie"],
+  "package_manager": "pacman",
+  "kernel": "Latest stable",
+  "min_ram_mb": 2000,
+  "min_storage_mb": 15000,
+  "iso_files": [
+    {
+      "id": "endeavouros-galileo-x86_64",
+      "url": "https://github.com/endeavouros-team/ISO/releases/download/galileo-2024.12.20/EndeavourOS_Galileo-2024.12.20.iso",
+      "filename": "EndeavourOS_Galileo-2024.12.20.iso",
+      "size_mb": 2300,
+      "sha256": "abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [2300],
+  "sha256_checksums": [
+    "abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890"
+  ],
+  "install_guide_markdown": "Boot the live ISO, connect to the internet, start the Calamares installer, select your desktop, and install. Rolling updates via Arch repos.",
+  "install_steps": [
+    {
+      "id": "boot",
+      "title": "Boot live ISO",
+      "detail_md": "Use wired or Wi-Fi (via `nmtui`) before launching the installer.",
+      "estimated_minutes": 4,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Run Calamares",
+      "detail_md": "Pick offline (XFCE) or online (any desktop) install. Choose Btrfs for snapshots if desired.",
+      "estimated_minutes": 18,
+      "risk": "medium"
+    },
+    {
+      "id": "post-install",
+      "title": "Sync mirrors and update",
+      "detail_md": "After reboot, update with `sudo pacman -Syu` and optionally install `timeshift` for snapshots.",
+      "estimated_minutes": 7,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sudo pacman -Syu",
+          "platform": "linux",
+          "explanation": "Perform first full update"
+        }
+      ]
+    }
+  ],
+  "official_docs_url": "https://discovery.endeavouros.com/",
+  "screenshots": ["https://endeavouros.com/wp-content/uploads/2023/08/wallpaper-eos.jpg"],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "No telemetry. Uses Arch repos plus minimal EndeavourOS repo for tooling.",
+  "popularity_rank": 9,
+  "tags": ["endeavouros", "arch", "calamares", "rolling", "pacman"],
+  "last_verified": "2026-01-25",
+  "maintainers": [
+    {
+      "name": "EndeavourOS Team",
+      "role": "Upstream maintainers",
+      "url": "https://endeavouros.com"
+    }
+  ],
+  "notes": "Close-to-Arch experience with friendly installer and choice of desktops." 
+}

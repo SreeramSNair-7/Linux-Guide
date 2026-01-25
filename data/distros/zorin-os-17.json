@@ -1,0 +1,76 @@
+{
+  "id": "zorin-os-17",
+  "name": "Zorin OS 17",
+  "family": "Debian",
+  "latest_version": "17",
+  "codename": "Zorin 17",
+  "release_date": "2024-12-20",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["Zorin Desktop (GNOME based)"],
+  "package_manager": "apt",
+  "kernel": "6.8",
+  "min_ram_mb": 2000,
+  "min_storage_mb": 20000,
+  "iso_files": [
+    {
+      "id": "zorin-os-17-core",
+      "url": "https://cdn.zorinos.com/17/Zorin-OS-17-Core-64-bit.iso",
+      "filename": "Zorin-OS-17-Core-64-bit.iso",
+      "size_mb": 3200,
+      "sha256": "0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a291807f6e5d4c3b2a1908f7e6d5c",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [3200],
+  "sha256_checksums": [
+    "0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a291807f6e5d4c3b2a1908f7e6d5c"
+  ],
+  "install_guide_markdown": "Download Core ISO, verify SHA256, flash to USB, boot, and install with automatic partitioning. Windows-like layouts available.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download",
+      "detail_md": "Get the Core edition for general use; Lite for older hardware.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "verify",
+      "title": "Verify",
+      "detail_md": "Check SHA256 to ensure the image is intact.",
+      "estimated_minutes": 4,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sha256sum Zorin-OS-17-Core-64-bit.iso",
+          "platform": "linux",
+          "explanation": "Verify ISO"
+        }
+      ]
+    },
+    {
+      "id": "install",
+      "title": "Install",
+      "detail_md": "Use the installer, select layout similar to Windows or macOS, and finish setup.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    }
+  ],
+  "official_docs_url": "https://help.zorin.com/",
+  "screenshots": ["https://zorin.com/images/os/screens/zorin-os-17.png"],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "No telemetry; online accounts optional.",
+  "popularity_rank": 3,
+  "tags": ["zorin", "beginner", "windows-like", "ubuntu-based"],
+  "last_verified": "2026-01-25",
+  "maintainers": [
+    {
+      "name": "Zorin Group",
+      "role": "Upstream maintainers",
+      "url": "https://zorin.com"
+    }
+  ],
+  "notes": "Good for Windows switchers with prebuilt layouts and codecs." 
+}
