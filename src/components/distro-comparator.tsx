@@ -30,6 +30,22 @@ export function DistroComparator({ distros }: DistroComparatorProps) {
     });
   };
 
+  // Group distros by family
+  const groupedDistros = distros.reduce(
+    (acc, distro) => {
+      const family = distro.family;
+      if (!acc[family]) {
+        acc[family] = [];
+      }
+      acc[family].push(distro);
+      return acc;
+    },
+    {} as Record<string, Distro[]>
+  );
+
+  // Sort families by name
+  const sortedFamilies = Object.keys(groupedDistros).sort();
+
   const getAdvantage = (
     label: string,
     val1: number | undefined,
@@ -84,18 +100,27 @@ export function DistroComparator({ distros }: DistroComparatorProps) {
               )}
 
               {!selected[index] && (
-                <div className="space-y-2 max-h-64 overflow-y-auto">
-                  {distros.map((distro) => (
-                    <button
-                      key={distro.id}
-                      onClick={() => selectDistro(index, distro)}
-                      className="w-full text-left rounded-lg border p-2 hover:bg-accent transition-colors"
-                    >
-                      <div className="font-medium text-sm">{distro.name}</div>
-                      <div className="text-xs text-muted-foreground">
-                        {distro.family} · v{distro.latest_version}
+                <div className="space-y-4 max-h-96 overflow-y-auto">
+                  {sortedFamilies.map((family) => (
+                    <div key={family} className="space-y-2">
+                      <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide px-2">
+                        {family}
                       </div>
-                    </button>
+                      <div className="space-y-1">
+                        {groupedDistros[family].map((distro) => (
+                          <button
+                            key={distro.id}
+                            onClick={() => selectDistro(index, distro)}
+                            className="w-full text-left rounded-lg border p-3 hover:bg-accent hover:border-primary transition-colors"
+                          >
+                            <div className="font-medium text-sm">{distro.name}</div>
+                            <div className="text-xs text-muted-foreground">
+                              v{distro.latest_version} · {distro.desktop_environments[0]}
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
                   ))}
                 </div>
               )}
