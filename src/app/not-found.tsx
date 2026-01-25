@@ -18,7 +18,7 @@ export default function NotFound() {
           <h1 className="mb-2 text-6xl font-black leading-tight text-white">404</h1>
           <h2 className="mb-4 text-2xl font-semibold text-emerald-50">Page Not Found</h2>
           <p className="mb-8 text-base text-slate-200/80">
-            The page you're looking for doesn't exist or was moved. Let's get you back to the distro catalog.
+            The page you&apos;re looking for doesn&apos;t exist or was moved. Let&apos;s get you back to the distro catalog.
           </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button asChild size="lg" className="shadow-lg shadow-emerald-500/25">

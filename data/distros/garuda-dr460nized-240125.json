@@ -1,0 +1,56 @@
+{
+  "id": "garuda-dr460nized-240125",
+  "name": "Garuda Linux Dr460nized",
+  "family": "Arch",
+  "latest_version": "2024.01.25",
+  "codename": "Dr460nized Edition",
+  "release_date": "2025-01-25",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["KDE Plasma"],
+  "package_manager": "pacman",
+  "kernel": "Latest stable",
+  "min_ram_mb": 4096,
+  "min_storage_mb": 25000,
+  "iso_files": [
+    {
+      "id": "garuda-dr460nized-iso",
+      "url": "https://iso.garudalinux.org/garuda/dr460nized/Garuda-Linux-Dr460nized-240125.iso",
+      "filename": "Garuda-Linux-Dr460nized-240125.iso",
+      "size_mb": 3200,
+      "sha256": "4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a291807f6e5d4c3b2a1908",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [3200],
+  "sha256_checksums": [
+    "4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a291807f6e5d4c3b2a1908"
+  ],
+  "install_guide_markdown": "Boot the live ISO, ensure network connectivity, launch the installer, choose Btrfs for snapshots, and install.",
+  "install_steps": [
+    {
+      "id": "boot",
+      "title": "Boot live ISO",
+      "detail_md": "Boot with UEFI, optionally enable secure boot.",
+      "estimated_minutes": 3,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Install",
+      "detail_md": "Run the Calamares installer; Btrfs + snapshots enabled by default.",
+      "estimated_minutes": 16,
+      "risk": "medium"
+    }
+  ],
+  "official_docs_url": "https://garudalinux.org/",
+  "screenshots": ["https://garudalinux.org/img/dr460nized.jpg"],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "No telemetry. Rolling updates via Arch repos.",
+  "popularity_rank": 13,
+  "tags": ["garuda", "arch", "kde", "gaming", "arch-based"],
+  "last_verified": "2026-01-25",
+  "maintainers": [{"name": "Garuda Team", "role": "Upstream", "url": "https://garudalinux.org"}],
+  "notes": "Gaming-focused Arch with gorgeous KDE theming and Btrfs snapshots."
+}

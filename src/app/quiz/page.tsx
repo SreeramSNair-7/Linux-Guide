@@ -1,4 +1,3 @@
-# file: src/app/quiz/page.tsx
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -14,7 +13,7 @@ export default function QuizPage() {
       <div className="mx-auto max-w-2xl">
         <h1 className="mb-4 text-4xl font-bold">Find Your Perfect Distro</h1>
         <p className="mb-8 text-lg text-muted-foreground">
-          Answer a few questions and we'll recommend the best Linux distribution for your needs.
+          Answer a few questions and we&apos;ll recommend the best Linux distribution for your needs.
         </p>
 
         <Card>

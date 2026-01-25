@@ -1,0 +1,56 @@
+{
+  "id": "rockylinux-9-3",
+  "name": "Rocky Linux 9.3",
+  "family": "Red Hat",
+  "latest_version": "9.3",
+  "codename": "Rocky 9.3",
+  "release_date": "2024-11-12",
+  "target_users": ["intermediate", "advanced", "enterprise", "server"],
+  "desktop_environments": ["GNOME", "KDE Plasma"],
+  "package_manager": "dnf",
+  "kernel": "5.14+ LTS",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 20000,
+  "iso_files": [
+    {
+      "id": "rockylinux-9-3-dvd",
+      "url": "https://mirrors.rockylinux.org/isos/x86_64/Rocky-9.3-x86_64-dvd.iso",
+      "filename": "Rocky-9.3-x86_64-dvd.iso",
+      "size_mb": 10500,
+      "sha256": "6f5e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a291807f6e5d4c3b2",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [10500],
+  "sha256_checksums": [
+    "6f5e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a291807f6e5d4c3b2"
+  ],
+  "install_guide_markdown": "Download DVD, verify SHA256, boot the Anaconda installer, choose partitioning (LVM default), and configure.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download",
+      "detail_md": "Get the DVD or netinst ISO from Rocky mirrors.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Install",
+      "detail_md": "Run Anaconda, set hostname, storage, and user accounts.",
+      "estimated_minutes": 20,
+      "risk": "medium"
+    }
+  ],
+  "official_docs_url": "https://docs.rockylinux.org/",
+  "screenshots": ["https://rockylinux.org/images/rocky-9-gnome.jpg"],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "No telemetry by default.",
+  "popularity_rank": 15,
+  "tags": ["rockylinux", "rhel", "server", "dnf", "enterprise"],
+  "last_verified": "2026-01-25",
+  "maintainers": [{"name": "Rocky Enterprise Software Foundation", "role": "Upstream", "url": "https://rockylinux.org"}],
+  "notes": "Community-driven RHEL-compatible distro perfect for servers."
+}

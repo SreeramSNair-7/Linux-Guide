@@ -1,7 +1,7 @@
 // file: src/app/api/ai/query/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { AIQueryContextSchema, AIResponseSchema } from '@/types/distro.schema';
+import { AIResponseSchema } from '@/types/distro.schema';
 import { rateLimit } from '@/lib/rate-limit';
 import { loadDistro } from '@/lib/distro-loader';
 

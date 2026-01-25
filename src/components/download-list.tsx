@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { formatFileSize, copyToClipboard } from '@/lib/utils';
 import { ChecksumVerifyModal } from '@/components/checksum-verify-modal';
 import type { IsoFile } from '@/types/distro.schema';
-import { Download, Shield, Copy, Check, ExternalLink } from 'lucide-react';
+import { Download, Shield, Copy, Check } from 'lucide-react';
 
 interface DownloadListProps {
   isoFiles: IsoFile[];
@@ -109,7 +109,7 @@ export function DownloadList({ isoFiles, distroName }: DownloadListProps) {
           {/* Safety Notice */}
           <div className="rounded-lg border-l-4 border-yellow-500 bg-yellow-50 p-4 dark:bg-yellow-950">
             <h4 className="mb-2 flex items-center gap-2 font-semibold">
-              <AlertTriangle className="h-4 w-4" aria-hidden="true" />
+              <Shield className="h-4 w-4" aria-hidden="true" />
               Important Security Notice
             </h4>
             <ul className="list-inside list-disc space-y-1 text-sm">

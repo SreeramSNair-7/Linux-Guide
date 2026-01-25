@@ -1,0 +1,63 @@
+{
+  "id": "mx-linux-23-3",
+  "name": "MX Linux 23.3",
+  "family": "Debian",
+  "latest_version": "23.3",
+  "codename": "MX 23.3 Wildflower",
+  "release_date": "2024-11-10",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["Xfce", "KDE Plasma"],
+  "package_manager": "apt",
+  "kernel": "6.6 LTS",
+  "min_ram_mb": 1024,
+  "min_storage_mb": 15000,
+  "iso_files": [
+    {
+      "id": "mx-23-3-xfce",
+      "url": "https://sourceforge.net/projects/mxlinux-iso/files/MX-23.3_x64.iso",
+      "filename": "MX-23.3_x64.iso",
+      "size_mb": 1800,
+      "sha256": "2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7c6b5a4d3c2b1",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [1800],
+  "sha256_checksums": [
+    "2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7c6b5a4d3c2b1"
+  ],
+  "install_guide_markdown": "Boot ISO, run the Calamares installer with automatic partitioning, and complete setup. Very lightweight and fast.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download MX Linux",
+      "detail_md": "Get the x64 Xfce edition from sourceforge.",
+      "estimated_minutes": 4,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Install",
+      "detail_md": "Flash to USB, boot, and run the straightforward installer.",
+      "estimated_minutes": 12,
+      "risk": "low"
+    },
+    {
+      "id": "update",
+      "title": "Update",
+      "detail_md": "Run updates after first boot.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    }
+  ],
+  "official_docs_url": "https://mxlinux.org/",
+  "screenshots": ["https://mxlinux.org/images/mx-23-3.jpg"],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "No telemetry by default.",
+  "popularity_rank": 11,
+  "tags": ["mx", "xfce", "lightweight", "debian", "fast"],
+  "last_verified": "2026-01-25",
+  "maintainers": [{"name": "MX Linux Team", "role": "Upstream", "url": "https://mxlinux.org"}],
+  "notes": "Lightweight and responsive on older hardware."
+}

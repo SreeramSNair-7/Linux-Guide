@@ -11,7 +11,6 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Badge } from '@/components/ui/badge';
 import { getChecksumCommand, copyToClipboard } from '@/lib/utils';
 import type { IsoFile } from '@/types/distro.schema';
 import { Copy, Check, Terminal } from 'lucide-react';
