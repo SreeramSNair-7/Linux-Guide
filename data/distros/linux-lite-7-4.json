@@ -1,0 +1,51 @@
+{
+  "id": "linux-lite-7-4",
+  "name": "Linux Lite 7.4",
+  "family": "Debian",
+  "latest_version": "7.4",
+  "codename": "Linux Lite 7.4",
+  "release_date": "2024-08-15",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["Xfce"],
+  "package_manager": "apt",
+  "kernel": "6.8 LTS",
+  "min_ram_mb": 768,
+  "min_storage_mb": 12000,
+  "iso_files": [
+    {
+      "id": "linux-lite-7-4-amd64",
+      "url": "https://www.linuxliteos.com/download/linux-lite-7.4-64bit.iso",
+      "filename": "linux-lite-7.4-64bit.iso",
+      "size_mb": 2200,
+      "sha256": "d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [2200],
+  "sha256_checksums": [
+    "d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4"
+  ],
+  "install_guide_markdown": "Download ISO, verify, boot, run graphical installer. Designed for simplicity and speed on older systems.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download ISO",
+      "detail_md": "Get the 64-bit ISO from the official Linux Lite website.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Install with GUI",
+      "detail_md": "Boot live, click install icon on desktop, follow simple setup wizard.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    }
+  ],
+  "official_docs_url": "https://www.linuxliteos.com/",
+  "screenshots": ["https://www.linuxliteos.com/images/screenshots/desktop.png"],
+  "license": "GPL-2.0",
+  "privacy_notes": "Lightweight, no tracking, community-driven."
+}

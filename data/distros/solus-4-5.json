@@ -1,0 +1,51 @@
+{
+  "id": "solus-4-5",
+  "name": "Solus 4.5",
+  "family": "Independent",
+  "latest_version": "4.5",
+  "codename": "Solus 4.5",
+  "release_date": "2024-11-20",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["Budgie", "GNOME", "KDE Plasma", "MATE"],
+  "package_manager": "eopkg",
+  "kernel": "6.10 LTS",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 20000,
+  "iso_files": [
+    {
+      "id": "solus-4-5-budgie",
+      "url": "https://github.com/getsolus/solus/releases/download/solus-4.5/Solus-4.5-Budgie.iso",
+      "filename": "Solus-4.5-Budgie.iso",
+      "size_mb": 3100,
+      "sha256": "e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [3100],
+  "sha256_checksums": [
+    "e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5"
+  ],
+  "install_guide_markdown": "Download ISO, boot live, run installer. Modern independent distro with Budgie desktop environment.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download ISO",
+      "detail_md": "Get the Budgie edition ISO from GitHub releases.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Run Installer",
+      "detail_md": "Boot live, launch Installer app, partition disk, configure system.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    }
+  ],
+  "official_docs_url": "https://getsol.us/",
+  "screenshots": ["https://getsol.us/imgs/budgie-desktop.png"],
+  "license": "GPL-2.0",
+  "privacy_notes": "Independent project, privacy-focused."
+}

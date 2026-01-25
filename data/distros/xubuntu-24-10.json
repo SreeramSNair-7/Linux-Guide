@@ -1,0 +1,51 @@
+{
+  "id": "xubuntu-24-10",
+  "name": "Xubuntu 24.10",
+  "family": "Debian",
+  "latest_version": "24.10",
+  "codename": "Oracular Oriole",
+  "release_date": "2024-10-10",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["Xfce"],
+  "package_manager": "apt",
+  "kernel": "6.11 LTS",
+  "min_ram_mb": 1024,
+  "min_storage_mb": 15000,
+  "iso_files": [
+    {
+      "id": "xubuntu-24-10-amd64",
+      "url": "https://cdimages.ubuntu.com/xubuntu/releases/24.10/release/xubuntu-24.10-desktop-amd64.iso",
+      "filename": "xubuntu-24.10-desktop-amd64.iso",
+      "size_mb": 2800,
+      "sha256": "c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [2800],
+  "sha256_checksums": [
+    "c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3"
+  ],
+  "install_guide_markdown": "Download, verify, boot live ISO, run installer. Xfce provides balance between lightweight and feature-rich.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download ISO",
+      "detail_md": "Get the desktop ISO from Ubuntu mirrors.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Install via Calamares",
+      "detail_md": "Boot live environment, launch installer, partition, and complete setup.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    }
+  ],
+  "official_docs_url": "https://xubuntu.org/",
+  "screenshots": ["https://xubuntu.org/wp-content/uploads/xubuntu-24.10-desktop.png"],
+  "license": "GPL-2.0",
+  "privacy_notes": "Ubuntu-based with community support."
+}

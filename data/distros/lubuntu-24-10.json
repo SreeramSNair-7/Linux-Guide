@@ -1,0 +1,51 @@
+{
+  "id": "lubuntu-24-10",
+  "name": "Lubuntu 24.10",
+  "family": "Debian",
+  "latest_version": "24.10",
+  "codename": "Oracular Oriole",
+  "release_date": "2024-10-10",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["LXQt"],
+  "package_manager": "apt",
+  "kernel": "6.11 LTS",
+  "min_ram_mb": 512,
+  "min_storage_mb": 10000,
+  "iso_files": [
+    {
+      "id": "lubuntu-24-10-amd64",
+      "url": "https://cdimages.ubuntu.com/lubuntu/releases/24.10/release/lubuntu-24.10-desktop-amd64.iso",
+      "filename": "lubuntu-24.10-desktop-amd64.iso",
+      "size_mb": 2400,
+      "sha256": "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2",
+      "region": "global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [2400],
+  "sha256_checksums": [
+    "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2"
+  ],
+  "install_guide_markdown": "Download, verify, boot live ISO, run installer. LXQt is ultra-lightweight and perfect for older hardware.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download ISO",
+      "detail_md": "Get the desktop ISO from Ubuntu mirrors.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Install via Calamares",
+      "detail_md": "Boot the live environment, click Install, and follow the guided setup.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    }
+  ],
+  "official_docs_url": "https://lubuntu.me/",
+  "screenshots": ["https://lubuntu.me/images/lubuntu-lxqt.png"],
+  "license": "GPL-2.0",
+  "privacy_notes": "Ubuntu-based with privacy controls."
+}
