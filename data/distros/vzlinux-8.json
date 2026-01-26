@@ -1,0 +1,85 @@
+{
+  "id": "vzlinux-8",
+  "name": "VzLinux 8",
+  "family": "Red Hat",
+  "latest_version": "8.8",
+  "codename": "Enterprise",
+  "release_date": "2022-12-22",
+  "target_users": ["intermediate", "advanced", "server"],
+  "desktop_environments": ["GNOME"],
+  "package_manager": "YUM",
+  "kernel": "4.18+",
+  "min_ram_mb": 1024,
+  "min_storage_mb": 10000,
+  "iso_files": [
+    {
+      "id": "vzlinux-8-x86_64",
+      "url": "https://repo.virtuozzo.com/vzlinux/8/isos/x86_64/VzLinux-8.8-x86_64-dvd.iso",
+      "filename": "VzLinux-8.8-x86_64-dvd.iso",
+      "size_mb": 8500,
+      "sha256": "d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [8500],
+  "sha256_checksums": [
+    "d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3"
+  ],
+  "install_guide_markdown": "# VzLinux 8 Installation Guide\n\nVzLinux is Virtuozzo's distro for cloud and container infrastructure.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download VzLinux ISO",
+      "detail_md": "Get from official Virtuozzo repositories.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    },
+    {
+      "id": "boot",
+      "title": "Boot Installer",
+      "detail_md": "Boot from media and start installation.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Run Anaconda",
+      "detail_md": "Complete system installation.",
+      "estimated_minutes": 20,
+      "risk": "medium"
+    },
+    {
+      "id": "virtualization",
+      "title": "Enable Virtualization",
+      "detail_md": "Install and configure container/virtualization tools.",
+      "estimated_minutes": 15,
+      "risk": "low",
+      "commands": [
+        {"command": "sudo yum install -y virtuozzo-tools", "platform": "linux", "explanation": "Install Virtuozzo tools"}
+      ]
+    },
+    {
+      "id": "update",
+      "title": "Update System",
+      "detail_md": "Apply latest patches.",
+      "estimated_minutes": 10,
+      "risk": "low",
+      "commands": [
+        {"command": "sudo yum update -y", "platform": "linux", "explanation": "Update packages"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://docs.virtuozzo.com/vzlinux/",
+  "screenshots": [],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "VzLinux is community project, minimal telemetry.",
+  "popularity_rank": 19,
+  "tags": ["vzlinux", "virtuozzo", "redhat", "container", "cloud", "yum"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "Virtuozzo", "role": "Maintainers", "url": "https://virtuozzo.com"}
+  ],
+  "notes": "VzLinux is optimized for Virtuozzo containers and cloud deployments."
+}

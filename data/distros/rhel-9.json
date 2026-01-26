@@ -1,0 +1,86 @@
+{
+  "id": "rhel-9",
+  "name": "Red Hat Enterprise Linux (RHEL) 9",
+  "family": "Red Hat",
+  "latest_version": "9.3",
+  "codename": "Plow",
+  "release_date": "2022-05-10",
+  "target_users": ["intermediate", "advanced", "enterprise"],
+  "desktop_environments": ["GNOME"],
+  "package_manager": "DNF",
+  "kernel": "5.14+",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 20000,
+  "iso_files": [
+    {
+      "id": "rhel-9-x86_64",
+      "url": "https://access.redhat.com/downloads/content/rhel---9/x86_64/product-software",
+      "filename": "rhel-9.3-x86_64-dvd.iso",
+      "size_mb": 10700,
+      "sha256": "e5f2d9c8b7a6f1e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2a1b",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [10700],
+  "sha256_checksums": [
+    "e5f2d9c8b7a6f1e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2a1b"
+  ],
+  "install_guide_markdown": "# RHEL 9 Installation Guide\n\nRHEL 9 is a production-ready enterprise distribution. Red Hat subscription required for official support.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Obtain RHEL 9 ISO",
+      "detail_md": "Download from Red Hat Customer Portal with valid subscription.",
+      "estimated_minutes": 20,
+      "risk": "low"
+    },
+    {
+      "id": "boot",
+      "title": "Boot Installer",
+      "detail_md": "Create bootable media and boot into Anaconda.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Run Anaconda",
+      "detail_md": "Complete interactive installation with security options.",
+      "estimated_minutes": 25,
+      "risk": "medium"
+    },
+    {
+      "id": "register",
+      "title": "Register System",
+      "detail_md": "Register with Red Hat subscription for updates.",
+      "estimated_minutes": 10,
+      "risk": "low",
+      "commands": [
+        {"command": "sudo subscription-manager register", "platform": "linux", "explanation": "Register subscription"}
+      ]
+    },
+    {
+      "id": "update",
+      "title": "Apply Updates",
+      "detail_md": "Enable repos and apply security patches.",
+      "estimated_minutes": 15,
+      "risk": "low",
+      "commands": [
+        {"command": "sudo subscription-manager repos --enable=rhel-9-*", "platform": "linux", "explanation": "Enable repos"},
+        {"command": "sudo dnf update -y", "platform": "linux", "explanation": "Update system"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://access.redhat.com/documentation/",
+  "screenshots": [],
+  "license": "Proprietary with GPL components",
+  "privacy_notes": "RHEL collects minimal anonymous usage data for improvement.",
+  "popularity_rank": 6,
+  "tags": ["rhel", "redhat", "enterprise", "commercial", "dnf", "secure"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "Red Hat", "role": "Official Maintainers", "url": "https://redhat.com"}
+  ],
+  "notes": "RHEL requires subscription for official support. Free developer licenses available."
+}

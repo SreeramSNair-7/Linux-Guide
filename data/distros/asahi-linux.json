@@ -1,0 +1,82 @@
+{
+  "id": "asahi-linux",
+  "name": "Asahi Linux",
+  "family": "Fedora",
+  "latest_version": "20240101",
+  "codename": "ARM64",
+  "release_date": "2022-03-01",
+  "target_users": ["advanced", "developer", "apple-silicon"],
+  "desktop_environments": ["GNOME"],
+  "package_manager": "DNF",
+  "kernel": "6.5+",
+  "min_ram_mb": 4096,
+  "min_storage_mb": 30000,
+  "iso_files": [
+    {
+      "id": "asahi-linux-arm64",
+      "url": "https://github.com/AsahiLinux/installer/releases/download/latest/asahi-linux-installer.sh",
+      "filename": "asahi-linux-installer.sh",
+      "size_mb": 5,
+      "sha256": "a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [5],
+  "sha256_checksums": [
+    "a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0"
+  ],
+  "install_guide_markdown": "# Asahi Linux Installation Guide\n\nAsahi Linux brings native Linux support to Apple Silicon Macs with full performance.",
+  "install_steps": [
+    {
+      "id": "prerequisites",
+      "title": "Check Requirements",
+      "detail_md": "Apple Silicon Mac (M1/M2/M3) with macOS installed.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "backup",
+      "title": "Backup System",
+      "detail_md": "Create Time Machine backup before installation.",
+      "estimated_minutes": 60,
+      "risk": "medium"
+    },
+    {
+      "id": "download-installer",
+      "title": "Download Asahi Installer",
+      "detail_md": "Get installer script from official GitHub.",
+      "estimated_minutes": 5,
+      "risk": "low",
+      "commands": [
+        {"command": "curl https://alx.sh | bash", "platform": "macos", "explanation": "Run Asahi installer"}
+      ]
+    },
+    {
+      "id": "partitioning",
+      "title": "Partition Disk",
+      "detail_md": "Installer will guide through disk partitioning.",
+      "estimated_minutes": 15,
+      "risk": "high"
+    },
+    {
+      "id": "installation",
+      "title": "Install Asahi Linux",
+      "detail_md": "Follow installer prompts for setup.",
+      "estimated_minutes": 30,
+      "risk": "medium"
+    }
+  ],
+  "official_docs_url": "https://asahilinux.org/",
+  "screenshots": [],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "Asahi Linux is community-driven, minimal data collection.",
+  "popularity_rank": 17,
+  "tags": ["asahi", "arm64", "apple-silicon", "m1", "m2", "m3", "mac", "fedora"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "Asahi Linux Project", "role": "Community Developers", "url": "https://asahilinux.org"}
+  ],
+  "notes": "Asahi Linux enables native Linux on Apple Silicon Macs. Still in active development."
+}

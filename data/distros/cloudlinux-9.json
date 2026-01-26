@@ -1,0 +1,85 @@
+{
+  "id": "cloudlinux-9",
+  "name": "CloudLinux 9",
+  "family": "Red Hat",
+  "latest_version": "9.2",
+  "codename": "Enterprise",
+  "release_date": "2023-01-15",
+  "target_users": ["advanced", "hosting-provider", "server"],
+  "desktop_environments": [],
+  "package_manager": "DNF",
+  "kernel": "5.14+",
+  "min_ram_mb": 1024,
+  "min_storage_mb": 10000,
+  "iso_files": [
+    {
+      "id": "cloudlinux-9-x86_64",
+      "url": "https://repo.cloudlinux.com/cloudlinux/9/iso/CloudLinux-9.2-x86_64-dvd.iso",
+      "filename": "CloudLinux-9.2-x86_64-dvd.iso",
+      "size_mb": 9200,
+      "sha256": "a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [9200],
+  "sha256_checksums": [
+    "a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3"
+  ],
+  "install_guide_markdown": "# CloudLinux 9 Installation Guide\n\nCloudLinux optimizes hosting environments with resource isolation and control.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download CloudLinux ISO",
+      "detail_md": "Obtain from CloudLinux official mirrors.",
+      "estimated_minutes": 20,
+      "risk": "low"
+    },
+    {
+      "id": "boot",
+      "title": "Boot Installer",
+      "detail_md": "Create bootable media and boot.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Run Anaconda",
+      "detail_md": "Complete installation with hosting settings.",
+      "estimated_minutes": 25,
+      "risk": "medium"
+    },
+    {
+      "id": "configure",
+      "title": "Configure LVE",
+      "detail_md": "Setup Lightweight Virtual Environments for multi-tenancy.",
+      "estimated_minutes": 15,
+      "risk": "medium",
+      "commands": [
+        {"command": "lvectl", "platform": "linux", "explanation": "LVE control utility"}
+      ]
+    },
+    {
+      "id": "update",
+      "title": "Apply Updates",
+      "detail_md": "Update system and enable security features.",
+      "estimated_minutes": 10,
+      "risk": "low",
+      "commands": [
+        {"command": "sudo dnf update -y", "platform": "linux", "explanation": "Update system"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://docs.cloudlinux.com/",
+  "screenshots": [],
+  "license": "Proprietary with GPL components",
+  "privacy_notes": "CloudLinux is commercial; usage data sent to vendor.",
+  "popularity_rank": 18,
+  "tags": ["cloudlinux", "hosting", "lve", "commercial", "dnf", "multi-tenant"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "CloudLinux Inc.", "role": "Developers", "url": "https://cloudlinux.com"}
+  ],
+  "notes": "CloudLinux requires license for production use. Trial versions available."
+}

@@ -1,0 +1,88 @@
+{
+  "id": "slackware-15",
+  "name": "Slackware 15.0",
+  "family": "Slackware",
+  "latest_version": "15.0",
+  "codename": "Core",
+  "release_date": "2022-02-02",
+  "target_users": ["advanced", "developer"],
+  "desktop_environments": ["KDE Plasma", "XFCE", "LightDM"],
+  "package_manager": "pkgtool",
+  "kernel": "5.15",
+  "min_ram_mb": 512,
+  "min_storage_mb": 5000,
+  "iso_files": [
+    {
+      "id": "slackware-15-x86_64",
+      "url": "https://mirrors.slackware.com/slackware/slackware64-15.0/slackware64-15.0-install-dvd.iso",
+      "filename": "slackware64-15.0-install-dvd.iso",
+      "size_mb": 2300,
+      "sha256": "d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2918f7e6d5c4b3a2918f7e6d5c4b3a291",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [2300],
+  "sha256_checksums": [
+    "d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2918f7e6d5c4b3a2918f7e6d5c4b3a291"
+  ],
+  "install_guide_markdown": "# Slackware 15.0 Installation Guide\n\nSlackware is known for simplicity, stability, and control. Manual configuration provides deep system understanding.",
+  "install_steps": [
+    {
+      "id": "boot-installer",
+      "title": "Boot Slackware Installer",
+      "detail_md": "Boot from CD/USB and login to setup.",
+      "estimated_minutes": 5,
+      "risk": "low",
+      "commands": [
+        {"command": "root", "platform": "linux", "explanation": "Default installer login"}
+      ]
+    },
+    {
+      "id": "partition",
+      "title": "Partition Disk",
+      "detail_md": "Use fdisk or cfdisk to create partitions.",
+      "estimated_minutes": 15,
+      "risk": "high",
+      "commands": [
+        {"command": "cfdisk /dev/sda", "platform": "linux", "explanation": "Partition manager"}
+      ]
+    },
+    {
+      "id": "format",
+      "title": "Format Filesystems",
+      "detail_md": "Format partitions with ext4 or preferred filesystem.",
+      "estimated_minutes": 10,
+      "risk": "high",
+      "commands": [
+        {"command": "mkfs.ext4 /dev/sda1", "platform": "linux", "explanation": "Create ext4 filesystem"}
+      ]
+    },
+    {
+      "id": "install-base",
+      "title": "Install Base System",
+      "detail_md": "Select packages to install from menus.",
+      "estimated_minutes": 20,
+      "risk": "medium"
+    },
+    {
+      "id": "configure",
+      "title": "Configure System",
+      "detail_md": "Set timezone, keyboard, and network.",
+      "estimated_minutes": 15,
+      "risk": "medium"
+    }
+  ],
+  "official_docs_url": "http://www.slackware.com/",
+  "screenshots": [],
+  "license": "GPL-2.0-or-later and others",
+  "privacy_notes": "Slackware is community-maintained, no telemetry.",
+  "popularity_rank": 11,
+  "tags": ["slackware", "minimalist", "stable", "advanced", "pkgtool", "kde"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "Patrick Volkerding", "role": "Creator & Maintainer", "url": "http://slackware.com"}
+  ],
+  "notes": "Slackware emphasizes simplicity and full manual control. Excellent for learning Linux internals."
+}

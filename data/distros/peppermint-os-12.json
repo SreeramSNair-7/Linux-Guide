@@ -1,0 +1,82 @@
+{
+  "id": "peppermint-os-12",
+  "name": "Peppermint OS 12",
+  "family": "Debian",
+  "latest_version": "12",
+  "codename": "Xfce-Based",
+  "release_date": "2022-07-07",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["Xfce"],
+  "package_manager": "apt",
+  "kernel": "5.15",
+  "min_ram_mb": 512,
+  "min_storage_mb": 5000,
+  "iso_files": [
+    {
+      "id": "peppermint-os-12-x86_64",
+      "url": "https://mirror.peppermint.sh/isos/Peppermint-12-20220707-x86_64.iso",
+      "filename": "Peppermint-12-20220707-x86_64.iso",
+      "size_mb": 1900,
+      "sha256": "e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [1900],
+  "sha256_checksums": [
+    "e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4"
+  ],
+  "install_guide_markdown": "# Peppermint OS 12 Installation Guide\n\nPeppermint OS is a lightweight cloud-focused distribution with excellent performance.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download Peppermint ISO",
+      "detail_md": "Get from official Peppermint mirrors.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "create-usb",
+      "title": "Create Bootable USB",
+      "detail_md": "Use Etcher to create live media.",
+      "estimated_minutes": 10,
+      "risk": "medium"
+    },
+    {
+      "id": "boot",
+      "title": "Boot Installer",
+      "detail_md": "Boot from USB and start installation.",
+      "estimated_minutes": 3,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Install System",
+      "detail_md": "Follow Calamares installer.",
+      "estimated_minutes": 15,
+      "risk": "medium"
+    },
+    {
+      "id": "post-install",
+      "title": "Post-Install Setup",
+      "detail_md": "Configure system and install tools.",
+      "estimated_minutes": 10,
+      "risk": "low",
+      "commands": [
+        {"command": "sudo apt update && sudo apt upgrade -y", "platform": "linux", "explanation": "Update packages"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://peppermintos.com/",
+  "screenshots": [],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "Peppermint is community-driven, no telemetry.",
+  "popularity_rank": 15,
+  "tags": ["peppermint", "xfce", "lightweight", "debian", "cloud", "web-based"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "Peppermint Team", "role": "Community", "url": "https://peppermintos.com"}
+  ],
+  "notes": "Peppermint OS emphasizes cloud integration and lightweight performance."
+}

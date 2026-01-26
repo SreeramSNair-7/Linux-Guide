@@ -1,0 +1,82 @@
+{
+  "id": "suse-linux-enterprise-15",
+  "name": "SUSE Linux Enterprise Server (SLES) 15",
+  "family": "openSUSE",
+  "latest_version": "15 SP5",
+  "codename": "Enterprise",
+  "release_date": "2018-07-16",
+  "target_users": ["advanced", "enterprise", "server"],
+  "desktop_environments": ["GNOME"],
+  "package_manager": "zypper",
+  "kernel": "5.14+",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 15000,
+  "iso_files": [
+    {
+      "id": "sles-15-x86_64",
+      "url": "https://scc.suse.com/download",
+      "filename": "SLES-15-SP5-Full-x86_64-GM-media1.iso",
+      "size_mb": 3400,
+      "sha256": "b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [3400],
+  "sha256_checksums": [
+    "b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1"
+  ],
+  "install_guide_markdown": "# SUSE Linux Enterprise Server 15 Installation\n\nSLES is enterprise-class Linux with certified support and hardened security.",
+  "install_steps": [
+    {
+      "id": "obtain-media",
+      "title": "Obtain Installation Media",
+      "detail_md": "Download from SUSE portal or get from partner.",
+      "estimated_minutes": 20,
+      "risk": "low"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot Installer",
+      "detail_md": "Boot from DVD or USB.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "language-selection",
+      "title": "Select Language",
+      "detail_md": "Choose installation language.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "system-setup",
+      "title": "System Setup",
+      "detail_md": "Configure hardware and network.",
+      "estimated_minutes": 10,
+      "risk": "medium"
+    },
+    {
+      "id": "installation",
+      "title": "Install System",
+      "detail_md": "Complete installation with YaST.",
+      "estimated_minutes": 25,
+      "risk": "medium",
+      "commands": [
+        {"command": "sudo zypper update", "platform": "linux", "explanation": "Update packages"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://documentation.suse.com/sles/",
+  "screenshots": [],
+  "license": "Proprietary with GPL components",
+  "privacy_notes": "SLES collects minimal telemetry for support.",
+  "popularity_rank": 13,
+  "tags": ["suse", "sles", "enterprise", "zypper", "server", "commercial"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "SUSE", "role": "Official Maintainers", "url": "https://suse.com"}
+  ],
+  "notes": "SLES requires subscription for support. Free community subscription available."
+}

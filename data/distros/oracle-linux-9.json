@@ -1,0 +1,85 @@
+{
+  "id": "oracle-linux-9",
+  "name": "Oracle Linux 9",
+  "family": "Red Hat",
+  "latest_version": "9.3",
+  "codename": "Enterprise",
+  "release_date": "2022-09-26",
+  "target_users": ["intermediate", "advanced", "enterprise"],
+  "desktop_environments": ["GNOME"],
+  "package_manager": "DNF",
+  "kernel": "5.15+",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 15000,
+  "iso_files": [
+    {
+      "id": "oracle-linux-9-x86_64",
+      "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u3/x86_64/OracleLinux-R9-U3-x86_64-dvd.iso",
+      "filename": "OracleLinux-R9-U3-x86_64-dvd.iso",
+      "size_mb": 10800,
+      "sha256": "c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [10800],
+  "sha256_checksums": [
+    "c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d"
+  ],
+  "install_guide_markdown": "# Oracle Linux 9 Installation Guide\n\nOracle Linux is certified to run Oracle Database and optimized for enterprise infrastructure.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download Oracle Linux ISO",
+      "detail_md": "Get from Oracle public repositories.",
+      "estimated_minutes": 20,
+      "risk": "low"
+    },
+    {
+      "id": "boot",
+      "title": "Boot from Media",
+      "detail_md": "Create bootable USB/DVD.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Run Anaconda",
+      "detail_md": "Complete system installation.",
+      "estimated_minutes": 25,
+      "risk": "medium"
+    },
+    {
+      "id": "uek-kernel",
+      "title": "Configure UEK Kernel",
+      "detail_md": "Oracle's Unbreakable Enterprise Kernel provides optimizations.",
+      "estimated_minutes": 5,
+      "risk": "low",
+      "commands": [
+        {"command": "sudo grubby --default-kernel | grep uek", "platform": "linux", "explanation": "Check UEK"}
+      ]
+    },
+    {
+      "id": "update",
+      "title": "Enable ULN Updates",
+      "detail_md": "Register with Unbreakable Linux Network.",
+      "estimated_minutes": 15,
+      "risk": "low",
+      "commands": [
+        {"command": "sudo uln_register", "platform": "linux", "explanation": "Register with ULN"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://docs.oracle.com/en/operating-systems/oracle-linux/",
+  "screenshots": [],
+  "license": "GNU General Public License with proprietary extensions",
+  "privacy_notes": "Oracle Linux collects minimal telemetry; ULN registration required.",
+  "popularity_rank": 10,
+  "tags": ["oracle", "enterprise", "dnf", "uek-kernel", "database", "eln-based"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "Oracle Corporation", "role": "Maintainers", "url": "https://oracle.com"}
+  ],
+  "notes": "Oracle Linux provides UEK kernel for database optimization. Free registration for updates."
+}

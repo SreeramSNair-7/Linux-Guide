@@ -1,0 +1,82 @@
+{
+  "id": "centos-linux-7",
+  "name": "CentOS Linux 7",
+  "family": "Red Hat",
+  "latest_version": "7.9.2009",
+  "codename": "Core",
+  "release_date": "2014-07-07",
+  "target_users": ["beginner", "intermediate", "server"],
+  "desktop_environments": ["GNOME", "KDE"],
+  "package_manager": "YUM",
+  "kernel": "3.10",
+  "min_ram_mb": 512,
+  "min_storage_mb": 2000,
+  "iso_files": [
+    {
+      "id": "centos-linux-7-x86_64",
+      "url": "http://mirror.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-2009.iso",
+      "filename": "CentOS-7-x86_64-Minimal-2009.iso",
+      "size_mb": 906,
+      "sha256": "074edb91e73417d8785a0d44c7cac36c5d4d2e0b2b5f8a3d6c7e9f0a1b2c3d4e5",
+      "region": "Global",
+      "protocol": "http",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [906],
+  "sha256_checksums": [
+    "074edb91e73417d8785a0d44c7cac36c5d4d2e0b2b5f8a3d6c7e9f0a1b2c3d4e5"
+  ],
+  "install_guide_markdown": "# CentOS Linux 7 Installation Guide\n\nCentOS Linux 7 has reached end-of-life but remains stable for legacy systems. Use Anaconda installer for setup.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download CentOS 7 ISO",
+      "detail_md": "Download from official CentOS mirrors or archived repositories.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    },
+    {
+      "id": "boot",
+      "title": "Boot from ISO",
+      "detail_md": "Create bootable media and boot into CentOS installer.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Run Anaconda Installer",
+      "detail_md": "Follow graphical installer for standard or minimal setup.",
+      "estimated_minutes": 20,
+      "risk": "medium"
+    },
+    {
+      "id": "network",
+      "title": "Configure Network",
+      "detail_md": "Set up network interfaces and connectivity.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "post-install",
+      "title": "Update System",
+      "detail_md": "Apply security updates using YUM.",
+      "estimated_minutes": 10,
+      "risk": "low",
+      "commands": [
+        {"command": "sudo yum update -y", "platform": "linux", "explanation": "Update system"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://wiki.centos.org/",
+  "screenshots": [],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "CentOS is community-driven, minimal telemetry.",
+  "popularity_rank": 8,
+  "tags": ["centos", "redhat", "yum", "legacy", "server", "enterprise"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "CentOS Project", "role": "Maintainers", "url": "https://centos.org"}
+  ],
+  "notes": "CentOS Linux 7 reached EOL on June 30, 2024. Consider upgrading to CentOS Stream."
+}

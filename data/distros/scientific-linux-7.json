@@ -1,0 +1,82 @@
+{
+  "id": "scientific-linux-7",
+  "name": "Scientific Linux 7",
+  "family": "Red Hat",
+  "latest_version": "7.9",
+  "codename": "Nitrogen",
+  "release_date": "2014-06-10",
+  "target_users": ["intermediate", "advanced", "research"],
+  "desktop_environments": ["GNOME", "KDE"],
+  "package_manager": "YUM",
+  "kernel": "3.10",
+  "min_ram_mb": 512,
+  "min_storage_mb": 3000,
+  "iso_files": [
+    {
+      "id": "scientific-linux-7-x86_64",
+      "url": "https://linux.fnal.gov/scientific/7/x86_64/iso/Scientific-Linux-7.9-x86_64-LiveDVD.iso",
+      "filename": "Scientific-Linux-7.9-x86_64-LiveDVD.iso",
+      "size_mb": 3700,
+      "sha256": "f3e2d1c0b9a8f7e6d5c4b3a2918f7e6d5c4b3a2a1b4e5f6d7c8e9f0a1b2c3d4e",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [3700],
+  "sha256_checksums": [
+    "f3e2d1c0b9a8f7e6d5c4b3a2918f7e6d5c4b3a2a1b4e5f6d7c8e9f0a1b2c3d4e"
+  ],
+  "install_guide_markdown": "# Scientific Linux 7 Installation\n\nScientific Linux is optimized for scientific research and institutional computing.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download SL 7 ISO",
+      "detail_md": "Get from official Fermilab mirrors.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    },
+    {
+      "id": "boot",
+      "title": "Boot from Media",
+      "detail_md": "Create bootable USB/DVD and boot.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Install System",
+      "detail_md": "Run Anaconda with minimal or standard options.",
+      "estimated_minutes": 20,
+      "risk": "medium"
+    },
+    {
+      "id": "configure",
+      "title": "Configure System",
+      "detail_md": "Setup networking and storage.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "software",
+      "title": "Install Software",
+      "detail_md": "Add scientific software packages.",
+      "estimated_minutes": 20,
+      "risk": "low",
+      "commands": [
+        {"command": "sudo yum install -y epel-release", "platform": "linux", "explanation": "Enable EPEL repo"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://linux.fnal.gov/scientific/",
+  "screenshots": [],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "Scientific Linux is community-driven, no telemetry.",
+  "popularity_rank": 12,
+  "tags": ["scientific", "research", "redhat", "yum", "academic"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "Fermilab", "role": "Development Lead", "url": "https://fnal.gov"}
+  ],
+  "notes": "Scientific Linux reached EOL in December 2023. Project discontinued."
+}

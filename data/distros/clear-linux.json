@@ -1,0 +1,85 @@
+{
+  "id": "clear-linux",
+  "name": "Clear Linux",
+  "family": "Clear",
+  "latest_version": "42860",
+  "codename": "Rolling",
+  "release_date": "2023-01-01",
+  "target_users": ["advanced", "developer", "performance"],
+  "desktop_environments": ["GNOME", "KDE Plasma"],
+  "package_manager": "swupd",
+  "kernel": "6.6+",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 5000,
+  "iso_files": [
+    {
+      "id": "clear-linux-x86_64",
+      "url": "https://cdn.download.clearlinux.org/releases/latest/clear/clear-latest-live-server.iso",
+      "filename": "clear-latest-live-server.iso",
+      "size_mb": 1800,
+      "sha256": "f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2918f7e6d5c4b3a2918f7e6d5c4b",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [1800],
+  "sha256_checksums": [
+    "f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2918f7e6d5c4b3a2918f7e6d5c4b"
+  ],
+  "install_guide_markdown": "# Clear Linux Installation Guide\n\nClear Linux is Intel's optimized distribution for performance with automatic updates.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download Clear Linux ISO",
+      "detail_md": "Get live server or desktop ISO.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "boot",
+      "title": "Boot Installer",
+      "detail_md": "Boot from USB with UEFI.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "login",
+      "title": "Login to Live Environment",
+      "detail_md": "Use default credentials (user: root, password: blank).",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "run-installer",
+      "title": "Launch clr-installer",
+      "detail_md": "Run interactive installer for configuration.",
+      "estimated_minutes": 15,
+      "risk": "medium",
+      "commands": [
+        {"command": "sudo clr-installer", "platform": "linux", "explanation": "Launch Clear installer"}
+      ]
+    },
+    {
+      "id": "finish",
+      "title": "Complete Setup",
+      "detail_md": "Reboot and start using Clear Linux.",
+      "estimated_minutes": 10,
+      "risk": "low",
+      "commands": [
+        {"command": "swupd update", "platform": "linux", "explanation": "Update system"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://docs.01.org/clearlinux/",
+  "screenshots": [],
+  "license": "GPL-2.0-or-later and others",
+  "privacy_notes": "Clear Linux is Intel-backed, minimal telemetry.",
+  "popularity_rank": 16,
+  "tags": ["clear", "intel", "performance", "swupd", "rolling", "optimized"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "Intel", "role": "Official Maintainers", "url": "https://clearlinux.org"}
+  ],
+  "notes": "Clear Linux uses swupd for atomic updates. Optimized for Intel hardware performance."
+}

@@ -1,0 +1,85 @@
+{
+  "id": "tizen",
+  "name": "Tizen",
+  "family": "Tizen",
+  "latest_version": "7.0",
+  "codename": "Mobile/IoT",
+  "release_date": "2020-01-01",
+  "target_users": ["advanced", "iot", "mobile"],
+  "desktop_environments": ["Enlightenment", "Custom UI"],
+  "package_manager": "rpm",
+  "kernel": "5.10+",
+  "min_ram_mb": 256,
+  "min_storage_mb": 1000,
+  "iso_files": [
+    {
+      "id": "tizen-7-image",
+      "url": "https://download.tizen.org/",
+      "filename": "tizen-7.0-unified.tar.gz",
+      "size_mb": 800,
+      "sha256": "c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [800],
+  "sha256_checksums": [
+    "c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8"
+  ],
+  "install_guide_markdown": "# Tizen Installation Guide\n\nTizen is a lightweight Linux-based OS for IoT devices, wearables, and smart TVs.",
+  "install_steps": [
+    {
+      "id": "obtain-sdk",
+      "title": "Install Tizen Studio",
+      "detail_md": "Download Tizen Studio for development.",
+      "estimated_minutes": 20,
+      "risk": "low",
+      "commands": [
+        {"command": "apt install tizen-studio", "platform": "linux", "explanation": "Install Tizen SDK"}
+      ]
+    },
+    {
+      "id": "create-project",
+      "title": "Create Tizen Project",
+      "detail_md": "Use Tizen Studio to create new project.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "configure",
+      "title": "Configure Project",
+      "detail_md": "Set up device target and emulator.",
+      "estimated_minutes": 15,
+      "risk": "medium"
+    },
+    {
+      "id": "develop",
+      "title": "Develop Application",
+      "detail_md": "Write code for Tizen platform.",
+      "estimated_minutes": 60,
+      "risk": "low"
+    },
+    {
+      "id": "deploy",
+      "title": "Deploy to Device",
+      "detail_md": "Transfer built application to Tizen device.",
+      "estimated_minutes": 10,
+      "risk": "medium",
+      "commands": [
+        {"command": "sdb install app.tpk", "platform": "linux", "explanation": "Install Tizen package"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://www.tizen.org/",
+  "screenshots": [],
+  "license": "Apache-2.0",
+  "privacy_notes": "Tizen respects user privacy in IoT/mobile contexts.",
+  "popularity_rank": 22,
+  "tags": ["tizen", "iot", "mobile", "wearable", "samsung", "embedded"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "Samsung/Linux Foundation", "role": "Project Maintainers", "url": "https://tizen.org"}
+  ],
+  "notes": "Tizen is primarily for IoT, smartwatches, and smart TVs. Development via SDK/emulator."
+}

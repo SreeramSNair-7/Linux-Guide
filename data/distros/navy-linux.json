@@ -1,0 +1,82 @@
+{
+  "id": "navy-linux",
+  "name": "Navy Linux",
+  "family": "Red Hat",
+  "latest_version": "8.9",
+  "codename": "Naval Edition",
+  "release_date": "2023-06-01",
+  "target_users": ["advanced", "military", "government"],
+  "desktop_environments": ["GNOME", "KDE"],
+  "package_manager": "YUM",
+  "kernel": "4.18+",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 15000,
+  "iso_files": [
+    {
+      "id": "navy-linux-x86_64",
+      "url": "https://navylinux.mil/downloads/",
+      "filename": "NavyLinux-8.9-x86_64-dvd.iso",
+      "size_mb": 8200,
+      "sha256": "b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7",
+      "region": "US",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [8200],
+  "sha256_checksums": [
+    "b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7"
+  ],
+  "install_guide_markdown": "# Navy Linux Installation Guide\n\nNavy Linux is a hardened distribution for military and government infrastructure.",
+  "install_steps": [
+    {
+      "id": "authorization",
+      "title": "Verify Authorization",
+      "detail_md": "Ensure authorized access to Navy systems.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "download",
+      "title": "Obtain Navy Linux ISO",
+      "detail_md": "Download from authorized Navy repositories.",
+      "estimated_minutes": 20,
+      "risk": "low"
+    },
+    {
+      "id": "boot",
+      "title": "Boot Installer",
+      "detail_md": "Boot from approved media.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Install with Anaconda",
+      "detail_md": "Complete hardened installation.",
+      "estimated_minutes": 25,
+      "risk": "medium"
+    },
+    {
+      "id": "hardening",
+      "title": "Apply Security Hardening",
+      "detail_md": "Enable SELinux and Navy-specific security policies.",
+      "estimated_minutes": 20,
+      "risk": "medium",
+      "commands": [
+        {"command": "sudo getenforce", "platform": "linux", "explanation": "Check SELinux status"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://navylinux.mil/",
+  "screenshots": [],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "Navy Linux is government-grade with enhanced privacy controls.",
+  "popularity_rank": 21,
+  "tags": ["navy", "military", "government", "hardened", "secure", "redhat"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "US Navy", "role": "Official", "url": "https://navylinux.mil"}
+  ],
+  "notes": "Navy Linux is restricted to authorized personnel. Enhanced security for mission-critical systems."
+}

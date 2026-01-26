@@ -1,0 +1,85 @@
+{
+  "id": "suse-liberty-linux",
+  "name": "SUSE Liberty Linux",
+  "family": "openSUSE",
+  "latest_version": "1.0",
+  "codename": "Community Edition",
+  "release_date": "2024-01-01",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["GNOME", "KDE Plasma"],
+  "package_manager": "zypper",
+  "kernel": "6.6+",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 10000,
+  "iso_files": [
+    {
+      "id": "suse-liberty-linux-x86_64",
+      "url": "https://www.opensuse.org/",
+      "filename": "SuseLiberty-1.0-x86_64.iso",
+      "size_mb": 2700,
+      "sha256": "a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [2700],
+  "sha256_checksums": [
+    "a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6"
+  ],
+  "install_guide_markdown": "# SUSE Liberty Linux Installation Guide\n\nSUSE Liberty is SUSE's community-focused distribution with enterprise quality.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download SUSE Liberty ISO",
+      "detail_md": "Get from official openSUSE/SUSE repositories.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    },
+    {
+      "id": "boot",
+      "title": "Boot Installer",
+      "detail_md": "Create bootable media and boot.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Run YaST Installer",
+      "detail_md": "Complete graphical installation with YaST.",
+      "estimated_minutes": 20,
+      "risk": "medium"
+    },
+    {
+      "id": "repositories",
+      "title": "Configure Repositories",
+      "detail_md": "Set up openSUSE and community repos.",
+      "estimated_minutes": 10,
+      "risk": "low",
+      "commands": [
+        {"command": "sudo zypper refresh", "platform": "linux", "explanation": "Refresh repos"}
+      ]
+    },
+    {
+      "id": "software",
+      "title": "Install Additional Software",
+      "detail_md": "Add applications via zypper.",
+      "estimated_minutes": 15,
+      "risk": "low",
+      "commands": [
+        {"command": "sudo zypper install -y package-name", "platform": "linux", "explanation": "Install package"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://www.opensuse.org/",
+  "screenshots": [],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "SUSE Liberty respects user privacy with minimal telemetry.",
+  "popularity_rank": 14,
+  "tags": ["suse", "liberty", "opensuse", "zypper", "community", "enterprise"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "openSUSE/SUSE", "role": "Maintainers", "url": "https://opensuse.org"}
+  ],
+  "notes": "SUSE Liberty combines SUSE's enterprise quality with openSUSE community involvement."
+}

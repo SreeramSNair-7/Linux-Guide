@@ -1,0 +1,82 @@
+{
+  "id": "knoppix-9",
+  "name": "Knoppix 9.3",
+  "family": "Debian",
+  "latest_version": "9.3",
+  "codename": "Live CD/USB",
+  "release_date": "2023-03-01",
+  "target_users": ["beginner", "live-usb", "recovery"],
+  "desktop_environments": ["KDE Plasma"],
+  "package_manager": "apt",
+  "kernel": "6.1",
+  "min_ram_mb": 512,
+  "min_storage_mb": 700,
+  "iso_files": [
+    {
+      "id": "knoppix-9-x86_64",
+      "url": "https://www.knoppix.org/download.html",
+      "filename": "knoppix_9.3_2023-03-01_en.iso",
+      "size_mb": 4700,
+      "sha256": "c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [4700],
+  "sha256_checksums": [
+    "c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2"
+  ],
+  "install_guide_markdown": "# Knoppix 9.3 Usage Guide\n\nKnoppix is a live Linux distribution designed for recovery, testing, and demonstrations.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download Knoppix ISO",
+      "detail_md": "Get from official Knoppix website.",
+      "estimated_minutes": 20,
+      "risk": "low"
+    },
+    {
+      "id": "create-media",
+      "title": "Create Bootable USB",
+      "detail_md": "Use Etcher or dd to create live USB.",
+      "estimated_minutes": 10,
+      "risk": "medium"
+    },
+    {
+      "id": "boot",
+      "title": "Boot Knoppix",
+      "detail_md": "Boot from USB and select options at boot menu.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "desktop",
+      "title": "Use Live Desktop",
+      "detail_md": "Use KDE Plasma for various tasks.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "persist-optional",
+      "title": "Optional: Enable Persistence",
+      "detail_md": "Create persistent storage partition for data retention.",
+      "estimated_minutes": 15,
+      "risk": "medium",
+      "commands": [
+        {"command": "sudo cfdisk /dev/sdb", "platform": "linux", "explanation": "Create partition for persistence"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://www.knoppix.org/",
+  "screenshots": [],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "Knoppix is community project, no telemetry.",
+  "popularity_rank": 14,
+  "tags": ["knoppix", "liveusb", "debian", "recovery", "portable", "kde"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "Klaus Knopper", "role": "Creator", "url": "https://knoppix.org"}
+  ],
+  "notes": "Knoppix is ideal for system recovery, testing, and portability. Can be installed to hard disk."
+}

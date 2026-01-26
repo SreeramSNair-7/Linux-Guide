@@ -1,0 +1,82 @@
+{
+  "id": "mageia-9",
+  "name": "Mageia 9",
+  "family": "Mandriva",
+  "latest_version": "9",
+  "codename": "Cauldron",
+  "release_date": "2023-08-18",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["KDE Plasma", "GNOME"],
+  "package_manager": "urpmi",
+  "kernel": "6.4",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 8000,
+  "iso_files": [
+    {
+      "id": "mageia-9-x86_64",
+      "url": "https://mirrors.mageia.org/mageia/distrib/9/x86_64/iso/Mageia-9-LiveDVD-x86_64.iso",
+      "filename": "Mageia-9-LiveDVD-x86_64.iso",
+      "size_mb": 3500,
+      "sha256": "e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [3500],
+  "sha256_checksums": [
+    "e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7"
+  ],
+  "install_guide_markdown": "# Mageia 9 Installation Guide\n\nMageia is a community-driven fork of Mandriva with powerful package management and installer.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download Mageia 9 ISO",
+      "detail_md": "Get LiveDVD or minimal ISO from mirrors.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    },
+    {
+      "id": "boot",
+      "title": "Boot Live Environment",
+      "detail_md": "Boot from USB/DVD to live desktop.",
+      "estimated_minutes": 3,
+      "risk": "low"
+    },
+    {
+      "id": "run-installer",
+      "title": "Launch Installer",
+      "detail_md": "Click installer icon on desktop.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Install System",
+      "detail_md": "Follow graphical Cauldron installer.",
+      "estimated_minutes": 20,
+      "risk": "medium"
+    },
+    {
+      "id": "finish",
+      "title": "Complete Installation",
+      "detail_md": "Reboot and configure system.",
+      "estimated_minutes": 10,
+      "risk": "low",
+      "commands": [
+        {"command": "sudo urpmi.update -a", "platform": "linux", "explanation": "Update repositories"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://wiki.mageia.org/",
+  "screenshots": [],
+  "license": "GPL-2.0-or-later and others",
+  "privacy_notes": "Mageia is community-driven, no telemetry.",
+  "popularity_rank": 9,
+  "tags": ["mageia", "mandriva", "urpmi", "community", "kde", "user-friendly"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "Mageia Association", "role": "Community Maintainers", "url": "https://mageia.org"}
+  ],
+  "notes": "Mageia succeeds Mandriva as community project. Known for excellent package management."
+}

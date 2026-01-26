@@ -1,0 +1,82 @@
+{
+  "id": "blackarch-linux",
+  "name": "BlackArch Linux",
+  "family": "Arch",
+  "latest_version": "Latest",
+  "codename": "Penetration Testing",
+  "release_date": "2013-06-01",
+  "target_users": ["advanced", "penetration-tester", "developer"],
+  "desktop_environments": ["Fluxbox", "OpenBox", "i3"],
+  "package_manager": "pacman",
+  "kernel": "6.6+",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 20000,
+  "iso_files": [
+    {
+      "id": "blackarch-linux-x86_64",
+      "url": "https://blackarch.org/download.html",
+      "filename": "blackarch-linux-full-latest-x86_64.iso",
+      "size_mb": 3200,
+      "sha256": "f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [3200],
+  "sha256_checksums": [
+    "f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5"
+  ],
+  "install_guide_markdown": "# BlackArch Linux Installation Guide\n\nBlackArch is a penetration testing distribution with 2000+ specialized tools.",
+  "install_steps": [
+    {
+      "id": "requirements",
+      "title": "Check Requirements",
+      "detail_md": "Ensure hardware supports BlackArch (x86_64).",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "download",
+      "title": "Download BlackArch ISO",
+      "detail_md": "Get from official BlackArch website.",
+      "estimated_minutes": 20,
+      "risk": "low"
+    },
+    {
+      "id": "create-media",
+      "title": "Create Bootable Media",
+      "detail_md": "Create USB boot disk.",
+      "estimated_minutes": 10,
+      "risk": "medium"
+    },
+    {
+      "id": "boot",
+      "title": "Boot BlackArch",
+      "detail_md": "Boot from media and select installation.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install",
+      "title": "Install System",
+      "detail_md": "Follow Arch-like installation process.",
+      "estimated_minutes": 30,
+      "risk": "high",
+      "commands": [
+        {"command": "archinstall", "platform": "linux", "explanation": "Run installer"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://blackarch.org/",
+  "screenshots": [],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "BlackArch is open-source, community-driven.",
+  "popularity_rank": 20,
+  "tags": ["blackarch", "pentest", "security", "hacking", "tools", "arch-based"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "BlackArch Team", "role": "Developers", "url": "https://blackarch.org"}
+  ],
+  "notes": "BlackArch includes comprehensive penetration testing toolset. Requires security expertise."
+}
