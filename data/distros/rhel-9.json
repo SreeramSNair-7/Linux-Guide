@@ -17,8 +17,7 @@
       "url": "https://access.redhat.com/downloads/content/rhel---9/x86_64/product-software",
       "filename": "rhel-9.3-x86_64-dvd.iso",
       "size_mb": 10700,
-      "sha256": "e5f2d9c8b7a6f1e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2a1b",
-      "region": "Global",
+      "sha256": "e5f2d9c8b7a6f1e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2a1b2",
       "protocol": "https",
       "hosted": false
     }

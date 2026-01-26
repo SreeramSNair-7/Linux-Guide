@@ -1,11 +1,11 @@
 {
   "id": "tizen",
   "name": "Tizen",
-  "family": "Tizen",
+  "family": "Android",
   "latest_version": "7.0",
   "codename": "Mobile/IoT",
   "release_date": "2020-01-01",
-  "target_users": ["advanced", "iot", "mobile"],
+  "target_users": ["advanced", "developer"],
   "desktop_environments": ["Enlightenment", "Custom UI"],
   "package_manager": "rpm",
   "kernel": "5.10+",
@@ -17,8 +17,7 @@
       "url": "https://download.tizen.org/",
       "filename": "tizen-7.0-unified.tar.gz",
       "size_mb": 800,
-      "sha256": "c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8",
-      "region": "Global",
+      "sha256": "c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9",
       "protocol": "https",
       "hosted": false
     }

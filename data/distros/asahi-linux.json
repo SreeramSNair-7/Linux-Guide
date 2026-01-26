@@ -1,11 +1,11 @@
 {
   "id": "asahi-linux",
   "name": "Asahi Linux",
-  "family": "Fedora",
+  "family": "Independent",
   "latest_version": "20240101",
   "codename": "ARM64",
   "release_date": "2022-03-01",
-  "target_users": ["advanced", "developer", "apple-silicon"],
+  "target_users": ["advanced", "developer"],
   "desktop_environments": ["GNOME"],
   "package_manager": "DNF",
   "kernel": "6.5+",
@@ -17,7 +17,7 @@
       "url": "https://github.com/AsahiLinux/installer/releases/download/latest/asahi-linux-installer.sh",
       "filename": "asahi-linux-installer.sh",
       "size_mb": 5,
-      "sha256": "a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
+      "sha256": "a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1",
       "region": "Global",
       "protocol": "https",
       "hosted": false

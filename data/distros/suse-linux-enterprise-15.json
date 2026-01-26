@@ -1,7 +1,7 @@
 {
   "id": "suse-linux-enterprise-15",
   "name": "SUSE Linux Enterprise Server (SLES) 15",
-  "family": "openSUSE",
+  "family": "SUSE",
   "latest_version": "15 SP5",
   "codename": "Enterprise",
   "release_date": "2018-07-16",
@@ -17,8 +17,7 @@
       "url": "https://scc.suse.com/download",
       "filename": "SLES-15-SP5-Full-x86_64-GM-media1.iso",
       "size_mb": 3400,
-      "sha256": "b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1",
-      "region": "Global",
+      "sha256": "b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2",
       "protocol": "https",
       "hosted": false
     }

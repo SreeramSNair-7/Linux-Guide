@@ -17,8 +17,7 @@
       "url": "https://yum.oracle.com/ISOS/OracleLinux/OL9/u3/x86_64/OracleLinux-R9-U3-x86_64-dvd.iso",
       "filename": "OracleLinux-R9-U3-x86_64-dvd.iso",
       "size_mb": 10800,
-      "sha256": "c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d",
-      "region": "Global",
+      "sha256": "c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5",
       "protocol": "https",
       "hosted": false
     }

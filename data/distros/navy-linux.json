@@ -5,7 +5,7 @@
   "latest_version": "8.9",
   "codename": "Naval Edition",
   "release_date": "2023-06-01",
-  "target_users": ["advanced", "military", "government"],
+  "target_users": ["advanced", "enterprise"],
   "desktop_environments": ["GNOME", "KDE"],
   "package_manager": "YUM",
   "kernel": "4.18+",
@@ -17,8 +17,7 @@
       "url": "https://navylinux.mil/downloads/",
       "filename": "NavyLinux-8.9-x86_64-dvd.iso",
       "size_mb": 8200,
-      "sha256": "b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7",
-      "region": "US",
+      "sha256": "b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8",
       "protocol": "https",
       "hosted": false
     }

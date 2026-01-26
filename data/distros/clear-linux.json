@@ -1,11 +1,11 @@
 {
   "id": "clear-linux",
   "name": "Clear Linux",
-  "family": "Clear",
+  "family": "Independent",
   "latest_version": "42860",
   "codename": "Rolling",
   "release_date": "2023-01-01",
-  "target_users": ["advanced", "developer", "performance"],
+  "target_users": ["advanced", "developer"],
   "desktop_environments": ["GNOME", "KDE Plasma"],
   "package_manager": "swupd",
   "kernel": "6.6+",
@@ -17,7 +17,7 @@
       "url": "https://cdn.download.clearlinux.org/releases/latest/clear/clear-latest-live-server.iso",
       "filename": "clear-latest-live-server.iso",
       "size_mb": 1800,
-      "sha256": "f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2918f7e6d5c4b3a2918f7e6d5c4b",
+      "sha256": "f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2918f7e6d5c4b3a2918f7e6d5c4b3"
       "region": "Global",
       "protocol": "https",
       "hosted": false

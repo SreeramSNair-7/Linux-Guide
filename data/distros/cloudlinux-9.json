@@ -5,7 +5,7 @@
   "latest_version": "9.2",
   "codename": "Enterprise",
   "release_date": "2023-01-15",
-  "target_users": ["advanced", "hosting-provider", "server"],
+  "target_users": ["advanced", "server"],
   "desktop_environments": [],
   "package_manager": "DNF",
   "kernel": "5.14+",
