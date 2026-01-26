@@ -15,7 +15,6 @@ export default function HomePage() {
   const [recommended, setRecommended] = useState<Distro[]>([]);
   const [allDistros, setAllDistros] = useState<Distro[]>([]);
   const [isFirstVisit, setIsFirstVisit] = useState(false);
-  const [chatRef, setChatRef] = useState<HTMLDivElement | null>(null);
 
   useEffect(() => {
     // Check if user has visited before

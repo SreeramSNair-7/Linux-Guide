@@ -51,10 +51,11 @@ export async function generateResponse(
     stream?: boolean;
   }
 ): Promise<string> {
+  const shouldStream = options?.stream === true;
   const response = await ollama.generate({
     model: OLLAMA_MODEL,
     prompt: `${systemPrompt}\n\n${prompt}`,
-    stream: options?.stream || false,
+    stream: shouldStream as false,
     options: {
       temperature: options?.temperature || 0.7,
       top_p: options?.top_p || 0.9,
@@ -74,10 +75,11 @@ export async function chatWithOllama(
     stream?: boolean;
   }
 ) {
+  const shouldStream = options?.stream === true;
   const response = await ollama.chat({
     model: OLLAMA_MODEL,
     messages,
-    stream: options?.stream || false,
+    stream: shouldStream as false,
     options: {
       temperature: options?.temperature || 0.7,
     },

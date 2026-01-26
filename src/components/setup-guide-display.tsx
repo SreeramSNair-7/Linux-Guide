@@ -135,7 +135,7 @@ export function SetupGuideDisplay({ guide, onSelectStep }: SetupGuideDisplayProp
         </div>
 
         <p className="text-xs text-muted-foreground mt-4 pt-4 border-t">
-          💡 Tip: Click "Get Help with This Step" to ask the AI assistant for detailed guidance on any step.
+          💡 Tip: Click &quot;Get Help with This Step&quot; to ask the AI assistant for detailed guidance on any step.
         </p>
       </CardContent>
     </Card>

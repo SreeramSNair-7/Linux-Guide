@@ -58,9 +58,6 @@ export async function POST(request: NextRequest) {
     // Load system prompt
     const systemPrompt = await getSystemPrompt();
 
-    // Build full prompt
-    const fullPrompt = buildPrompt(systemPrompt, validated.query, context);
-
     // Call Ollama using the helper function
     let aiText = '';
     try {
@@ -154,18 +151,4 @@ Behavior rules:
 - Citations: append [source: ] after each factual claim`;
 }
 
-function buildPrompt(
-  systemPrompt: string,
-  userQuery: string,
-  context: any
-): string {
-  const contextStr = JSON.stringify(context, null, 2);
-  return `${systemPrompt}
-
-CONTEXT:
-${contextStr}
-
-USER QUERY: ${userQuery}
-
-Please respond with valid JSON only.`;
-}
+// Removed unused buildPrompt function - prompt building is done inline
