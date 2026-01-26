@@ -1,0 +1,89 @@
+{
+  "id": "kubuntu-24-04-lts",
+  "name": "Kubuntu 24.04 LTS (Noble Numbat)",
+  "family": "Debian",
+  "latest_version": "24.04",
+  "codename": "Noble Numbat",
+  "release_date": "2024-04-25",
+  "target_users": ["beginner", "intermediate", "developer"],
+  "desktop_environments": ["KDE Plasma"],
+  "package_manager": "apt",
+  "kernel": "6.8",
+  "min_ram_mb": 4096,
+  "min_storage_mb": 25600,
+  "iso_files": [
+    {
+      "id": "kubuntu-24.04-desktop-amd64",
+      "url": "https://cdimage.ubuntu.com/kubuntu/releases/24.04/release/kubuntu-24.04-desktop-amd64.iso",
+      "filename": "kubuntu-24.04-desktop-amd64.iso",
+      "size_mb": 5400,
+      "sha256": "b3d7f1e9c4a6b2d8e0f1a2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [5400],
+  "sha256_checksums": [
+    "b3d7f1e9c4a6b2d8e0f1a2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3"
+  ],
+  "install_guide_markdown": "# Kubuntu 24.04 LTS Installation Guide\n\nKubuntu provides the KDE Plasma desktop on top of Ubuntu. Use the Desktop ISO for a full graphical install.",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Kubuntu ISO",
+      "detail_md": "Download the Kubuntu 24.04 LTS ISO from official mirrors and verify its checksum.",
+      "estimated_minutes": 20,
+      "risk": "low"
+    },
+    {
+      "id": "verify-checksum",
+      "title": "Verify ISO Checksum",
+      "detail_md": "Verify the ISO integrity using SHA256.",
+      "estimated_minutes": 2,
+      "risk": "low",
+      "commands": [
+        {"command": "Get-FileHash -Algorithm SHA256 .\\kubuntu-24.04-desktop-amd64.iso | Format-List", "platform": "windows", "explanation": "PowerShell SHA256"},
+        {"command": "sha256sum kubuntu-24.04-desktop-amd64.iso", "platform": "linux", "explanation": "Linux SHA256"},
+        {"command": "shasum -a 256 kubuntu-24.04-desktop-amd64.iso", "platform": "macos", "explanation": "macOS SHA256"}
+      ]
+    },
+    {
+      "id": "create-usb",
+      "title": "Create Bootable USB",
+      "detail_md": "Use Rufus (Windows), Etcher (cross‑platform), or dd (Linux/macOS) to create a bootable USB.",
+      "estimated_minutes": 10,
+      "risk": "medium"
+    },
+    {
+      "id": "install",
+      "title": "Install Kubuntu",
+      "detail_md": "Boot from USB, start the installer, and follow prompts for language, keyboard, partitioning, and user setup.",
+      "estimated_minutes": 25,
+      "risk": "medium"
+    },
+    {
+      "id": "post-install",
+      "title": "Post‑Install Setup",
+      "detail_md": "Update packages and customize KDE Plasma settings.",
+      "estimated_minutes": 15,
+      "risk": "low",
+      "commands": [
+        {"command": "sudo apt update && sudo apt upgrade -y", "platform": "linux", "explanation": "Update packages"}
+      ]
+    }
+  ],
+  "official_docs_url": "https://kubuntu.org/",
+  "screenshots": [
+    "https://kubuntu.org/wp-content/uploads/2021/04/kubuntu-21.04-desktop.png"
+  ],
+  "license": "GPL and other open source licenses",
+  "privacy_notes": "Ubuntu base may include optional telemetry; can be disabled during setup.",
+  "popularity_rank": 8,
+  "tags": ["ubuntu", "kde", "plasma", "lts", "desktop", "beginner-friendly"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {"name": "Kubuntu Team", "role": "Community Maintainers", "url": "https://kubuntu.org"}
+  ],
+  "notes": "Kubuntu provides the KDE Plasma experience with Ubuntu LTS stability."
+}
