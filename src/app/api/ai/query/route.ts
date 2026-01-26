@@ -3,9 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { AIResponseSchema } from '@/types/distro.schema';
 import { loadDistro } from '@/lib/distro-loader';
-
-const OLLAMA_BASE_URL = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
-const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'mistral-small-3';
+import { generateResponse, checkOllamaHealth, OLLAMA_CONFIG } from '@/lib/ollama-client';
 
 const RequestSchema = z.object({
   query: z.string().min(1).max(500),
@@ -19,6 +17,19 @@ const RequestSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
+    // Check Ollama health first
+    const health = await checkOllamaHealth();
+    if (!health.running || !health.modelAvailable) {
+      return NextResponse.json(
+        { 
+          error: 'Ollama service unavailable', 
+          details: health.error,
+          model: OLLAMA_CONFIG.model,
+        },
+        { status: 503 }
+      );
+    }
+
     // Rate limiting disabled - lru-cache module issues
     // const identifier = request.ip || 'anonymous';
     // const { success } = await rateLimit(identifier);
@@ -50,23 +61,24 @@ export async function POST(request: NextRequest) {
     // Build full prompt
     const fullPrompt = buildPrompt(systemPrompt, validated.query, context);
 
-    // Call Ollama API
-    const ollamaResponse = await fetch(`${OLLAMA_BASE_URL}/api/generate`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: OLLAMA_MODEL,
-        prompt: fullPrompt,
-        stream: false,
-      }),
-    });
-
-    if (!ollamaResponse.ok) {
-      throw new Error('Ollama API request failed');
+    // Call Ollama using the helper function
+    let aiText = '';
+    try {
+      aiText = await generateResponse(validated.query, `${systemPrompt}\n\nCONTEXT:\n${JSON.stringify(context, null, 2)}\n\n`, {
+        temperature: 0.7,
+        top_p: 0.9,
+      });
+    } catch (ollamaError) {
+      console.error('Ollama error:', ollamaError);
+      return NextResponse.json(
+        { 
+          error: 'Failed to get response from AI', 
+          details: 'Make sure Ollama is running with: ollama serve',
+          model: OLLAMA_CONFIG.model,
+        },
+        { status: 500 }
+      );
     }
-
-    const ollamaData = await ollamaResponse.json();
-    const aiText = ollamaData.response;
 
     // Parse AI response
     let aiResponse;

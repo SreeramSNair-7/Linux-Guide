@@ -196,6 +196,76 @@ npm run ingest:verify
 npm run search:index
 ```
 
+## AI Bot (Ollama)
+
+This project includes an intelligent AI assistant powered by Ollama for providing Linux distribution recommendations, installation help, and troubleshooting.
+
+### Quick Setup
+
+1. **Install Ollama**: Download from [ollama.ai](https://ollama.ai)
+2. **Pull a model**:
+   ```bash
+   ollama pull mistral-small-3
+   ```
+3. **Start Ollama**:
+   ```bash
+   ollama serve
+   ```
+4. **Configure** (already set in `.env.example`):
+   ```env
+   OLLAMA_BASE_URL=http://localhost:11434
+   OLLAMA_MODEL=mistral-small-3
+   ```
+
+### Features
+
+- ✅ **Health Check API**: Monitor Ollama status at `/api/ai/health`
+- ✅ **Context-Aware**: Uses distro-specific data from JSON files
+- ✅ **Safety-First**: Never provides destructive commands without confirmation
+- ✅ **Multi-Platform**: Provides instructions for Windows, macOS, WSL, and Linux
+- ✅ **Citation**: Always cites sources from official documentation
+- ✅ **Graceful Errors**: User-friendly error messages with troubleshooting hints
+
+### Available Models
+
+| Model | Size | Use Case | Speed |
+|-------|------|----------|-------|
+| `mistral-small-3` | 3B | Default, balanced | Fast ⚡ |
+| `llama3.2:3b` | 3B | Quick responses | Fastest ⚡⚡ |
+| `mistral:7b` | 7B | Better quality | Medium |
+| `llama3.1:8b` | 8B | High quality | Slower |
+
+### API Endpoints
+
+**Health Check**:
+```bash
+GET /api/ai/health
+```
+
+**Query AI**:
+```bash
+POST /api/ai/query
+{
+  "query": "How do I install Ubuntu?",
+  "platform": "windows",
+  "user_profile": {"skill_level": "beginner"}
+}
+```
+
+### Troubleshooting
+
+**"Ollama is not running"**:
+```bash
+ollama serve
+```
+
+**"Model not found"**:
+```bash
+ollama pull mistral-small-3
+```
+
+📖 **Full documentation**: See [docs/OLLAMA_SETUP.md](docs/OLLAMA_SETUP.md)
+
 ## Deployment
 
 ### Vercel (Recommended)

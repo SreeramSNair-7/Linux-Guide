@@ -1,22 +1,88 @@
 // file: src/components/chat-widget.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { MessageSquare, X, Send } from 'lucide-react';
+import { MessageSquare, X, Send, AlertCircle, CheckCircle, Zap } from 'lucide-react';
 import type { Distro } from '@/types/distro.schema';
 
 interface ChatWidgetProps {
   distro?: Distro;
+  skillLevel?: 'beginner' | 'intermediate' | 'advanced';
 }
 
-export function ChatWidget({ distro }: ChatWidgetProps) {
+interface HealthStatus {
+  status: 'healthy' | 'unhealthy' | 'error';
+  ollama?: {
+    running: boolean;
+    model: string;
+    modelAvailable: boolean;
+  };
+  error?: string;
+}
+
+interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+  isWelcome?: boolean;
+  quickActions?: Array<{ label: string; text: string }>;
+}
+
+export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState<Array<{ role: 'user' | 'assistant'; content: string }>>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
+  const [health, setHealth] = useState<HealthStatus | null>(null);
+  const [hasShownWelcome, setHasShownWelcome] = useState(false);
+
+  // Check Ollama health on mount
+  useEffect(() => {
+    const checkHealth = async () => {
+      try {
+        const response = await fetch('/api/ai/health');
+        const data = await response.json();
+        setHealth(data);
+      } catch (error) {
+        console.error('Failed to check health:', error);
+      }
+    };
+    
+    if (isOpen) {
+      checkHealth();
+      
+      // Show welcome message on first open
+      if (!hasShownWelcome) {
+        const welcomeActions = skillLevel === 'beginner' 
+          ? [
+              { label: 'First Time Setup', text: 'Show me the first-time Linux setup guide' },
+              { label: 'Choose a Distro', text: 'What Linux distro should I choose for a beginner?' },
+              { label: 'Help', text: 'What can you help me with?' },
+            ]
+          : skillLevel === 'intermediate'
+          ? [
+              { label: 'Dual Boot', text: 'How do I set up dual boot with Windows?' },
+              { label: 'Recommendations', text: 'What distro would you recommend for me?' },
+              { label: 'Troubleshoot', text: 'I need help troubleshooting an issue' },
+            ]
+          : [
+              { label: 'Server Setup', text: 'Show me the Linux server setup guide' },
+              { label: 'Advanced Config', text: 'Help me with advanced system configuration' },
+              { label: 'Performance', text: 'How can I optimize my Linux system?' },
+            ];
+
+        setMessages([{
+          role: 'assistant',
+          content: `👋 Welcome! I'm your Linux guide. I can help you ${distro ? `learn about ${distro.name}` : 'find your perfect Linux distribution'}, walk through installation steps, troubleshoot issues, and answer any Linux questions.`,
+          isWelcome: true,
+          quickActions: welcomeActions,
+        }]);
+        setHasShownWelcome(true);
+      }
+    }
+  }, [isOpen, hasShownWelcome, skillLevel, distro]);
 
   const handleSend = async () => {
     if (!message.trim()) return;
@@ -39,18 +105,30 @@ export function ChatWidget({ distro }: ChatWidgetProps) {
         }),
       });
 
-      if (!response.ok) throw new Error('Failed to get response');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.details || 'Failed to get response');
+      }
 
       const data = await response.json();
       setMessages((prev) => [...prev, { role: 'assistant', content: data.answer_md }]);
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Sorry, I encountered an error. Please try again.';
       setMessages((prev) => [
         ...prev,
-        { role: 'assistant', content: 'Sorry, I encountered an error. Please try again.' },
+        { role: 'assistant', content: `⚠️ ${errorMessage}` },
       ]);
     } finally {
       setLoading(false);
     }
+  };
+
+  const getHealthStatusIcon = () => {
+    if (!health) return null;
+    if (health.status === 'healthy') {
+      return <CheckCircle className="h-3 w-3 text-green-500" />;
+    }
+    return <AlertCircle className="h-3 w-3 text-yellow-500" />;
   };
 
   if (!isOpen) {
@@ -70,9 +148,14 @@ export function ChatWidget({ distro }: ChatWidgetProps) {
     <Card className="fixed bottom-6 right-6 w-96 shadow-2xl">
       <CardHeader className="flex flex-row items-center justify-between pb-3">
         <div>
-          <CardTitle className="text-base">AI Assistant</CardTitle>
+          <CardTitle className="text-base flex items-center gap-2">
+            AI Assistant {getHealthStatusIcon()}
+          </CardTitle>
           <CardDescription className="text-xs">
             Ask about {distro?.name || 'Linux distributions'}
+            {health && health.status !== 'healthy' && (
+              <span className="block text-yellow-600 mt-1">{health.error}</span>
+            )}
           </CardDescription>
         </div>
         <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)} aria-label="Close">
@@ -89,12 +172,35 @@ export function ChatWidget({ distro }: ChatWidgetProps) {
           {messages.map((msg, idx) => (
             <div key={idx} className={`text-sm ${msg.role === 'user' ? 'text-right' : ''}`}>
               <div
-                className={`inline-block rounded-lg px-3 py-2 ${
+                className={`inline-block rounded-lg px-3 py-2 max-w-xs ${
                   msg.role === 'user' ? 'bg-primary text-primary-foreground' : 'bg-muted'
                 }`}
               >
                 {msg.content}
               </div>
+              {msg.quickActions && msg.role === 'assistant' && (
+                <div className="mt-2 space-y-2 text-left">
+                  {msg.quickActions.map((action, actionIdx) => (
+                    <Button
+                      key={actionIdx}
+                      variant="outline"
+                      size="sm"
+                      className="w-full justify-start text-xs h-8"
+                      onClick={() => {
+                        setMessage(action.text);
+                        setMessages((prev) => [...prev, { role: 'user', content: action.text }]);
+                        setTimeout(() => {
+                          const inputElement = document.querySelector('input[placeholder="Ask a question..."]') as HTMLInputElement;
+                          if (inputElement) inputElement.focus();
+                        }, 0);
+                      }}
+                    >
+                      <Zap className="h-3 w-3 mr-1" />
+                      {action.label}
+                    </Button>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
           {loading && (
