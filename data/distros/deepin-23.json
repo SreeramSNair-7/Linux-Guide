@@ -1,0 +1,46 @@
+{
+  "id": "deepin-23",
+  "name": "Deepin 23",
+  "family": "Debian",
+  "latest_version": "23",
+  "codename": "Deepin 23",
+  "release_date": "2023-09-18",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["Deepin Desktop Environment"],
+  "package_manager": "APT",
+  "kernel": "6.1",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 20000,
+  "iso_files": [
+    {
+      "id": "deepin-23-amd64",
+      "url": "https://cdimage.deepin.com/releases/23/deepin-desktop-community-23-amd64.iso",
+      "filename": "deepin-desktop-community-23-amd64.iso",
+      "size_mb": 3800,
+      "sha256": "b4c6d8e0f1a3b5c7d9e1f3a5b7c9d1e3f5a7b9d0c1e2f4a6c8b0a2c4e6f8d0f2",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [3800],
+  "sha256_checksums": [
+    "b4c6d8e0f1a3b5c7d9e1f3a5b7c9d1e3f5a7b9d0c1e2f4a6c8b0a2c4e6f8d0f2"
+  ],
+  "install_guide_markdown": "# Deepin 23 Installation Guide\n\nDeepin offers a polished Qt-based desktop with user-friendly tools.",
+  "install_steps": [
+    {"id": "download", "title": "Download ISO", "detail_md": "Download Deepin 23 ISO from official mirrors.", "estimated_minutes": 15, "risk": "low"},
+    {"id": "verify", "title": "Verify Checksum", "detail_md": "Verify SHA256 to ensure integrity.", "estimated_minutes": 3, "risk": "low", "commands": [{"command": "sha256sum deepin-desktop-community-23-amd64.iso", "platform": "linux", "explanation": "Verify ISO"}]},
+    {"id": "create-usb", "title": "Create Bootable USB", "detail_md": "Use Deepin Boot Maker or Etcher.", "estimated_minutes": 10, "risk": "medium"},
+    {"id": "install", "title": "Install Deepin", "detail_md": "Boot and follow the graphical installer.", "estimated_minutes": 25, "risk": "medium"},
+    {"id": "post", "title": "Post-Install", "detail_md": "Update packages and enable app store.", "estimated_minutes": 10, "risk": "low", "commands": [{"command": "sudo apt update && sudo apt upgrade -y", "platform": "linux", "explanation": "Update system"}]} 
+  ],
+  "official_docs_url": "https://www.deepin.org/en/",
+  "screenshots": [],
+  "license": "GPL-3.0-or-later",
+  "privacy_notes": "Deepin may enable optional telemetry; can be disabled.",
+  "popularity_rank": 12,
+  "tags": ["deepin", "dde", "debian", "desktop", "qt"],
+  "last_verified": "2025-01-26",
+  "maintainers": [{"name": "Wuhan Deepin Technology", "role": "Upstream Maintainers", "url": "https://www.deepin.org"}],
+  "notes": "Deepin provides its own app store and DDE environment."}

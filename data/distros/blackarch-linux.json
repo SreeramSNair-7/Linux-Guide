@@ -17,7 +17,7 @@
       "url": "https://blackarch.org/download.html",
       "filename": "blackarch-linux-full-latest-x86_64.iso",
       "size_mb": 3200,
-      "sha256": "f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6"
+      "sha256": "f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6",
       "region": "Global",
       "protocol": "https",
       "hosted": false
@@ -25,7 +25,7 @@
   ],
   "iso_sizes_mb": [3200],
   "sha256_checksums": [
-    "f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5"
+    "f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6"
   ],
   "install_guide_markdown": "# BlackArch Linux Installation Guide\n\nBlackArch is a penetration testing distribution with 2000+ specialized tools.",
   "install_steps": [

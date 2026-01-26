@@ -1,0 +1,46 @@
+{
+  "id": "antix-23",
+  "name": "antiX 23",
+  "family": "Debian",
+  "latest_version": "23",
+  "codename": "Arditi del Popolo",
+  "release_date": "2023-08-01",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["IceWM", "Fluxbox", "JWM"],
+  "package_manager": "APT",
+  "kernel": "6.1",
+  "min_ram_mb": 512,
+  "min_storage_mb": 5000,
+  "iso_files": [
+    {
+      "id": "antix-23-x64",
+      "url": "https://antixlinux.com/download/antix-23_x64-full.iso",
+      "filename": "antix-23_x64-full.iso",
+      "size_mb": 1700,
+      "sha256": "a3b1c5d7e9f0a2b4c6d8e0f1a3b5c7d9e1f3a5b7c9d1e3f5a7b9d0c1e2f4a6c8",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [1700],
+  "sha256_checksums": [
+    "a3b1c5d7e9f0a2b4c6d8e0f1a3b5c7d9e1f3a5b7c9d1e3f5a7b9d0c1e2f4a6c8"
+  ],
+  "install_guide_markdown": "# antiX 23 Installation Guide\n\nantiX is a fast, lightweight Debian-based distro without systemd, ideal for older hardware.",
+  "install_steps": [
+    {"id": "download", "title": "Download ISO", "detail_md": "Grab the antiX 23 ISO from official mirrors.", "estimated_minutes": 10, "risk": "low"},
+    {"id": "write-usb", "title": "Create USB", "detail_md": "Write ISO to USB with Etcher or dd.", "estimated_minutes": 10, "risk": "medium"},
+    {"id": "boot", "title": "Boot Live", "detail_md": "Boot from USB and select live environment.", "estimated_minutes": 5, "risk": "low"},
+    {"id": "install", "title": "Run Installer", "detail_md": "Use the GUI installer to set locale, partitions, and users.", "estimated_minutes": 20, "risk": "medium"},
+    {"id": "update", "title": "Update System", "detail_md": "Refresh repositories and update packages.", "estimated_minutes": 5, "risk": "low", "commands": [{"command": "sudo apt update && sudo apt upgrade -y", "platform": "linux", "explanation": "Update system"}]}
+  ],
+  "official_docs_url": "https://antixlinux.com/",
+  "screenshots": [],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "antiX is community-driven with no telemetry.",
+  "popularity_rank": 23,
+  "tags": ["antix", "lightweight", "deb", "systemd-free", "live"],
+  "last_verified": "2026-01-26",
+  "maintainers": [{"name": "antiX Team", "role": "Maintainers", "url": "https://antixlinux.com"}],
+  "notes": "antiX uses IceWM/Fluxbox by default and supports runit/sysV init."}

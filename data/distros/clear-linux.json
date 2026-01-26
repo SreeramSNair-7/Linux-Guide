@@ -17,7 +17,7 @@
       "url": "https://cdn.download.clearlinux.org/releases/latest/clear/clear-latest-live-server.iso",
       "filename": "clear-latest-live-server.iso",
       "size_mb": 1800,
-      "sha256": "f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2918f7e6d5c4b3a2918f7e6d5c4b3"
+      "sha256": "f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2918f7e6d5c4b3a2918f7e6d5c4b3",
       "region": "Global",
       "protocol": "https",
       "hosted": false
@@ -25,7 +25,7 @@
   ],
   "iso_sizes_mb": [1800],
   "sha256_checksums": [
-    "f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2918f7e6d5c4b3a2918f7e6d5c4b"
+    "f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2918f7e6d5c4b3a2918f7e6d5c4b3"
   ],
   "install_guide_markdown": "# Clear Linux Installation Guide\n\nClear Linux is Intel's optimized distribution for performance with automatic updates.",
   "install_steps": [
