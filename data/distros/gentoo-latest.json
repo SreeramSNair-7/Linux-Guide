@@ -1,0 +1,85 @@
+{
+  "id": "gentoo-latest",
+  "name": "Gentoo Linux (Rolling)",
+  "family": "Gentoo",
+  "latest_version": "rolling",
+  "codename": "Gentoo Rolling",
+  "release_date": "2026-01-01",
+  "target_users": ["advanced", "developer"],
+  "desktop_environments": ["User choice"],
+  "package_manager": "Portage (emerge)",
+  "kernel": "Latest stable",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 20000,
+  "iso_files": [
+    {
+      "id": "gentoo-install-amd64-minimal",
+      "url": "https://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/install-amd64-minimal.iso",
+      "filename": "install-amd64-minimal.iso",
+      "size_mb": 400,
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [400],
+  "sha256_checksums": [
+    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  ],
+  "install_guide_markdown": "Gentoo uses a source-based installation. Follow the official handbook for partitioning, stage3 installation, chroot, kernel build, and system configuration.",
+  "install_steps": [
+    {
+      "id": "boot",
+      "title": "Boot minimal ISO",
+      "detail_md": "Boot the minimal installation ISO and ensure networking is configured (use `iwctl` or `net-setup`).",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "partition",
+      "title": "Partition disks",
+      "detail_md": "Create EFI and root partitions using `fdisk` or `parted`, then format filesystems.",
+      "estimated_minutes": 15,
+      "risk": "high"
+    },
+    {
+      "id": "stage3",
+      "title": "Download and extract stage3",
+      "detail_md": "Download the appropriate stage3 tarball, verify its signature, and extract to `/mnt/gentoo`.",
+      "estimated_minutes": 20,
+      "risk": "medium"
+    },
+    {
+      "id": "chroot",
+      "title": "Chroot and configure",
+      "detail_md": "Mount filesystems, chroot into the new environment, configure Portage, timezone, locale, and build the kernel.",
+      "estimated_minutes": 40,
+      "risk": "medium"
+    },
+    {
+      "id": "bootloader",
+      "title": "Install bootloader",
+      "detail_md": "Install and configure GRUB or systemd-boot to boot into Gentoo.",
+      "estimated_minutes": 10,
+      "risk": "medium"
+    }
+  ],
+  "official_docs_url": "https://wiki.gentoo.org/wiki/Handbook:AMD64",
+  "screenshots": [
+    "https://wiki.gentoo.org/images/8/8f/GentooLogo.png"
+  ],
+  "license": "GPL-2.0-or-later",
+  "privacy_notes": "No telemetry by default; users control what is built and installed.",
+  "popularity_rank": 12,
+  "tags": ["gentoo", "source-based", "portage", "rolling", "advanced"],
+  "last_verified": "2026-01-26",
+  "maintainers": [
+    {
+      "name": "Gentoo Developers",
+      "role": "Upstream maintainers",
+      "url": "https://gentoo.org"
+    }
+  ],
+  "notes": "Gentoo is highly customizable and best suited for experienced users who want full control over their system."
+}
