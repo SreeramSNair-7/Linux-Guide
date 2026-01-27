@@ -20,14 +20,33 @@ export async function POST(request: NextRequest) {
     // Check Ollama health first
     const health = await checkOllamaHealth();
     if (!health.running || !health.modelAvailable) {
-      return NextResponse.json(
-        { 
-          error: 'Ollama service unavailable', 
-          details: health.error,
-          model: OLLAMA_CONFIG.model,
-        },
-        { status: 503 }
-      );
+      // Fallback: return a helpful, non-failing response when Ollama is offline
+      const fallback: z.infer<typeof AIResponseSchema> = {
+        answer_md:
+          `⚠️ Local AI is offline. Start Ollama with\n\n` +
+          `- ollama serve\n- ollama pull ${OLLAMA_CONFIG.model}\n- ollama run ${OLLAMA_CONFIG.model}\n\n` +
+          `Then reopen the assistant.`,
+        steps: [],
+        commands: [
+          {
+            command: `ollama serve`,
+            platform: 'any',
+            explanation: 'Start the local Ollama service',
+            confirm_required: false,
+          },
+          {
+            command: `ollama pull ${OLLAMA_CONFIG.model}`,
+            platform: 'any',
+            explanation: 'Download the configured model so responses work offline',
+            confirm_required: false,
+          },
+        ],
+        sources: [],
+        followup: 'Try again after starting Ollama.',
+        verification: null,
+      };
+
+      return NextResponse.json(fallback, { status: 200 });
     }
 
     // Rate limiting disabled - lru-cache module issues

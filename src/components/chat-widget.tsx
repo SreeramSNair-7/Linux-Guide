@@ -38,20 +38,24 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
   const [health, setHealth] = useState<HealthStatus | null>(null);
   const [hasShownWelcome, setHasShownWelcome] = useState(false);
 
+  const fetchHealth = async () => {
+    try {
+      const response = await fetch('/api/ai/health');
+      const data = await response.json();
+      setHealth(data);
+      return data as HealthStatus;
+    } catch (error) {
+      console.error('Failed to check health:', error);
+      const fallback: HealthStatus = { status: 'error', error: 'Unable to reach AI service' } as HealthStatus;
+      setHealth(fallback);
+      return fallback;
+    }
+  };
+
   // Check Ollama health on mount
   useEffect(() => {
-    const checkHealth = async () => {
-      try {
-        const response = await fetch('/api/ai/health');
-        const data = await response.json();
-        setHealth(data);
-      } catch (error) {
-        console.error('Failed to check health:', error);
-      }
-    };
-    
     if (isOpen) {
-      checkHealth();
+      fetchHealth();
       
       // Show welcome message on first open
       if (!hasShownWelcome) {
@@ -86,6 +90,20 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
 
   const handleSend = async () => {
     if (!message.trim()) return;
+
+    // Ensure AI backend is healthy before sending
+    const status = health || (await fetchHealth());
+    if (!status || status.status !== 'healthy') {
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: 'assistant',
+          content:
+            '⚠️ The local AI service is offline. Please start Ollama with "ollama serve" and pull the configured model. Then reopen the assistant.',
+        },
+      ]);
+      return;
+    }
 
     const userMessage = message;
     setMessage('');
