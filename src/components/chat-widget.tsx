@@ -111,6 +111,10 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
     setLoading(true);
 
     try {
+      // Fetch with 120 second timeout (AI models can be slow)
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 120000);
+
       const response = await fetch('/api/ai/query', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -121,7 +125,10 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
           user_profile: { skill_level: 'intermediate' }, // Default
           allow_hosted_iso: false,
         }),
+        signal: controller.signal,
       });
+
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -131,7 +138,16 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
       const data = await response.json();
       setMessages((prev) => [...prev, { role: 'assistant', content: data.answer_md }]);
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Sorry, I encountered an error. Please try again.';
+      let errorMessage = 'Sorry, I encountered an error. Please try again.';
+      
+      if (error instanceof Error) {
+        if (error.name === 'AbortError') {
+          errorMessage = 'Request timed out. The AI model is taking too long. Please try a shorter question.';
+        } else {
+          errorMessage = error.message;
+        }
+      }
+      
       setMessages((prev) => [
         ...prev,
         { role: 'assistant', content: `⚠️ ${errorMessage}` },
