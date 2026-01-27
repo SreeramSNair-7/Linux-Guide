@@ -23,11 +23,11 @@ export function Header() {
             <Link href="/distros" className="text-sm font-medium transition-colors hover:text-primary">
               Browse
             </Link>
+            <Link href="/distros/quiz" className="text-sm font-medium transition-colors hover:text-primary">
+              🎯 Quiz
+            </Link>
             <Link href="/distros/compare" className="text-sm font-medium transition-colors hover:text-primary">
               Compare
-            </Link>
-            <Link href="/quiz" className="text-sm font-medium transition-colors hover:text-primary">
-              Quiz
             </Link>
             <Link href="/submit" className="text-sm font-medium transition-colors hover:text-primary">
               Submit
@@ -65,11 +65,11 @@ export function Header() {
             <Link href="/distros" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Browse
             </Link>
+            <Link href="/distros/quiz" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+              🎯 Quiz
+            </Link>
             <Link href="/distros/compare" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Compare
-            </Link>
-            <Link href="/quiz" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-              Quiz
             </Link>
             <Link href="/submit" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Submit

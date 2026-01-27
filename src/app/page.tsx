@@ -63,11 +63,14 @@ export default function HomePage() {
             downloads, and AI-powered recommendations tailored to your needs.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Button asChild size="lg" id="browse-button">
+            <Button asChild size="lg" id="quiz-button">
+              <Link href="/distros/quiz">🎯 Find My Distro</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" id="browse-button">
               <Link href="/distros">Browse All Distros</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" id="quiz-button">
-              <Link href="/quiz">Take the Quiz</Link>
+            <Button asChild variant="outline" size="lg" id="compare-button">
+              <Link href="/distros/compare">Compare Distros</Link>
             </Button>
           </div>
           <div className="mt-4 flex justify-center">
