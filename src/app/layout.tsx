@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { ChatWidget } from '@/components/chat-widget';
 
 // const inter = Inter({ subsets: ['latin'] }); // Disabled - cert error
 
@@ -69,6 +70,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
+          <ChatWidget />
           <Toaster />
         </ThemeProvider>
       </body>
