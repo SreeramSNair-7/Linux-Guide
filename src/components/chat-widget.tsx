@@ -47,6 +47,17 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
     onResult: (text) => {
       setMessage(text);
     },
+    onError: (error) => {
+      if (error.includes('permission')) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: 'assistant',
+            content: '🎙️ Microphone permission denied. Please enable microphone access in your browser settings and try again.',
+          },
+        ]);
+      }
+    },
   });
 
   const { speak, stop: stopSpeaking, isSpeaking, isSupported: speechSynthesisSupported } = useSpeechSynthesis({

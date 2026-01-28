@@ -11,13 +11,26 @@ export function useSpeechRecognition(options: UseSpeechRecognitionOptions = {}) 
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [isSupported, setIsSupported] = useState(true);
+  const [permissionDenied, setPermissionDenied] = useState(false);
 
-  const startListening = useCallback(() => {
+  const startListening = useCallback(async () => {
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
       setIsSupported(false);
       options.onError?.('Speech Recognition not supported in this browser');
+      return;
+    }
+
+    // Request microphone permission
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      // Stop the stream as we only needed permission
+      stream.getTracks().forEach(track => track.stop());
+      setPermissionDenied(false);
+    } catch (error: any) {
+      setPermissionDenied(true);
+      options.onError?.('Microphone permission denied. Please enable microphone access in browser settings.');
       return;
     }
 
@@ -65,6 +78,7 @@ export function useSpeechRecognition(options: UseSpeechRecognitionOptions = {}) 
     isListening,
     transcript,
     isSupported,
+    permissionDenied,
     startListening,
     stopListening,
   };
