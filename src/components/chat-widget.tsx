@@ -5,7 +5,9 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { MessageSquare, X, Send, AlertCircle, CheckCircle, Zap } from 'lucide-react';
+import { MessageSquare, X, Send, AlertCircle, CheckCircle, Zap, Mic, Volume2, Square } from 'lucide-react';
+import { useSpeechRecognition } from '@/hooks/useSpeechRecognition';
+import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis';
 import type { Distro } from '@/types/distro.schema';
 
 interface ChatWidgetProps {
@@ -37,6 +39,20 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
   const [loading, setLoading] = useState(false);
   const [health, setHealth] = useState<HealthStatus | null>(null);
   const [hasShownWelcome, setHasShownWelcome] = useState(false);
+  const [voiceEnabled, setVoiceEnabled] = useState(false);
+
+  // Voice hooks
+  const { isListening, transcript, isSupported: speechRecognitionSupported, startListening, stopListening } = useSpeechRecognition({
+    lang: 'en-US',
+    onResult: (text) => {
+      setMessage(text);
+    },
+  });
+
+  const { speak, stop: stopSpeaking, isSpeaking, isSupported: speechSynthesisSupported } = useSpeechSynthesis({
+    lang: 'en-US',
+    rate: 1,
+  });
 
   const fetchHealth = async () => {
     try {
@@ -171,7 +187,13 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
       }
 
       const data = await response.json();
-      setMessages((prev) => [...prev, { role: 'assistant', content: data.answer_md }]);
+      const assistantMessage = data.answer_md;
+      setMessages((prev) => [...prev, { role: 'assistant', content: assistantMessage }]);
+      
+      // Speak the response if voice is enabled
+      if (voiceEnabled && speechSynthesisSupported) {
+        speak(assistantMessage);
+      }
     } catch (error) {
       let errorMessage = 'Sorry, I encountered an error. Please try again.';
       
@@ -278,17 +300,59 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
             </div>
           )}
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
           <Input
             placeholder="Ask a question..."
-            value={message}
+            value={message || transcript}
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-            disabled={loading}
+            disabled={loading || isListening}
           />
-          <Button onClick={handleSend} size="icon" disabled={loading || !message.trim()}>
+          <Button 
+            onClick={handleSend} 
+            size="icon" 
+            disabled={loading || !(message || transcript).trim()}
+            title="Send message"
+          >
             <Send className="h-4 w-4" />
           </Button>
+          
+          {speechRecognitionSupported && (
+            <Button
+              onClick={isListening ? stopListening : startListening}
+              size="icon"
+              variant={isListening ? 'destructive' : 'outline'}
+              title={isListening ? 'Stop listening' : 'Start voice input'}
+            >
+              {isListening ? (
+                <Square className="h-4 w-4" />
+              ) : (
+                <Mic className="h-4 w-4" />
+              )}
+            </Button>
+          )}
+
+          {speechSynthesisSupported && (
+            <Button
+              onClick={() => setVoiceEnabled(!voiceEnabled)}
+              size="icon"
+              variant={voiceEnabled ? 'default' : 'outline'}
+              title={voiceEnabled ? 'Voice output enabled' : 'Voice output disabled'}
+            >
+              <Volume2 className="h-4 w-4" />
+            </Button>
+          )}
+
+          {isSpeaking && (
+            <Button
+              onClick={stopSpeaking}
+              size="icon"
+              variant="destructive"
+              title="Stop speaking"
+            >
+              <Square className="h-4 w-4" />
+            </Button>
+          )}
         </div>
       </CardContent>
     </Card>
