@@ -60,9 +60,14 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
     },
   });
 
-  const { speak, stop: stopSpeaking, isSpeaking, isSupported: speechSynthesisSupported } = useSpeechSynthesis({
+  const { speak, stop: stopSpeaking, isSpeaking, isSupported: speechSynthesisSupported, error: speechError } = useSpeechSynthesis({
     lang: 'en-US',
     rate: 1,
+    pitch: 1,
+    volume: 1,
+    onError: (error) => {
+      console.error('Speech synthesis error:', error);
+    },
   });
 
   const fetchHealth = async () => {
@@ -201,9 +206,13 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
       const assistantMessage = data.answer_md;
       setMessages((prev) => [...prev, { role: 'assistant', content: assistantMessage }]);
       
-      // Speak the response if voice is enabled
-      if (voiceEnabled && speechSynthesisSupported) {
-        speak(assistantMessage);
+      // Speak the response if voice is enabled and supported
+      if (voiceEnabled && speechSynthesisSupported && assistantMessage) {
+        try {
+          speak(assistantMessage);
+        } catch (err) {
+          console.error('Failed to speak response:', err);
+        }
       }
     } catch (error) {
       let errorMessage = 'Sorry, I encountered an error. Please try again.';
