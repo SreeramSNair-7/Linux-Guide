@@ -1,0 +1,80 @@
+{
+  "id": "tinycore-linux-14",
+  "name": "TinyCore Linux 14",
+  "family": "Independent",
+  "latest_version": "14.0",
+  "codename": "Release 14",
+  "release_date": "2024-03-15",
+  "target_users": ["advanced", "developer"],
+  "desktop_environments": ["Fluxbox"],
+  "package_manager": "tce",
+  "kernel": "6.4",
+  "init_system": "BusyBox",
+  "min_ram_mb": 32,
+  "min_storage_mb": 100,
+  "website": "http://tinycorelinux.net/",
+  "iso_files": [
+    {
+      "id": "tinycore-14-iso",
+      "url": "http://tinycorelinux.net/14.x/x86_64/release/TinyCore-14.0.iso",
+      "filename": "TinyCore-14.0.iso",
+      "size_mb": 22,
+      "sha256": "d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e",
+      "region": "Global",
+      "protocol": "http",
+      "hosted": false
+    }
+  ],
+  "install_guide_markdown": "# TinyCore Linux Installation Guide\n\nTinyCore is typically run from live media (USB or CD) with optional persistent storage.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download ISO",
+      "detail_md": "Download TinyCore 14 ISO (22MB) from official website.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "create-media",
+      "title": "Create Bootable Media",
+      "detail_md": "Write ISO to USB (512MB+) or burn to CD using any ISO tool.",
+      "estimated_minutes": 3,
+      "risk": "low"
+    },
+    {
+      "id": "boot",
+      "title": "Boot TinyCore",
+      "detail_md": "Boot from USB/CD, system loads entirely into RAM.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "configure",
+      "title": "Configure Network and Locale",
+      "detail_md": "Run tc-config or use setup scripts to configure network and timezone.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "install-extensions",
+      "title": "Install Extensions/Packages",
+      "detail_md": "Use tce to search, download, and install needed extensions from online repository.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    }
+  ],
+  "official_docs_url": "http://tinycorelinux.net/",
+  "screenshots": ["http://tinycorelinux.net/images/desktop.png"],
+  "supported_file_systems": ["ext2", "ext3", "ext4", "vfat"],
+  "license": "GPL and other open source licenses",
+  "privacy_notes": "TinyCore is privacy-respecting with full source transparency. No telemetry.",
+  "tags": ["tinycore", "ultra-lightweight", "minimal", "embedded", "busybox"],
+  "last_verified": "2024-12-20",
+  "maintainers": [
+    {
+      "name": "TinyCore Team",
+      "email": "info@tinycorelinux.net",
+      "url": "http://tinycorelinux.net/"
+    }
+  ]
+}

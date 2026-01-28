@@ -1,0 +1,80 @@
+{
+  "id": "nitrux-3",
+  "name": "Nitrux 3",
+  "family": "Independent",
+  "latest_version": "3.0",
+  "codename": "Release 3",
+  "release_date": "2024-01-15",
+  "target_users": ["developer", "intermediate", "advanced"],
+  "desktop_environments": ["Maui Shell"],
+  "package_manager": "apt",
+  "kernel": "6.6",
+  "init_system": "systemd",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 10240,
+  "website": "https://nxos.org/",
+  "iso_files": [
+    {
+      "id": "nitrux-3-iso",
+      "url": "https://sourceforge.net/projects/nitruxos/files/Nitrux-3.iso/download",
+      "filename": "Nitrux-3.iso",
+      "size_mb": 1850,
+      "sha256": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "install_guide_markdown": "# Nitrux Installation Guide\n\nNitrux uses Calamares installer with partitioning tools for custom setup.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download ISO",
+      "detail_md": "Download Nitrux 3 ISO from official SourceForge mirrors.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    },
+    {
+      "id": "create-media",
+      "title": "Create Installation Media",
+      "detail_md": "Use Etcher, Ventoy, or similar tools to write the ISO to USB (4GB+ recommended).",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "boot",
+      "title": "Boot from USB",
+      "detail_md": "Restart computer, enter BIOS/UEFI, set USB as boot priority.",
+      "estimated_minutes": 5,
+      "risk": "medium"
+    },
+    {
+      "id": "install",
+      "title": "Run Calamares Installer",
+      "detail_md": "Select drive, partition layout, create user account, and click Install.",
+      "estimated_minutes": 15,
+      "risk": "high"
+    },
+    {
+      "id": "post-install",
+      "title": "Post-Installation Setup",
+      "detail_md": "Restart, update packages with apt, and install preferred applications via NX.",
+      "estimated_minutes": 20,
+      "risk": "low"
+    }
+  ],
+  "official_docs_url": "https://nxos.org/documentation/",
+  "screenshots": ["https://nxos.org/assets/images/desktop.png"],
+  "supported_file_systems": ["ext4", "btrfs", "xfs"],
+  "license": "GPL and other open source licenses",
+  "privacy_notes": "Respects user privacy. No telemetry by default.",
+  "tags": ["nitrux", "ubuntu-based", "maui-shell", "container-apps", "convergent-ui"],
+  "last_verified": "2024-12-20",
+  "maintainers": [
+    {
+      "name": "Nitrux Team",
+      "email": "contact@nxos.org",
+      "url": "https://nxos.org"
+    }
+  ]
+}

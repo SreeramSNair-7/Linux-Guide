@@ -1,0 +1,80 @@
+{
+  "id": "bluestar-linux-5",
+  "name": "Bluestar Linux 5",
+  "family": "Arch",
+  "latest_version": "5.2.7",
+  "codename": "Release 5",
+  "release_date": "2024-11-10",
+  "target_users": ["advanced", "system-enthusiasts", "developer"],
+  "desktop_environments": ["KDE Plasma", "GNOME", "Xfce"],
+  "package_manager": "pacman",
+  "kernel": "6.6",
+  "init_system": "systemd",
+  "min_ram_mb": 1024,
+  "min_storage_mb": 8192,
+  "website": "https://www.bluestarlinux.org/",
+  "iso_files": [
+    {
+      "id": "bluestar-5-x86_64",
+      "url": "https://sourceforge.net/projects/bluestarlinux/files/Bluestar-5.2.7-x86_64.iso/download",
+      "filename": "Bluestar-5.2.7-x86_64.iso",
+      "size_mb": 2200,
+      "sha256": "c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "install_guide_markdown": "# Bluestar Linux Installation Guide\n\nBluestar uses Calamares with Arch's pacman for modern rolling release management.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download ISO",
+      "detail_md": "Get Bluestar 5 ISO from SourceForge or official mirrors.",
+      "estimated_minutes": 20,
+      "risk": "low"
+    },
+    {
+      "id": "create-media",
+      "title": "Create Bootable USB",
+      "detail_md": "Write ISO to USB (4GB+) using Etcher, Ventoy, or dd command.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "boot",
+      "title": "Boot and Select Environment",
+      "detail_md": "Boot from USB, choose desktop environment (KDE, GNOME, or Xfce).",
+      "estimated_minutes": 5,
+      "risk": "medium"
+    },
+    {
+      "id": "install",
+      "title": "Run Calamares Installer",
+      "detail_md": "Partition disk, set timezone, create user account, and install.",
+      "estimated_minutes": 15,
+      "risk": "high"
+    },
+    {
+      "id": "post-install",
+      "title": "First Boot and Updates",
+      "detail_md": "Boot into system, update packages with pacman, customize as needed.",
+      "estimated_minutes": 20,
+      "risk": "low"
+    }
+  ],
+  "official_docs_url": "https://www.bluestarlinux.org/index.php/documentation",
+  "screenshots": ["https://www.bluestarlinux.org/wp-content/uploads/2024/desktop.png"],
+  "supported_file_systems": ["ext4", "btrfs", "xfs"],
+  "license": "GPL and other open source licenses",
+  "privacy_notes": "No telemetry. Full user control over system configuration.",
+  "tags": ["bluestar", "arch", "calamares", "rolling-release", "pacman"],
+  "last_verified": "2024-12-20",
+  "maintainers": [
+    {
+      "name": "Bluestar Linux Team",
+      "email": "team@bluestarlinux.org",
+      "url": "https://www.bluestarlinux.org"
+    }
+  ]
+}

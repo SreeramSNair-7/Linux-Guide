@@ -157,7 +157,7 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
           query: userMessage,
           distro_id: distro?.id,
           platform: 'windows', // Default, could be detected
-          user_profile: { skill_level }, // respect incoming skill level
+          user_profile: { skill_level: skillLevel }, // respect incoming skill level
           allow_hosted_iso: false,
         }),
         signal: controller.signal,

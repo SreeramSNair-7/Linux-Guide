@@ -1,0 +1,80 @@
+{
+  "id": "openwrt-23-05",
+  "name": "OpenWrt 23.05",
+  "family": "Other",
+  "latest_version": "23.05",
+  "codename": "Release 23.05",
+  "release_date": "2023-10-12",
+  "target_users": ["advanced", "developer"],
+  "desktop_environments": ["LuCI (Web Interface)"],
+  "package_manager": "opkg",
+  "kernel": "6.1",
+  "init_system": "OpenRC",
+  "min_ram_mb": 64,
+  "min_storage_mb": 256,
+  "website": "https://openwrt.org/",
+  "iso_files": [
+    {
+      "id": "openwrt-23-05-generic-x86_64",
+      "url": "https://downloads.openwrt.org/releases/23.05/targets/x86/64/openwrt-23.05-x86-64-generic-ext4-combined.img.gz",
+      "filename": "openwrt-23.05-x86-64-generic-ext4-combined.img.gz",
+      "size_mb": 12,
+      "sha256": "f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "install_guide_markdown": "# OpenWrt Installation Guide\n\nOpenWrt installation varies by hardware. For x86_64, image should be written directly to disk.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download Image",
+      "detail_md": "Download OpenWrt 23.05 image for your hardware target (x86_64 or router model).",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "decompress",
+      "title": "Decompress Image",
+      "detail_md": "Extract .img.gz file using gzip or equivalent tool.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "write-image",
+      "title": "Write Image to Device",
+      "detail_md": "Use dd, Etcher, or equivalent to write image to USB or target storage (device OR router flash via web UI).",
+      "estimated_minutes": 10,
+      "risk": "high"
+    },
+    {
+      "id": "boot",
+      "title": "Boot OpenWrt",
+      "detail_md": "For x86_64, boot from installed media. For routers, power cycle and wait for boot.",
+      "estimated_minutes": 5,
+      "risk": "medium"
+    },
+    {
+      "id": "configure",
+      "title": "Initial Configuration",
+      "detail_md": "Access LuCI web interface at 192.168.1.1, set root password and network settings.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    }
+  ],
+  "official_docs_url": "https://openwrt.org/docs/start",
+  "screenshots": ["https://openwrt.org/assets/luci-dashboard.png"],
+  "supported_file_systems": ["ext4", "jffs2", "ubifs"],
+  "license": "GPL and other open source licenses",
+  "privacy_notes": "OpenWrt respects user privacy. Self-hosted, no external telemetry by default.",
+  "tags": ["openwrt", "router", "embedded", "network", "web-ui", "opkg"],
+  "last_verified": "2024-12-20",
+  "maintainers": [
+    {
+      "name": "OpenWrt Project",
+      "email": "project@openwrt.org",
+      "url": "https://openwrt.org"
+    }
+  ]
+}

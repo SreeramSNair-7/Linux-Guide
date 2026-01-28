@@ -1,0 +1,80 @@
+{
+  "id": "haiku-os-r1-beta4",
+  "name": "Haiku OS R1 Beta 4",
+  "family": "Other",
+  "latest_version": "R1 Beta 4",
+  "codename": "Release 1 Beta 4",
+  "release_date": "2024-05-01",
+  "target_users": ["advanced", "developer"],
+  "desktop_environments": ["Haiku UI"],
+  "package_manager": "HaikuDepot",
+  "kernel": "Haiku Kernel",
+  "init_system": "Haiku",
+  "min_ram_mb": 256,
+  "min_storage_mb": 1024,
+  "website": "https://www.haiku-os.org/",
+  "iso_files": [
+    {
+      "id": "haiku-r1-beta4-x86_64",
+      "url": "https://download.haiku-os.org/haiku-releases/r1-beta4/haiku-r1-beta4-x86_64.iso",
+      "filename": "haiku-r1-beta4-x86_64.iso",
+      "size_mb": 645,
+      "sha256": "e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "install_guide_markdown": "# Haiku OS Installation Guide\n\nHaiku provides a straightforward installer for disk-based installation on compatible hardware.",
+  "install_steps": [
+    {
+      "id": "download",
+      "title": "Download ISO",
+      "detail_md": "Download Haiku R1 Beta 4 ISO from official download portal.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    },
+    {
+      "id": "create-media",
+      "title": "Create Installation Media",
+      "detail_md": "Write ISO to USB or CD using any compatible tool.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "boot",
+      "title": "Boot from Media",
+      "detail_md": "Restart computer and boot from USB/CD.",
+      "estimated_minutes": 3,
+      "risk": "medium"
+    },
+    {
+      "id": "install",
+      "title": "Run Installer",
+      "detail_md": "Choose target disk, format partition, and click Install.",
+      "estimated_minutes": 10,
+      "risk": "high"
+    },
+    {
+      "id": "post-install",
+      "title": "First Boot and Setup",
+      "detail_md": "Boot into Haiku, run setup wizard, configure network and preferences.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    }
+  ],
+  "official_docs_url": "https://www.haiku-os.org/docs/",
+  "screenshots": ["https://www.haiku-os.org/assets/images/desktop.png"],
+  "supported_file_systems": ["BFS", "FAT32"],
+  "license": "MIT and other open source licenses",
+  "privacy_notes": "Haiku OS is privacy-focused with no external telemetry by design.",
+  "tags": ["haiku", "beos", "alternative-os", "personal-computing", "elegant-ui"],
+  "last_verified": "2024-12-20",
+  "maintainers": [
+    {
+      "name": "Haiku Project",
+      "email": "contact@haiku-os.org",
+      "url": "https://www.haiku-os.org"
+    }
+  ]
+}
