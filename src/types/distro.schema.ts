@@ -195,6 +195,19 @@ export const AIResponseSchema = z.object({
 export type AIResponse = z.infer<typeof AIResponseSchema>;
 
 /**
+ * Simple submission schema for user suggestions
+ */
+export const SimpleDistroSubmissionSchema = z.object({
+  osName: z.string().min(2).max(100),
+  submitterName: z.string().min(2).max(100),
+  submitterEmail: z.string().email(),
+  submitterPhone: z.string().optional(),
+  submitterMessage: z.string().optional(),
+});
+
+export type SimpleDistroSubmission = z.infer<typeof SimpleDistroSubmissionSchema>;
+
+/**
  * Submission schema for user-contributed distros
  */
 export const DistroSubmissionSchema = DistroSchema.omit({

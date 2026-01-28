@@ -1,7 +1,7 @@
 // file: src/app/api/submit/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { DistroSubmissionSchema } from '@/types/distro.schema';
+import { SimpleDistroSubmissionSchema } from '@/types/distro.schema';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
 
     // Parse and validate submission
     const body = await request.json();
-    const validated = DistroSubmissionSchema.parse(body);
+    const validated = SimpleDistroSubmissionSchema.parse(body);
 
     // Ensure submissions directory exists
     await fs.mkdir(SUBMISSIONS_DIR, { recursive: true });
