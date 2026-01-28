@@ -59,27 +59,15 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
       
       // Show welcome message on first open
       if (!hasShownWelcome) {
-        const welcomeActions = skillLevel === 'beginner' 
-          ? [
-              { label: 'First Time Setup', text: 'Show me the first-time Linux setup guide' },
-              { label: 'Choose a Distro', text: 'What Linux distro should I choose for a beginner?' },
-              { label: 'Help', text: 'What can you help me with?' },
-            ]
-          : skillLevel === 'intermediate'
-          ? [
-              { label: 'Dual Boot', text: 'How do I set up dual boot with Windows?' },
-              { label: 'Recommendations', text: 'What distro would you recommend for me?' },
-              { label: 'Troubleshoot', text: 'I need help troubleshooting an issue' },
-            ]
-          : [
-              { label: 'Server Setup', text: 'Show me the Linux server setup guide' },
-              { label: 'Advanced Config', text: 'Help me with advanced system configuration' },
-              { label: 'Performance', text: 'How can I optimize my Linux system?' },
-            ];
+        const welcomeActions = [
+          { label: 'Installation guide', text: 'Installation guide' },
+          { label: 'Website usage', text: 'Website usage help' },
+          { label: 'Contact developer', text: 'Contact developer' },
+        ];
 
         setMessages([{
           role: 'assistant',
-          content: `👋 Welcome! I'm your Linux guide. I can help you ${distro ? `learn about ${distro.name}` : 'find your perfect Linux distribution'}, walk through installation steps, troubleshoot issues, and answer any Linux questions.`,
+          content: "👋 Welcome! I can help you install a Linux distro, show you how to use this site, or connect you with the developer. Pick an option below.",
           isWelcome: true,
           quickActions: welcomeActions,
         }]);
@@ -111,6 +99,53 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
     setLoading(true);
 
     try {
+      const lower = userMessage.toLowerCase();
+
+      // Quick intents handled locally
+      if (lower.includes('installation guide') || lower.startsWith('install')) {
+        const distroName = distro?.name || 'your chosen distro';
+        const installSteps = distro?.install_steps?.length
+          ? distro.install_steps.map((s, i) => `${i + 1}. ${s.title} — ${s.detail_md}`).join('\n')
+          : '1) Download ISO\n2) Verify checksum\n3) Create bootable USB (Rufus/Balena)\n4) Boot from USB and run installer\n5) Reboot and update the system';
+
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: 'assistant',
+            content: `Here is an installation guide for ${distroName} (skill: ${skillLevel}):\n\n${installSteps}\n\nNeed a specific distro? Tell me the name and I will tailor the steps.`,
+          },
+        ]);
+        return;
+      }
+
+      if (lower.includes('website usage') || lower.includes('website') || lower.includes('tour')) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: 'assistant',
+            content:
+              '- Distros: Browse all distros with filters (family, desktop env, requirements).\n' +
+              '- Compare: Pick two distros side-by-side on /distros/compare.\n' +
+              '- Quiz: Use /distros/quiz for tailored recommendations.\n' +
+              '- Checksums: Each distro page lists verified SHA256 and install steps.\n' +
+              '- AI Help: Click the assistant for install or troubleshooting tips.',
+          },
+        ]);
+        return;
+      }
+
+      if (lower.includes('contact developer') || lower.includes('contact')) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: 'assistant',
+            content:
+              'You can reach the developer here:\n- LinkedIn: https://www.linkedin.com/in/sreeram-s-nair\n- Email: sreeramsnair4@gmail.com',
+          },
+        ]);
+        return;
+      }
+
       // Fetch with 120 second timeout (AI models can be slow)
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 120000);
