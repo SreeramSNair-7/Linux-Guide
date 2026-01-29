@@ -27,6 +27,7 @@ export async function POST(request: NextRequest) {
     let provider = validated.provider;
     let aiText = '';
     let usedProvider = '';
+    let hfErrorMessage: string | null = null;
 
     // Load distro context if provided
     let distro = null;
@@ -56,12 +57,13 @@ export async function POST(request: NextRequest) {
         usedProvider = 'huggingface';
       } catch (hfError) {
         console.error('Hugging Face error:', hfError);
+        hfErrorMessage = hfError instanceof Error ? hfError.message : 'Unknown Hugging Face error';
         if (provider === 'huggingface') {
           // User explicitly requested Hugging Face
           return NextResponse.json(
             {
               error: 'Failed to get response from Hugging Face',
-              details: hfError instanceof Error ? hfError.message : 'Unknown error',
+              details: hfErrorMessage,
             },
             { status: 500 }
           );
@@ -77,17 +79,11 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(
           {
             answer_md:
-              `⚠️ No AI provider available.\n\n` +
-              (GROK_CONFIG.enabled ? `• Grok API failed\n` : `• Grok not configured\n`) +
-              (HF_CONFIG.enabled ? `• Hugging Face API failed\n` : `• Hugging Face not configured\n`) +
-              `• Local Ollama is offline\n\n` +
-              `Options:\n` +
-              `1. Start Ollama locally (free, offline):\n` +
-              `   ollama serve\n` +
-              `   ollama pull ${OLLAMA_CONFIG.model}\n\n` +
-              `2. Or use Hugging Face (free, cloud):\n` +
-              `   Get key: https://huggingface.co/settings/tokens\n` +
-              `   Set: HUGGING_FACE_API_KEY environment variable`,
+              `⚠️ Hugging Face request failed.${hfErrorMessage ? `\n\nError: ${hfErrorMessage}` : ''}\n\n` +
+              `Try again in a minute (free HF models can cold-start), or start Ollama locally:\n` +
+              `  ollama serve\n` +
+              `  ollama pull ${OLLAMA_CONFIG.model}\n\n` +
+              `If this keeps failing, regenerate your HF token and ensure it has Read access.`,
             steps: [],
             commands: [
               {
@@ -104,7 +100,7 @@ export async function POST(request: NextRequest) {
               },
             ],
             sources: [],
-            followup: 'Try again after starting Ollama or configuring Hugging Face.',
+            followup: 'Try again after the model warms up or after starting Ollama.',
             verification: null,
           },
           { status: 200 }

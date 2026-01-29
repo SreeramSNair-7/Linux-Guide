@@ -1,22 +1,38 @@
 // file: src/app/api/ai/health/route.ts
 import { NextResponse } from 'next/server';
 import { checkOllamaHealth, listModels, OLLAMA_CONFIG } from '@/lib/ollama-client';
+import { checkHuggingFaceHealth, HF_CONFIG } from '@/lib/huggingface-client';
 
 export async function GET() {
   try {
-    const health = await checkOllamaHealth();
+    // Check both providers
+    const ollamaHealth = await checkOllamaHealth();
+    const hfHealth = await checkHuggingFaceHealth();
     const models = await listModels();
 
+    // System is healthy if either provider is available
+    const isHealthy =
+      (ollamaHealth.running && ollamaHealth.modelAvailable) ||
+      HF_CONFIG.enabled;
+
     return NextResponse.json({
-      status: health.running && health.modelAvailable ? 'healthy' : 'unhealthy',
-      ollama: {
-        running: health.running,
-        baseUrl: OLLAMA_CONFIG.baseUrl,
-        model: OLLAMA_CONFIG.model,
-        modelAvailable: health.modelAvailable,
+      status: isHealthy ? 'healthy' : 'unhealthy',
+      providers: {
+        huggingface: {
+          enabled: hfHealth.enabled,
+          configured: hfHealth.configured,
+          model: HF_CONFIG.model,
+          error: hfHealth.error,
+        },
+        ollama: {
+          running: ollamaHealth.running,
+          baseUrl: OLLAMA_CONFIG.baseUrl,
+          model: OLLAMA_CONFIG.model,
+          modelAvailable: ollamaHealth.modelAvailable,
+          error: ollamaHealth.error,
+        },
       },
       availableModels: models,
-      error: health.error,
       timestamp: new Date().toISOString(),
     });
   } catch (error) {

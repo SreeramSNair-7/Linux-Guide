@@ -22,6 +22,17 @@ interface HealthStatus {
     model: string;
     modelAvailable: boolean;
   };
+  providers?: {
+    huggingface?: {
+      enabled: boolean;
+      configured: boolean;
+      error?: string;
+    };
+    ollama?: {
+      running: boolean;
+      error?: string;
+    };
+  };
   error?: string;
 }
 
@@ -60,7 +71,7 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
     },
   });
 
-  const { speak, stop: stopSpeaking, isSpeaking, isSupported: speechSynthesisSupported, error: speechError } = useSpeechSynthesis({
+  const { speak, stop: stopSpeaking, isSpeaking, isSupported: speechSynthesisSupported } = useSpeechSynthesis({
     lang: 'en-US',
     rate: 1,
     pitch: 1,
@@ -111,15 +122,21 @@ export function ChatWidget({ distro, skillLevel = 'beginner' }: ChatWidgetProps)
   const handleSend = async () => {
     if (!message.trim()) return;
 
-    // Ensure AI backend is healthy before sending
+    // Check AI backend health before sending
     const status = health || (await fetchHealth());
     if (!status || status.status !== 'healthy') {
+      // Provide helpful error message based on available providers
+      const errorMsg = status?.providers?.huggingface?.configured 
+        ? '⚠️ Unable to connect to AI services. Please check your internet connection or try again in a moment.'
+        : status?.providers?.ollama?.running 
+        ? '⚠️ AI service is starting. Please try again in a moment.'
+        : '⚠️ No AI service is available. Please configure a Hugging Face API key or start Ollama with "ollama serve".';
+      
       setMessages((prev) => [
         ...prev,
         {
           role: 'assistant',
-          content:
-            '⚠️ The local AI service is offline. Please start Ollama with "ollama serve" and pull the configured model. Then reopen the assistant.',
+          content: errorMsg,
         },
       ]);
       return;
