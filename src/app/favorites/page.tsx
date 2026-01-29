@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Heart, Search, Trash2 } from 'lucide-react';
 import { loadFavorites, toggleFavorite, clearAllFavorites, subscribePreferences } from '@/lib/user-preferences';
-import { loadAllDistros } from '@/lib/distro-loader';
 import type { Distro } from '@/types/distro.schema';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,14 +12,20 @@ export default function FavoritesPage() {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [distros, setDistros] = useState<Distro[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const init = async () => {
       try {
-        const allDistros = await loadAllDistros();
+        setIsLoading(true);
+        const response = await fetch('/api/distros');
+        if (!response.ok) throw new Error('Failed to fetch distros');
+        const allDistros = await response.json();
         setDistros(allDistros);
       } catch (error) {
         console.error('Failed to load distros:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
     init();
@@ -62,8 +67,7 @@ export default function FavoritesPage() {
 
   // Filter by search query
   const filteredDistros = favoriteDistros.filter(distro =>
-    distro.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    distro.family.toLowerCase().includes(searchQuery.toLowerCase())
+    distro.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -118,7 +122,7 @@ export default function FavoritesPage() {
             <p className="text-muted-foreground mb-6">
               Browse distros and click the heart icon to add them to your favorites
             </p>
-            <Link href="/catalog">
+            <Link href="/distros">
               <Button>Browse Distros</Button>
             </Link>
           </div>
