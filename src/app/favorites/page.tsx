@@ -12,20 +12,16 @@ export default function FavoritesPage() {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [distros, setDistros] = useState<Distro[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const init = async () => {
       try {
-        setIsLoading(true);
         const response = await fetch('/api/distros');
         if (!response.ok) throw new Error('Failed to fetch distros');
         const allDistros = await response.json();
         setDistros(allDistros);
       } catch (error) {
         console.error('Failed to load distros:', error);
-      } finally {
-        setIsLoading(false);
       }
     };
     init();

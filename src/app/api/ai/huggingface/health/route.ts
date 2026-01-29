@@ -9,7 +9,7 @@ export async function GET() {
     return NextResponse.json({
       service: 'huggingface',
       enabled: HF_CONFIG.enabled,
-      available: health.available,
+      configured: health.configured,
       model: HF_CONFIG.model,
       error: health.error,
     });

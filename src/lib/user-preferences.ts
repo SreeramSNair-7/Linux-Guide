@@ -54,7 +54,7 @@ function writeJSON<T>(key: string, value: T) {
   window.dispatchEvent(new CustomEvent(PREFS_EVENT));
 }
 
-function notifyChange() {
+function _notifyChange() {
   if (!isBrowser) return;
   window.dispatchEvent(new CustomEvent(PREFS_EVENT));
 }

@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { AIResponseSchema } from '@/types/distro.schema';
 import { loadDistro } from '@/lib/distro-loader';
 import { generateResponse, checkOllamaHealth, OLLAMA_CONFIG } from '@/lib/ollama-client';
-import { generateHuggingFaceResponse, checkHuggingFaceHealth, HF_CONFIG } from '@/lib/huggingface-client';
+import { generateHuggingFaceResponse, HF_CONFIG } from '@/lib/huggingface-client';
 
 const RequestSchema = z.object({
   query: z.string().min(1).max(500),
@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     const validated = RequestSchema.parse(body);
 
     // Determine which provider to use
-    let provider = validated.provider;
+    const provider = validated.provider;
     let aiText = '';
     let usedProvider = '';
     let hfErrorMessage: string | null = null;
