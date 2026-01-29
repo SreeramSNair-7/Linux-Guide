@@ -46,6 +46,8 @@ export function DistroDetail({ distro }: DistroDetailProps) {
   const [reviewTitle, setReviewTitle] = useState('');
   const [reviewBody, setReviewBody] = useState('');
   const [reviewName, setReviewName] = useState('');
+  const [isFavLoading, setIsFavLoading] = useState(false);
+  const [isReviewLoading, setIsReviewLoading] = useState(false);
 
   useEffect(() => {
     const refresh = async () => {
@@ -60,13 +62,27 @@ export function DistroDetail({ distro }: DistroDetailProps) {
     return () => unsubscribe();
   }, [distro.id]);
 
-  const handleToggleFavorite = async () => {
-    await toggleFavorite(distro.id);
+  const handleToggleFavorite = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    try {
+      setIsFavLoading(true);
+      const newState = await toggleFavorite(distro.id);
+      setFavorite(newState);
+    } catch (error) {
+      console.error('Failed to toggle favorite:', error);
+      // Revert optimistic update on error
+      setFavorite(!favorite);
+    } finally {
+      setIsFavLoading(false);
+    }
   };
 
   const handleSubmitReview = async () => {
     if (!reviewRating || reviewBody.trim().length < 10) return;
     try {
+      setIsReviewLoading(true);
       await addReview({
         distroId: distro.id,
         rating: reviewRating,
@@ -81,6 +97,8 @@ export function DistroDetail({ distro }: DistroDetailProps) {
     } catch (error) {
       console.error('Failed to submit review:', error);
       alert('Failed to submit review. Please try again.');
+    } finally {
+      setIsReviewLoading(false);
     }
   };
 
@@ -110,13 +128,14 @@ export function DistroDetail({ distro }: DistroDetailProps) {
             variant="outline"
             size="sm"
             onClick={handleToggleFavorite}
+            disabled={isFavLoading}
             aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'}
           >
             <Heart
-              className={`mr-2 h-4 w-4 ${favorite ? 'text-red-500' : 'text-muted-foreground'}`}
+              className={`mr-2 h-4 w-4 transition-colors ${favorite ? 'text-red-500' : 'text-muted-foreground'}`}
               fill={favorite ? 'currentColor' : 'none'}
             />
-            {favorite ? 'Saved' : 'Save'}
+            {isFavLoading ? 'Loading...' : favorite ? 'Saved' : 'Save'}
           </Button>
         </div>
         <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
@@ -385,8 +404,8 @@ export function DistroDetail({ distro }: DistroDetailProps) {
                   placeholder="Your name (optional)"
                   className="w-full rounded-md border bg-background px-3 py-2 text-sm"
                 />
-                <Button onClick={handleSubmitReview} disabled={!reviewRating || reviewBody.trim().length < 10}>
-                  Submit Review
+                <Button onClick={handleSubmitReview} disabled={!reviewRating || reviewBody.trim().length < 10 || isReviewLoading}>
+                  {isReviewLoading ? 'Submitting...' : 'Submit Review'}
                 </Button>
               </div>
 

@@ -19,6 +19,7 @@ export function DistroCard({ distro }: DistroCardProps) {
   const primaryIso = distro.iso_files[0];
   const [favorite, setFavorite] = useState(false);
   const [rating, setRating] = useState<{ average: number; count: number }>({ average: 0, count: 0 });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const refresh = async () => {
@@ -32,8 +33,21 @@ export function DistroCard({ distro }: DistroCardProps) {
     return () => unsubscribe();
   }, [distro.id]);
 
-  const handleToggleFavorite = async () => {
-    await toggleFavorite(distro.id);
+  const handleToggleFavorite = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    try {
+      setIsLoading(true);
+      const newState = await toggleFavorite(distro.id);
+      setFavorite(newState);
+    } catch (error) {
+      console.error('Failed to toggle favorite:', error);
+      // Revert optimistic update on error
+      setFavorite(!favorite);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const renderStars = (value: number) => {
@@ -56,10 +70,11 @@ export function DistroCard({ distro }: DistroCardProps) {
             variant="ghost"
             size="icon"
             onClick={handleToggleFavorite}
+            disabled={isLoading}
             aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'}
           >
             <Heart
-              className={`h-4 w-4 ${favorite ? 'text-red-500' : 'text-muted-foreground'}`}
+              className={`h-4 w-4 transition-colors ${favorite ? 'text-red-500' : 'text-muted-foreground'}`}
               fill={favorite ? 'currentColor' : 'none'}
             />
           </Button>

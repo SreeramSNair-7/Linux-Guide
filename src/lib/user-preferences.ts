@@ -28,10 +28,11 @@ export interface CompareHistoryEntry {
   timestamp: string;
 }
 
+const FAVORITES_KEY = 'linuxSite:favorites';
 const PREFS_EVENT = 'linuxSite:prefs-changed';
 const isBrowser = typeof window !== 'undefined';
 
-// Local cache for favorites (synced with server)
+// Local cache for favorites
 let favoritesCache: string[] | null = null;
 
 function notifyChange() {
@@ -51,20 +52,38 @@ export function subscribePreferences(callback: () => void) {
 // ===== FAVORITES =====
 
 export async function loadFavorites(): Promise<string[]> {
+  if (!isBrowser) return [];
+  
   try {
-    const response = await fetch('/api/favorites');
-    if (!response.ok) throw new Error('Failed to load favorites');
-    const data = await response.json();
-    favoritesCache = data.distroIds || [];
-    return favoritesCache as string[];
+    // Try to load from API
+    const response = await fetch('/api/favorites', {
+      credentials: 'include',
+    });
+    
+    if (response.ok) {
+      const data = await response.json();
+      favoritesCache = data.distroIds || [];
+      // Sync to localStorage
+      localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoritesCache));
+      return favoritesCache;
+    }
   } catch (error) {
-    console.error('Error loading favorites:', error);
+    console.error('Error loading favorites from API:', error);
+  }
+  
+  // Fallback to localStorage
+  try {
+    const stored = localStorage.getItem(FAVORITES_KEY);
+    favoritesCache = stored ? JSON.parse(stored) : [];
+    return favoritesCache;
+  } catch {
+    favoritesCache = [];
     return [];
   }
 }
 
 export function getFavorites(): string[] {
-  // Return cached favorites (call loadFavorites first in useEffect)
+  // Return cached favorites
   return favoritesCache || [];
 }
 
@@ -73,42 +92,50 @@ export function isFavorite(distroId: string): boolean {
 }
 
 export async function toggleFavorite(distroId: string): Promise<boolean> {
+  if (!isBrowser) return false;
+  
+  const currentFavorites = getFavorites();
+  const isFav = currentFavorites.includes(distroId);
+  const newFavorites = isFav 
+    ? currentFavorites.filter(id => id !== distroId)
+    : [...currentFavorites, distroId];
+  
+  // Update local cache and localStorage immediately for instant UI feedback
+  favoritesCache = newFavorites;
+  localStorage.setItem(FAVORITES_KEY, JSON.stringify(newFavorites));
+  notifyChange();
+  
+  // Sync to database in background
   try {
     const response = await fetch('/api/favorites', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
       body: JSON.stringify({ distroId }),
     });
 
-    if (!response.ok) throw new Error('Failed to toggle favorite');
-    
-    const data = await response.json();
-    
-    // Update cache
-    if (data.isFavorite) {
-      favoritesCache = [...(favoritesCache || []), distroId];
-    } else {
-      favoritesCache = (favoritesCache || []).filter(id => id !== distroId);
+    if (!response.ok) {
+      console.error('Failed to sync favorite to database');
     }
-    
-    notifyChange();
-    return data.isFavorite;
   } catch (error) {
-    console.error('Error toggling favorite:', error);
-    return false;
+    console.error('Error syncing favorite:', error);
   }
+  
+  return !isFav;
 }
 
 export async function clearAllFavorites(): Promise<void> {
-  try {
-    const response = await fetch('/api/favorites', {
-      method: 'DELETE',
-    });
+  if (!isBrowser) return;
+  
+  favoritesCache = [];
+  localStorage.setItem(FAVORITES_KEY, JSON.stringify([]));
+  notifyChange();
 
-    if (!response.ok) throw new Error('Failed to clear favorites');
-    
-    favoritesCache = [];
-    notifyChange();
+  try {
+    await fetch('/api/favorites', {
+      method: 'DELETE',
+      credentials: 'include',
+    });
   } catch (error) {
     console.error('Error clearing favorites:', error);
   }
@@ -118,7 +145,9 @@ export async function clearAllFavorites(): Promise<void> {
 
 export async function getReviews(distroId: string): Promise<{ reviews: ReviewEntry[]; summary: ReviewSummary }> {
   try {
-    const response = await fetch(`/api/reviews?distroId=${encodeURIComponent(distroId)}`);
+    const response = await fetch(`/api/reviews?distroId=${encodeURIComponent(distroId)}`, {
+      credentials: 'include',
+    });
     if (!response.ok) throw new Error('Failed to load reviews');
     return await response.json();
   } catch (error) {
@@ -145,6 +174,7 @@ export async function addReview(input: {
     const response = await fetch('/api/reviews', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
       body: JSON.stringify(input),
     });
 
@@ -174,7 +204,9 @@ export async function getRatingSummary(distroId: string): Promise<{ average: num
 
 export async function getCompareHistory(): Promise<CompareHistoryEntry[]> {
   try {
-    const response = await fetch('/api/compare-history');
+    const response = await fetch('/api/compare-history', {
+      credentials: 'include',
+    });
     if (!response.ok) throw new Error('Failed to load compare history');
     const data = await response.json();
     return data.history || [];
@@ -191,6 +223,7 @@ export async function addCompareHistory(distro1Id: string, distro2Id: string): P
     const response = await fetch('/api/compare-history', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
       body: JSON.stringify({ distro1Id, distro2Id }),
     });
 
@@ -205,6 +238,7 @@ export async function clearCompareHistory(): Promise<void> {
   try {
     const response = await fetch('/api/compare-history', {
       method: 'DELETE',
+      credentials: 'include',
     });
 
     if (!response.ok) throw new Error('Failed to clear compare history');
