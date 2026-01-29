@@ -1,11 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import type { Distro } from '@/types/distro.schema';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, History } from 'lucide-react';
+import {
+  addCompareHistory,
+  clearCompareHistory,
+  getCompareHistory,
+  subscribePreferences,
+  type CompareHistoryEntry,
+} from '@/lib/user-preferences';
 
 interface DistroComparatorProps {
   distros: Distro[];
@@ -13,6 +20,23 @@ interface DistroComparatorProps {
 
 export function DistroComparator({ distros }: DistroComparatorProps) {
   const [selected, setSelected] = useState<[Distro | null, Distro | null]>([null, null]);
+  const [history, setHistory] = useState<CompareHistoryEntry[]>([]);
+
+  useEffect(() => {
+    const refresh = async () => {
+      const historyData = await getCompareHistory();
+      setHistory(historyData);
+    };
+    refresh();
+    const unsubscribe = subscribePreferences(refresh);
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    if (selected[0] && selected[1]) {
+      addCompareHistory(selected[0].id, selected[1].id);
+    }
+  }, [selected[0]?.id, selected[1]?.id]);
 
   const selectDistro = (index: 0 | 1, distro: Distro) => {
     setSelected((prev) => {
@@ -63,6 +87,8 @@ export function DistroComparator({ distros }: DistroComparatorProps) {
   const selectedDistros = [selected[0], selected[1]].filter(
     (d): d is Distro => d !== null
   );
+
+  const getDistroById = (id: string) => distros.find((distro) => distro.id === id) || null;
 
   return (
     <div className="space-y-8">
@@ -299,6 +325,41 @@ export function DistroComparator({ distros }: DistroComparatorProps) {
           </CardContent>
         </Card>
       )}
+
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between">
+          <div className="flex items-center gap-2">
+            <History className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-lg">Compare History</CardTitle>
+          </div>
+          <Button variant="ghost" size="sm" onClick={async () => await clearCompareHistory()} disabled={history.length === 0}>
+            Clear
+          </Button>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          {history.length === 0 && (
+            <p className="text-sm text-muted-foreground">No comparisons yet.</p>
+          )}
+          {history.map((entry, idx) => {
+            const first = getDistroById(entry.distro1Id);
+            const second = getDistroById(entry.distro2Id);
+            if (!first || !second) return null;
+            return (
+              <div key={`${entry.distro1Id}-${entry.distro2Id}-${idx}`} className="flex flex-wrap items-center justify-between gap-2 rounded-lg border p-3">
+                <div>
+                  <div className="font-medium text-sm">{first.name} vs {second.name}</div>
+                  <div className="text-xs text-muted-foreground">
+                    {new Date(entry.timestamp).toLocaleString()}
+                  </div>
+                </div>
+                <Button size="sm" variant="outline" onClick={() => setSelected([first, second])}>
+                  Load
+                </Button>
+              </div>
+            );
+          })}
+        </CardContent>
+      </Card>
     </div>
   );
 }

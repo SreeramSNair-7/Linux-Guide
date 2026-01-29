@@ -66,3 +66,5 @@ public/workbox-*.js.map
 # Temporary files
 verification-report.json
 /tmp
+
+/src/generated/prisma

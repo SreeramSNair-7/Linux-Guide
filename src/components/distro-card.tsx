@@ -1,11 +1,15 @@
 // file: src/components/distro-card.tsx
+'use client';
+
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { formatFileSize, formatDate } from '@/lib/utils';
 import type { Distro } from '@/types/distro.schema';
-import { Download, Calendar, HardDrive, Cpu } from 'lucide-react';
+import { Download, Calendar, HardDrive, Cpu, Heart, Star } from 'lucide-react';
+import { getRatingSummary, loadFavorites, isFavorite, subscribePreferences, toggleFavorite } from '@/lib/user-preferences';
 
 interface DistroCardProps {
   distro: Distro;
@@ -13,17 +17,61 @@ interface DistroCardProps {
 
 export function DistroCard({ distro }: DistroCardProps) {
   const primaryIso = distro.iso_files[0];
+  const [favorite, setFavorite] = useState(false);
+  const [rating, setRating] = useState<{ average: number; count: number }>({ average: 0, count: 0 });
+
+  useEffect(() => {
+    const refresh = async () => {
+      await loadFavorites();
+      setFavorite(isFavorite(distro.id));
+      const summary = await getRatingSummary(distro.id);
+      setRating(summary);
+    };
+    refresh();
+    const unsubscribe = subscribePreferences(refresh);
+    return () => unsubscribe();
+  }, [distro.id]);
+
+  const handleToggleFavorite = async () => {
+    await toggleFavorite(distro.id);
+  };
+
+  const renderStars = (value: number) => {
+    const rounded = Math.round(value);
+    return Array.from({ length: 5 }).map((_, idx) => (
+      <Star
+        key={idx}
+        className={`h-4 w-4 ${idx < rounded ? 'text-yellow-500' : 'text-muted-foreground'}`}
+        fill={idx < rounded ? 'currentColor' : 'none'}
+      />
+    ));
+  };
 
   return (
     <Card className="flex flex-col transition-shadow hover:shadow-lg">
       <CardHeader>
         <div className="mb-2 flex items-start justify-between">
           <CardTitle className="text-xl">{distro.name}</CardTitle>
-          {distro.popularity_rank && distro.popularity_rank <= 10 && (
-            <Badge variant="default">Popular</Badge>
-          )}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={handleToggleFavorite}
+            aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'}
+          >
+            <Heart
+              className={`h-4 w-4 ${favorite ? 'text-red-500' : 'text-muted-foreground'}`}
+              fill={favorite ? 'currentColor' : 'none'}
+            />
+          </Button>
         </div>
-        <CardDescription>{distro.family} Family</CardDescription>
+        {distro.popularity_rank && distro.popularity_rank <= 10 && (
+          <Badge variant="default">Popular</Badge>
+        )}
+        <CardDescription className="mt-1">{distro.family} Family</CardDescription>
+        <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="flex items-center gap-1">{renderStars(rating.average)}</div>
+          <span>{rating.count > 0 ? rating.average.toFixed(1) : 'No ratings'} ({rating.count})</span>
+        </div>
       </CardHeader>
 
       <CardContent className="flex-1">
