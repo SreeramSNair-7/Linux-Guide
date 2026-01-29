@@ -29,11 +29,30 @@ export interface CompareHistoryEntry {
 }
 
 const FAVORITES_KEY = 'linuxSite:favorites';
+const REVIEWS_KEY = 'linuxSite:reviews';
+const COMPARE_HISTORY_KEY = 'linuxSite:compareHistory';
 const PREFS_EVENT = 'linuxSite:prefs-changed';
 const isBrowser = typeof window !== 'undefined';
 
 // Local cache for favorites
 let favoritesCache: string[] | null = null;
+
+function readJSON<T>(key: string, fallback: T): T {
+  if (!isBrowser) return fallback;
+  try {
+    const raw = window.localStorage.getItem(key);
+    if (!raw) return fallback;
+    return JSON.parse(raw) as T;
+  } catch {
+    return fallback;
+  }
+}
+
+function writeJSON<T>(key: string, value: T) {
+  if (!isBrowser) return;
+  window.localStorage.setItem(key, JSON.stringify(value));
+  window.dispatchEvent(new CustomEvent(PREFS_EVENT));
+}
 
 function notifyChange() {
   if (!isBrowser) return;
@@ -44,8 +63,10 @@ export function subscribePreferences(callback: () => void) {
   if (!isBrowser) return () => undefined;
   const handler = () => callback();
   window.addEventListener(PREFS_EVENT, handler as EventListener);
+  window.addEventListener('storage', handler);
   return () => {
     window.removeEventListener(PREFS_EVENT, handler as EventListener);
+    window.removeEventListener('storage', handler);
   };
 }
 
@@ -53,38 +74,13 @@ export function subscribePreferences(callback: () => void) {
 
 export async function loadFavorites(): Promise<string[]> {
   if (!isBrowser) return [];
-  
-  try {
-    // Try to load from API
-    const response = await fetch('/api/favorites', {
-      credentials: 'include',
-    });
-    
-    if (response.ok) {
-      const data = await response.json();
-      favoritesCache = data.distroIds || [];
-      // Sync to localStorage
-      localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoritesCache));
-      return favoritesCache;
-    }
-  } catch (error) {
-    console.error('Error loading favorites from API:', error);
-  }
-  
-  // Fallback to localStorage
-  try {
-    const stored = localStorage.getItem(FAVORITES_KEY);
-    favoritesCache = stored ? JSON.parse(stored) : [];
-    return favoritesCache;
-  } catch {
-    favoritesCache = [];
-    return [];
-  }
+  favoritesCache = readJSON<string[]>(FAVORITES_KEY, []);
+  return favoritesCache;
 }
 
 export function getFavorites(): string[] {
   // Return cached favorites
-  return favoritesCache || [];
+  return favoritesCache || readJSON<string[]>(FAVORITES_KEY, []);
 }
 
 export function isFavorite(distroId: string): boolean {
@@ -100,26 +96,8 @@ export async function toggleFavorite(distroId: string): Promise<boolean> {
     ? currentFavorites.filter(id => id !== distroId)
     : [...currentFavorites, distroId];
   
-  // Update local cache and localStorage immediately for instant UI feedback
   favoritesCache = newFavorites;
-  localStorage.setItem(FAVORITES_KEY, JSON.stringify(newFavorites));
-  notifyChange();
-  
-  // Sync to database in background
-  try {
-    const response = await fetch('/api/favorites', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({ distroId }),
-    });
-
-    if (!response.ok) {
-      console.error('Failed to sync favorite to database');
-    }
-  } catch (error) {
-    console.error('Error syncing favorite:', error);
-  }
+  writeJSON(FAVORITES_KEY, newFavorites);
   
   return !isFav;
 }
@@ -128,39 +106,36 @@ export async function clearAllFavorites(): Promise<void> {
   if (!isBrowser) return;
   
   favoritesCache = [];
-  localStorage.setItem(FAVORITES_KEY, JSON.stringify([]));
-  notifyChange();
-
-  try {
-    await fetch('/api/favorites', {
-      method: 'DELETE',
-      credentials: 'include',
-    });
-  } catch (error) {
-    console.error('Error clearing favorites:', error);
-  }
+  writeJSON(FAVORITES_KEY, []);
 }
 
 // ===== REVIEWS =====
 
 export async function getReviews(distroId: string): Promise<{ reviews: ReviewEntry[]; summary: ReviewSummary }> {
-  try {
-    const response = await fetch(`/api/reviews?distroId=${encodeURIComponent(distroId)}`, {
-      credentials: 'include',
-    });
-    if (!response.ok) throw new Error('Failed to load reviews');
-    return await response.json();
-  } catch (error) {
-    console.error('Error loading reviews:', error);
-    return {
-      reviews: [],
-      summary: {
-        totalReviews: 0,
-        averageRating: 0,
-        ratingCounts: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 },
-      },
-    };
-  }
+  const all = readJSON<ReviewEntry[]>(REVIEWS_KEY, []);
+  const reviews = all.filter(r => r.id.startsWith(distroId));
+  
+  const totalReviews = reviews.length;
+  const averageRating = totalReviews > 0
+    ? reviews.reduce((sum, r) => sum + r.rating, 0) / totalReviews
+    : 0;
+
+  const ratingCounts = {
+    5: reviews.filter(r => r.rating === 5).length,
+    4: reviews.filter(r => r.rating === 4).length,
+    3: reviews.filter(r => r.rating === 3).length,
+    2: reviews.filter(r => r.rating === 2).length,
+    1: reviews.filter(r => r.rating === 1).length,
+  };
+
+  return {
+    reviews,
+    summary: {
+      totalReviews,
+      averageRating,
+      ratingCounts,
+    },
+  };
 }
 
 export async function addReview(input: {
@@ -170,26 +145,21 @@ export async function addReview(input: {
   body: string;
   userName: string;
 }): Promise<ReviewEntry | null> {
-  try {
-    const response = await fetch('/api/reviews', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify(input),
-    });
-
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || 'Failed to save review');
-    }
-    
-    const data = await response.json();
-    notifyChange();
-    return data.review;
-  } catch (error) {
-    console.error('Error saving review:', error);
-    throw error;
-  }
+  const all = readJSON<ReviewEntry[]>(REVIEWS_KEY, []);
+  
+  const entry: ReviewEntry = {
+    id: `${input.distroId}-${Date.now()}`,
+    rating: input.rating,
+    title: input.title,
+    body: input.body,
+    userName: input.userName,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+  
+  const updated = [entry, ...all];
+  writeJSON(REVIEWS_KEY, updated);
+  return entry;
 }
 
 export async function getRatingSummary(distroId: string): Promise<{ average: number; count: number }> {
@@ -203,48 +173,28 @@ export async function getRatingSummary(distroId: string): Promise<{ average: num
 // ===== COMPARE HISTORY =====
 
 export async function getCompareHistory(): Promise<CompareHistoryEntry[]> {
-  try {
-    const response = await fetch('/api/compare-history', {
-      credentials: 'include',
-    });
-    if (!response.ok) throw new Error('Failed to load compare history');
-    const data = await response.json();
-    return data.history || [];
-  } catch (error) {
-    console.error('Error loading compare history:', error);
-    return [];
-  }
+  return readJSON<CompareHistoryEntry[]>(COMPARE_HISTORY_KEY, []);
 }
 
 export async function addCompareHistory(distro1Id: string, distro2Id: string): Promise<void> {
   if (!distro1Id || !distro2Id) return;
   
-  try {
-    const response = await fetch('/api/compare-history', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({ distro1Id, distro2Id }),
-    });
+  const all = readJSON<CompareHistoryEntry[]>(COMPARE_HISTORY_KEY, []);
+  const key = `${distro1Id}__${distro2Id}`;
+  
+  const updated = [
+    {
+      distro1Id,
+      distro2Id,
+      timestamp: new Date().toISOString(),
+    },
+    ...all.filter((entry) => `${entry.distro1Id}__${entry.distro2Id}` !== key),
+  ].slice(0, 10);
 
-    if (!response.ok) throw new Error('Failed to save compare history');
-    notifyChange();
-  } catch (error) {
-    console.error('Error saving compare history:', error);
-  }
+  writeJSON(COMPARE_HISTORY_KEY, updated);
 }
 
 export async function clearCompareHistory(): Promise<void> {
-  try {
-    const response = await fetch('/api/compare-history', {
-      method: 'DELETE',
-      credentials: 'include',
-    });
-
-    if (!response.ok) throw new Error('Failed to clear compare history');
-    notifyChange();
-  } catch (error) {
-    console.error('Error clearing compare history:', error);
-  }
+  writeJSON(COMPARE_HISTORY_KEY, [] as CompareHistoryEntry[]);
 }
 
