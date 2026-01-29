@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { AIResponseSchema } from '@/types/distro.schema';
 import { loadDistro } from '@/lib/distro-loader';
 import { generateResponse, checkOllamaHealth, OLLAMA_CONFIG } from '@/lib/ollama-client';
+import { generateHuggingFaceResponse, checkHuggingFaceHealth, HF_CONFIG } from '@/lib/huggingface-client';
 
 const RequestSchema = z.object({
   query: z.string().min(1).max(500),
@@ -13,52 +14,19 @@ const RequestSchema = z.object({
     skill_level: z.enum(['beginner', 'intermediate', 'advanced']),
   }),
   allow_hosted_iso: z.boolean().default(false),
+  provider: z.enum(['huggingface', 'ollama', 'auto']).default('auto'),
 });
 
 export async function POST(request: NextRequest) {
   try {
-    // Check Ollama health first
-    const health = await checkOllamaHealth();
-    if (!health.running || !health.modelAvailable) {
-      // Fallback: return a helpful, non-failing response when Ollama is offline
-      const fallback: z.infer<typeof AIResponseSchema> = {
-        answer_md:
-          `⚠️ Local AI is offline. Start Ollama with\n\n` +
-          `- ollama serve\n- ollama pull ${OLLAMA_CONFIG.model}\n- ollama run ${OLLAMA_CONFIG.model}\n\n` +
-          `Then reopen the assistant.`,
-        steps: [],
-        commands: [
-          {
-            command: `ollama serve`,
-            platform: 'any',
-            explanation: 'Start the local Ollama service',
-            confirm_required: false,
-          },
-          {
-            command: `ollama pull ${OLLAMA_CONFIG.model}`,
-            platform: 'any',
-            explanation: 'Download the configured model so responses work offline',
-            confirm_required: false,
-          },
-        ],
-        sources: [],
-        followup: 'Try again after starting Ollama.',
-        verification: null,
-      };
-
-      return NextResponse.json(fallback, { status: 200 });
-    }
-
-    // Rate limiting disabled - lru-cache module issues
-    // const identifier = request.ip || 'anonymous';
-    // const { success } = await rateLimit(identifier);
-    // if (!success) {
-    //   return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
-    // }
-
     // Parse and validate request
     const body = await request.json();
     const validated = RequestSchema.parse(body);
+
+    // Determine which provider to use
+    let provider = validated.provider;
+    let aiText = '';
+    let usedProvider = '';
 
     // Load distro context if provided
     let distro = null;
@@ -76,24 +44,91 @@ export async function POST(request: NextRequest) {
 
     // Load system prompt
     const systemPrompt = await getSystemPrompt();
+    const fullPrompt = `${systemPrompt}\n\nCONTEXT:\n${JSON.stringify(context, null, 2)}\n\n`;
 
-    // Call Ollama using the helper function
-    let aiText = '';
-    try {
-      aiText = await generateResponse(validated.query, `${systemPrompt}\n\nCONTEXT:\n${JSON.stringify(context, null, 2)}\n\n`, {
-        temperature: 0.7,
-        top_p: 0.9,
-      });
-    } catch (ollamaError) {
-      console.error('Ollama error:', ollamaError);
-      return NextResponse.json(
-        { 
-          error: 'Failed to get response from AI', 
-          details: 'Make sure Ollama is running with: ollama serve',
-          model: OLLAMA_CONFIG.model,
-        },
-        { status: 500 }
-      );
+    // Try to use Hugging Face if available (preferred for free cloud)
+    if ((provider === 'auto' || provider === 'huggingface') && HF_CONFIG.enabled) {
+      try {
+        console.log('Using Hugging Face AI');
+        aiText = await generateHuggingFaceResponse(validated.query, fullPrompt, {
+          temperature: 0.7,
+        });
+        usedProvider = 'huggingface';
+      } catch (hfError) {
+        console.error('Hugging Face error:', hfError);
+        if (provider === 'huggingface') {
+          // User explicitly requested Hugging Face
+          return NextResponse.json(
+            {
+              error: 'Failed to get response from Hugging Face',
+              details: hfError instanceof Error ? hfError.message : 'Unknown error',
+            },
+            { status: 500 }
+          );
+        }
+        // Fall through to Ollama if auto mode
+      }
+    }
+
+    // Fallback to Ollama if Grok failed or not available
+    if (!aiText) {
+      const ollamaHealth = await checkOllamaHealth();
+      if (!ollamaHealth.running || !ollamaHealth.modelAvailable) {
+        return NextResponse.json(
+          {
+            answer_md:
+              `⚠️ No AI provider available.\n\n` +
+              (GROK_CONFIG.enabled ? `• Grok API failed\n` : `• Grok not configured\n`) +
+              (HF_CONFIG.enabled ? `• Hugging Face API failed\n` : `• Hugging Face not configured\n`) +
+              `• Local Ollama is offline\n\n` +
+              `Options:\n` +
+              `1. Start Ollama locally (free, offline):\n` +
+              `   ollama serve\n` +
+              `   ollama pull ${OLLAMA_CONFIG.model}\n\n` +
+              `2. Or use Hugging Face (free, cloud):\n` +
+              `   Get key: https://huggingface.co/settings/tokens\n` +
+              `   Set: HUGGING_FACE_API_KEY environment variable`,
+            steps: [],
+            commands: [
+              {
+                command: `ollama serve`,
+                platform: 'any',
+                explanation: 'Start the local Ollama service',
+                confirm_required: false,
+              },
+              {
+                command: `ollama pull ${OLLAMA_CONFIG.model}`,
+                platform: 'any',
+                explanation: 'Download the Ollama model',
+                confirm_required: false,
+              },
+            ],
+            sources: [],
+            followup: 'Try again after starting Ollama or configuring Hugging Face.',
+            verification: null,
+          },
+          { status: 200 }
+        );
+      }
+
+      try {
+        console.log('Using Ollama AI');
+        aiText = await generateResponse(validated.query, fullPrompt, {
+          temperature: 0.7,
+          top_p: 0.9,
+        });
+        usedProvider = 'ollama';
+      } catch (ollamaError) {
+        console.error('Ollama error:', ollamaError);
+        return NextResponse.json(
+          {
+            error: 'Failed to get response from AI',
+            details: 'Make sure Ollama is running with: ollama serve',
+            model: OLLAMA_CONFIG.model,
+          },
+          { status: 500 }
+        );
+      }
     }
 
     // Parse AI response
@@ -126,6 +161,9 @@ export async function POST(request: NextRequest) {
         verification: null,
       };
     }
+
+    // Add provider info to response (for debugging)
+    (aiResponse as any).provider = usedProvider;
 
     // Validate response schema
     const validatedResponse = AIResponseSchema.parse(aiResponse);
