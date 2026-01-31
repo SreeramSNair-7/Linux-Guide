@@ -54,11 +54,6 @@ function writeJSON<T>(key: string, value: T) {
   window.dispatchEvent(new CustomEvent(PREFS_EVENT));
 }
 
-function _notifyChange() {
-  if (!isBrowser) return;
-  window.dispatchEvent(new CustomEvent(PREFS_EVENT));
-}
-
 export function subscribePreferences(callback: () => void) {
   if (!isBrowser) return () => undefined;
   const handler = () => callback();
