@@ -2,12 +2,15 @@
 
 A production-ready Next.js application for cataloging, comparing, and discovering Linux distributions with AI-powered recommendations.
 
+**Currently cataloging 58+ Linux distributions** including Ubuntu, Fedora, Debian, Arch, NixOS, Raspberry Pi OS, and many more.
+
 ## Features
 
 - 🔍 **Advanced Search**: Filter by family, desktop environment, and requirements with MeiliSearch
 - 🛡️ **Verified Checksums**: SHA256 verification for all ISO downloads with platform-specific commands
 - 🤖 **AI Assistant**: Local Ollama-powered recommendations and installation help
 - ⚖️ **Compare Tool**: Side-by-side comparison of up to 4 distributions
+- 💝 **Favorites**: Save your favorite distros with localStorage persistence
 - 📱 **PWA Ready**: Installable progressive web app
 - 🌙 **Dark Mode**: Full theme support
 - ♿ **Accessible**: WCAG AA compliant
