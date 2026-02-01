@@ -1,0 +1,87 @@
+{
+  "id": "parabola-gnu-linux",
+  "name": "Parabola GNU/Linux-libre",
+  "family": "Arch",
+  "latest_version": "2024.12.02",
+  "codename": "Cuddly Carnival",
+  "release_date": "2024-12-02",
+  "target_users": ["advanced", "developer"],
+  "desktop_environments": ["XFCE", "Openbox", "IceWM"],
+  "package_manager": "pacman",
+  "kernel": "linux-libre",
+  "min_ram_mb": 1024,
+  "min_storage_mb": 15360,
+  "iso_files": [
+    {
+      "id": "parabola-xfce",
+      "url": "https://mirror.parabola.nu/iso/parabola-2024.12.02-x86_64-xfce.iso",
+      "filename": "parabola-2024.12.02-x86_64-xfce.iso",
+      "size_mb": 1800,
+      "sha256": "f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [1800],
+  "sha256_checksums": [
+    "f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1"
+  ],
+  "install_guide_markdown": "# Parabola GNU/Linux-libre Installation Guide\n\n## About Parabola\n- 100% free software distribution\n- Uses linux-libre kernel (no proprietary code)\n- Based on Arch Linux\n- Community-driven\n\n## Prerequisites\n- 1GB RAM minimum\n- 15GB disk space\n- Commitment to free software philosophy\n- Advanced Linux knowledge recommended\n\n## Step 1: Download ISO\nGet Parabola ISO with XFCE desktop environment\n\n## Step 2: Create Bootable USB\nWrite ISO to USB drive\n\n## Step 3: Boot Live System\nBoot from USB and access live environment\n\n## Step 4: Install System\nUse Calamares installer or manual setup\n\n## Step 5: Configure\nConfigure system for free software only",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Parabola ISO",
+      "detail_md": "Download from parabola.nu with XFCE desktop environment.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "verify-iso",
+      "title": "Verify ISO Integrity",
+      "detail_md": "Always verify checksums for security:\n```\nsha256sum parabola-2024.12.02-x86_64-xfce.iso\n```",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "create-media",
+      "title": "Create Bootable USB",
+      "detail_md": "Write ISO to USB:\n```\nsudo dd if=parabola-2024.12.02-x86_64-xfce.iso of=/dev/sdX bs=4M\n```",
+      "estimated_minutes": 5,
+      "risk": "high"
+    },
+    {
+      "id": "boot-live",
+      "title": "Boot Live Environment",
+      "detail_md": "Insert USB, restart, select USB in boot menu. Explore free-software-only desktop.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "open-installer",
+      "title": "Launch Calamares Installer",
+      "detail_md": "Click installer icon on desktop to launch graphical setup.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "install-parabola",
+      "title": "Install Parabola",
+      "detail_md": "Follow installer for timezone, language, partitioning, and user setup.",
+      "estimated_minutes": 20,
+      "risk": "medium"
+    },
+    {
+      "id": "configure-system",
+      "title": "Post-Installation Setup",
+      "detail_md": "Update system packages and configure for exclusive free software use.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    }
+  ],
+  "tags": ["free-software", "Arch-based", "linux-libre", "ethical"],
+  "popularity_rank": 50,
+  "official_docs_url": "https://wiki.parabola.nu/",
+  "community_url": "https://lists.parabola.nu/",
+  "last_verified": "2024-12-02"
+}

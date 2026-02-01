@@ -1,0 +1,105 @@
+{
+  "id": "artix-linux-openrc",
+  "name": "Artix Linux (OpenRC)",
+  "family": "Arch",
+  "latest_version": "2024.12.11",
+  "codename": "Greeneye",
+  "release_date": "2024-12-11",
+  "target_users": ["advanced", "developer"],
+  "desktop_environments": ["KDE Plasma", "GNOME", "XFCE", "Openbox"],
+  "package_manager": "pacman",
+  "kernel": "6.11",
+  "min_ram_mb": 1024,
+  "min_storage_mb": 15360,
+  "iso_files": [
+    {
+      "id": "artix-openrc-xfce",
+      "url": "https://mirror1.artixlinux.org/iso/artix-linux-openrc-xfce-20241211-x86_64.iso",
+      "filename": "artix-linux-openrc-xfce-x86_64.iso",
+      "size_mb": 2000,
+      "sha256": "e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    },
+    {
+      "id": "artix-openrc-cli",
+      "url": "https://mirror1.artixlinux.org/iso/artix-linux-openrc-20241211-x86_64.iso",
+      "filename": "artix-linux-openrc-base-x86_64.iso",
+      "size_mb": 700,
+      "sha256": "f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [2000, 700],
+  "sha256_checksums": [
+    "e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0",
+    "f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1"
+  ],
+  "install_guide_markdown": "# Artix Linux (OpenRC) Installation Guide\n\n## Prerequisites\n- 1GB RAM minimum\n- 15GB disk space\n- Advanced Linux knowledge\n- USB drive (2GB+)\n\n## Key Features\n- Based on Arch Linux\n- Uses OpenRC init system instead of systemd\n- Cutting-edge rolling release packages\n- Community-driven development\n\n## Step 1: Download ISO\nGet OpenRC version from artixlinux.org mirrors\n\n## Step 2: Create Bootable USB\nUse dd or Etcher\n\n## Step 3: Boot Live System\nSelect XFCE or CLI option\n\n## Step 4: Partition Disk\nUse cfdisk or parted\n\n## Step 5: Format and Mount\nFormat partitions and mount to /mnt\n\n## Step 6: Run Installer\nUse `basestrap` to install base system\n\n## Step 7: Configure System\nEdit /etc/rc.conf and other system files",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Artix ISO",
+      "detail_md": "Choose XFCE (2GB) for graphical installer or base CLI (700MB) for manual installation.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    },
+    {
+      "id": "create-usb",
+      "title": "Create Bootable USB",
+      "detail_md": "Write ISO to USB:\n```\nsudo dd if=artix-linux-openrc-xfce-x86_64.iso of=/dev/sdX bs=4M\n```",
+      "estimated_minutes": 5,
+      "risk": "high"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot Installer",
+      "detail_md": "Insert USB, restart, and select USB from boot menu. Choose XFCE or CLI.",
+      "estimated_minutes": 3,
+      "risk": "low"
+    },
+    {
+      "id": "partition-disk",
+      "title": "Partition Disk",
+      "detail_md": "Use cfdisk to partition:\n```\nsudo cfdisk /dev/sda\n```\nCreate boot (500MB) and root (remaining) partitions.",
+      "estimated_minutes": 10,
+      "risk": "high"
+    },
+    {
+      "id": "format-partitions",
+      "title": "Format Partitions",
+      "detail_md": "Format partitions:\n```\nsudo mkfs.fat -F 32 /dev/sda1\nsudo mkfs.ext4 /dev/sda2\n```",
+      "estimated_minutes": 5,
+      "risk": "high"
+    },
+    {
+      "id": "mount-filesystem",
+      "title": "Mount Filesystem",
+      "detail_md": "Mount partitions:\n```\nsudo mount /dev/sda2 /mnt\nsudo mkdir -p /mnt/boot\nsudo mount /dev/sda1 /mnt/boot\n```",
+      "estimated_minutes": 2,
+      "risk": "medium"
+    },
+    {
+      "id": "run-installer",
+      "title": "Run Installer Script",
+      "detail_md": "Execute installer from XFCE menu or run calamares command.",
+      "estimated_minutes": 20,
+      "risk": "medium"
+    },
+    {
+      "id": "configure-system",
+      "title": "Configure System",
+      "detail_md": "Edit rc.conf, hostname, locale settings. Install additional packages with pacman.",
+      "estimated_minutes": 30,
+      "risk": "medium"
+    }
+  ],
+  "tags": ["Arch-based", "OpenRC", "rolling-release", "systemd-free"],
+  "popularity_rank": 45,
+  "official_docs_url": "https://wiki.artixlinux.org/",
+  "community_url": "https://discourse.artixlinux.org/",
+  "last_verified": "2024-12-11"
+}

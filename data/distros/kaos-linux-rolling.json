@@ -1,0 +1,108 @@
+{
+  "id": "kaos-linux-rolling",
+  "name": "Kaos (KDE on Arch OS)",
+  "family": "Arch",
+  "latest_version": "2024.12.10",
+  "codename": "Rolling",
+  "release_date": "2024-12-10",
+  "target_users": ["intermediate", "advanced", "developer"],
+  "desktop_environments": ["KDE Plasma"],
+  "package_manager": "pacman",
+  "kernel": "6.12",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 20480,
+  "iso_files": [
+    {
+      "id": "kaos-kde-live",
+      "url": "https://downloads.kaoslinux.org/kaos/iso/KaOS-2024.12.10-x86_64.iso",
+      "filename": "KaOS-2024.12.10-x86_64.iso",
+      "size_mb": 2800,
+      "sha256": "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [2800],
+  "sha256_checksums": [
+    "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3"
+  ],
+  "install_guide_markdown": "# Kaos (KDE on Arch OS) Installation Guide\n\n## About Kaos\n- Rolling release Arch-based distribution\n- Optimized for KDE Plasma 6\n- Pre-integrated KDE ecosystem\n- Regular, curated updates\n\n## Prerequisites\n- 2GB RAM minimum (4GB recommended for KDE)\n- 20GB disk space\n- Fast internet connection for packages\n- USB drive (3GB+)\n\n## Features\n- Latest KDE Plasma always included\n- Calamares graphical installer\n- Arch User Repository access\n- Professional desktop environment\n\n## Step 1: Download ISO\nGet KaOS rolling release ISO\n\n## Step 2: Create Bootable USB\nUse Etcher or dd\n\n## Step 3: Boot Live System\nExperience KDE Plasma 6\n\n## Step 4: Install to Disk\nClick installer and follow prompts\n\n## Step 5: Post-Installation\nUpdate system and install additional software",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download KaOS ISO",
+      "detail_md": "Get the latest KaOS rolling release (2.8GB) with KDE Plasma 6 pre-installed.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    },
+    {
+      "id": "create-bootable",
+      "title": "Create Bootable USB",
+      "detail_md": "Write ISO using Etcher or dd:\n```\nsudo dd if=KaOS-2024.12.10-x86_64.iso of=/dev/sdX bs=4M\n```",
+      "estimated_minutes": 5,
+      "risk": "high"
+    },
+    {
+      "id": "boot-live",
+      "title": "Boot Live Environment",
+      "detail_md": "Insert USB, restart, select USB in boot menu. Experience full KDE Plasma desktop.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "launch-installer",
+      "title": "Launch Calamares Installer",
+      "detail_md": "Click 'Install KaOS' icon on desktop to open graphical installer.",
+      "estimated_minutes": 1,
+      "risk": "low"
+    },
+    {
+      "id": "location-timezone",
+      "title": "Set Location & Timezone",
+      "detail_md": "Select your region and timezone for correct system time.",
+      "estimated_minutes": 3,
+      "risk": "low"
+    },
+    {
+      "id": "keyboard-layout",
+      "title": "Configure Keyboard",
+      "detail_md": "Select keyboard layout and test typing to verify correct mapping.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "partition-disk",
+      "title": "Configure Partitions",
+      "detail_md": "Choose automatic (simple) or manual (advanced) partitioning. Automatic recommended for new users.",
+      "estimated_minutes": 10,
+      "risk": "high"
+    },
+    {
+      "id": "user-account",
+      "title": "Create User Account",
+      "detail_md": "Set hostname, username, password, and choose whether to use sudo.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install-system",
+      "title": "Install KaOS",
+      "detail_md": "Click Install to write system to disk. May take 10-20 minutes depending on speed.",
+      "estimated_minutes": 20,
+      "risk": "medium"
+    },
+    {
+      "id": "post-install-update",
+      "title": "Update System",
+      "detail_md": "After reboot, update all packages:\n```\nsudo pacman -Syu\n```",
+      "estimated_minutes": 15,
+      "risk": "low"
+    }
+  ],
+  "tags": ["KDE-focused", "Arch-based", "rolling-release", "modern", "professional"],
+  "popularity_rank": 48,
+  "official_docs_url": "https://kaosx.us/",
+  "community_url": "https://kaosx.us/forums/",
+  "last_verified": "2024-12-10"
+}

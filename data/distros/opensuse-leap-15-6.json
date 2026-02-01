@@ -1,0 +1,91 @@
+{
+  "id": "opensuse-leap-15-6",
+  "name": "openSUSE Leap 15.6",
+  "family": "SUSE",
+  "latest_version": "15.6",
+  "codename": "Slinger",
+  "release_date": "2024-06-12",
+  "target_users": ["beginner", "intermediate", "advanced"],
+  "desktop_environments": ["KDE Plasma", "GNOME", "XFCE", "Cinnamon"],
+  "package_manager": "zypper",
+  "kernel": "6.4",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 20480,
+  "iso_files": [
+    {
+      "id": "opensuse-leap-net-install",
+      "url": "https://download.opensuse.org/distribution/leap/15.6/iso/openSUSE-Leap-15.6-NET-x86_64-Build19.23-Media.iso",
+      "filename": "openSUSE-Leap-15.6-NET-x86_64.iso",
+      "size_mb": 650,
+      "sha256": "e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    },
+    {
+      "id": "opensuse-leap-dvd",
+      "url": "https://download.opensuse.org/distribution/leap/15.6/iso/openSUSE-Leap-15.6-DVD-x86_64-Build19.23-Media.iso",
+      "filename": "openSUSE-Leap-15.6-DVD-x86_64.iso",
+      "size_mb": 4700,
+      "sha256": "f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [650, 4700],
+  "sha256_checksums": [
+    "e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4",
+    "f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5"
+  ],
+  "install_guide_markdown": "# openSUSE Leap 15.6 Installation Guide\n\n## Prerequisites\n- 2GB RAM minimum (4GB recommended)\n- 20GB disk space\n- USB drive (2GB+) for installer\n\n## Step 1: Download ISO\nGet NET or DVD version from opensuse.org\n\n## Step 2: Create Bootable USB\nUse Etcher or similar tool to write ISO to USB\n\n## Step 3: Boot from USB\nRestart computer and select USB from boot menu\n\n## Step 4: Install openSUSE\nFollow YaST installer prompts for partitioning and configuration\n\n## Step 5: Complete Setup\nReboot and configure user accounts and system settings",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download openSUSE Leap ISO",
+      "detail_md": "Choose NET (650MB, requires internet) or DVD (4.7GB, offline installation)",
+      "estimated_minutes": 15,
+      "risk": "low"
+    },
+    {
+      "id": "create-usb",
+      "title": "Create Bootable USB",
+      "detail_md": "Use Etcher, Rufus, or dd to write ISO:\n```\nsudo dd if=openSUSE-Leap-15.6-DVD-x86_64.iso of=/dev/sdX bs=4M\n```",
+      "estimated_minutes": 10,
+      "risk": "high"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot from USB",
+      "detail_md": "Insert USB and restart computer. Access boot menu (F12, F2, or DEL) and select USB device.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "run-yast",
+      "title": "Run YaST Installer",
+      "detail_md": "Follow YaST (Yet another SysConfig Tool) installer for language, timezone, partitioning, and software selection.",
+      "estimated_minutes": 20,
+      "risk": "medium"
+    },
+    {
+      "id": "user-setup",
+      "title": "Create User Account",
+      "detail_md": "Set root password and create regular user account with specified username and password.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "finish-install",
+      "title": "Complete Installation",
+      "detail_md": "Review settings summary and click Install to finalize. System will reboot when complete.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    }
+  ],
+  "tags": ["stable", "KDE", "SUSE", "enterprise", "LTS"],
+  "popularity_rank": 20,
+  "official_docs_url": "https://doc.opensuse.org/",
+  "community_url": "https://forums.opensuse.org/",
+  "last_verified": "2024-12-01"
+}

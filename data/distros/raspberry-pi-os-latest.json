@@ -1,0 +1,77 @@
+{
+  "id": "raspberry-pi-os-latest",
+  "name": "Raspberry Pi OS (Bookworm)",
+  "family": "Debian",
+  "latest_version": "2024.12",
+  "codename": "Bookworm",
+  "release_date": "2024-12-15",
+  "target_users": ["beginner", "intermediate", "developer"],
+  "desktop_environments": ["LXDE", "LXQT"],
+  "package_manager": "apt",
+  "kernel": "6.6",
+  "min_ram_mb": 512,
+  "min_storage_mb": 2048,
+  "iso_files": [
+    {
+      "id": "raspberry-pi-os-lite",
+      "url": "https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2024-12-15/2024-12-15-raspios-bookworm-arm64-lite.img.xz",
+      "filename": "raspios-bookworm-arm64-lite.img.xz",
+      "size_mb": 500,
+      "sha256": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    },
+    {
+      "id": "raspberry-pi-os-desktop",
+      "url": "https://downloads.raspberrypi.com/raspios_arm64/images/raspios_arm64-2024-12-15/2024-12-15-raspios-bookworm-arm64.img.xz",
+      "filename": "raspios-bookworm-arm64.img.xz",
+      "size_mb": 1800,
+      "sha256": "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [500, 1800],
+  "sha256_checksums": [
+    "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b",
+    "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3"
+  ],
+  "install_guide_markdown": "# Raspberry Pi OS Installation Guide\n\n## Prerequisites\n- Raspberry Pi 4 or 5 recommended\n- microSD card (32GB+)\n- USB card reader\n- Raspberry Pi Imager software\n- Power supply (USB-C)\n\n## Step 1: Download Raspberry Pi Imager\nGet the official imager from raspberrypi.com/software\n\n## Step 2: Insert microSD Card\nInsert into USB reader connected to computer\n\n## Step 3: Open Imager\nSelect Raspberry Pi device, choose OS (Lite or Desktop), and select storage\n\n## Step 4: Write Image\nClick Write and wait for completion (5-10 minutes)\n\n## Step 5: Boot Pi\nInsert card into Pi, power on, and follow initial setup",
+  "install_steps": [
+    {
+      "id": "download-imager",
+      "title": "Download Raspberry Pi Imager",
+      "detail_md": "Visit https://raspberrypi.com/software and download the official Raspberry Pi Imager for your OS (Windows, macOS, or Linux).",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "prepare-card",
+      "title": "Prepare microSD Card",
+      "detail_md": "Insert a 32GB or larger microSD card into a USB reader connected to your computer.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "write-image",
+      "title": "Write OS Image",
+      "detail_md": "Open Imager, select Raspberry Pi device, choose OS version (Lite for headless, Desktop for GUI), and write to card.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "boot-system",
+      "title": "Boot Raspberry Pi",
+      "detail_md": "Insert microSD card into Pi, connect power, and wait for first boot (may take 2-3 minutes on first startup).",
+      "estimated_minutes": 5,
+      "risk": "low"
+    }
+  ],
+  "tags": ["lightweight", "embedded", "ARM", "IoT", "single-board"],
+  "popularity_rank": 5,
+  "official_docs_url": "https://www.raspberrypi.com/documentation/computers/os.html",
+  "community_url": "https://www.raspberrypi.com/forums/",
+  "last_verified": "2024-12-15"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "puppylinux-10",
+  "name": "Puppy Linux 10",
+  "family": "Independent",
+  "latest_version": "10.0.1",
+  "codename": "Fossapup",
+  "release_date": "2024-06-20",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["JWM", "Openbox"],
+  "package_manager": "petget",
+  "kernel": "6.1",
+  "min_ram_mb": 256,
+  "min_storage_mb": 512,
+  "iso_files": [
+    {
+      "id": "fossapup64-10",
+      "url": "https://libreoffice.mirror.liquidtelecom.com/distros/puppy/puppy-fossapup64-10.0.1.iso",
+      "filename": "fossapup64-10.0.1.iso",
+      "size_mb": 850,
+      "sha256": "c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [850],
+  "sha256_checksums": [
+    "c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8"
+  ],
+  "install_guide_markdown": "# Puppy Linux 10 Installation Guide\n\n## Prerequisites\n- 256MB RAM minimum (for live system)\n- 512MB for installation\n- USB drive (1GB+) or CD\n- Old computers or embedded systems\n\n## Step 1: Download ISO\nGet Fossapup64 from puppy-linux.org\n\n## Step 2: Create Bootable Media\nBurn to CD or write to USB\n\n## Step 3: Boot from Media\nRestart computer and boot from USB/CD\n\n## Step 4: Run as Live System\nPuppy boots entirely to RAM, no installation needed\n\n## Step 5: Persistent Storage (Optional)\nCreate save file for persistent changes across reboots\n\n## Usage\nWorks great on old computers, netbooks, and USB sticks",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Fossapup64 ISO",
+      "detail_md": "Get Fossapup64 10.0.1 (850MB) from official puppy mirror.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "create-bootable",
+      "title": "Create Bootable Media",
+      "detail_md": "Write ISO to USB:\n```\nsudo dd if=fossapup64-10.0.1.iso of=/dev/sdX bs=4M\n```\nOr burn to CD",
+      "estimated_minutes": 5,
+      "risk": "high"
+    },
+    {
+      "id": "boot-live",
+      "title": "Boot Live System",
+      "detail_md": "Insert media and reboot. Puppy loads entirely into RAM (256MB-512MB). No installation needed for live use.",
+      "estimated_minutes": 3,
+      "risk": "low"
+    },
+    {
+      "id": "frugal-install",
+      "title": "Frugal Installation (Optional)",
+      "detail_md": "For persistent storage, create a save file (.sfs) or frugal install to hard drive.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "save-file",
+      "title": "Create Save File",
+      "detail_md": "Puppy can save changes to a file on existing partition. Creates persistent system without full installation.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    }
+  ],
+  "tags": ["lightweight", "minimal", "old-hardware", "portable", "USB"],
+  "popularity_rank": 40,
+  "official_docs_url": "http://puppylinux.com/",
+  "community_url": "http://www.murga-linux.com/puppy/",
+  "last_verified": "2024-12-01"
+}

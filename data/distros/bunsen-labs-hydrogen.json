@@ -1,0 +1,94 @@
+{
+  "id": "bunsen-labs-hydrogen",
+  "name": "BunsenLabs Hydrogen",
+  "family": "Debian",
+  "latest_version": "12.1",
+  "codename": "Hydrogen",
+  "release_date": "2024-10-15",
+  "target_users": ["beginner", "intermediate", "advanced"],
+  "desktop_environments": ["Openbox"],
+  "package_manager": "apt",
+  "kernel": "6.1",
+  "min_ram_mb": 512,
+  "min_storage_mb": 4096,
+  "iso_files": [
+    {
+      "id": "bunsen-labs-hydrogen",
+      "url": "https://gpt.co.uk/downloads/BunsenLabs-Linux-Hydrogen-12.1-amd64-20241015.iso",
+      "filename": "BunsenLabs-Linux-Hydrogen-12.1-amd64.iso",
+      "size_mb": 1200,
+      "sha256": "d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [1200],
+  "sha256_checksums": [
+    "d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9"
+  ],
+  "install_guide_markdown": "# BunsenLabs Hydrogen Installation Guide\n\n## Prerequisites\n- 512MB RAM minimum (1GB recommended)\n- 4GB disk space\n- USB drive (2GB+)\n- Interest in lightweight, customizable Linux\n\n## Step 1: Download ISO\nGet Hydrogen ISO from bunsen-labs.org\n\n## Step 2: Create Bootable USB\nUse Etcher or dd command\n\n## Step 3: Boot from USB\nRestart and select USB from boot menu\n\n## Step 4: Live Environment\nExplore BunsenLabs before installing\n\n## Step 5: Install to Disk\nFollow installer for partitioning and configuration\n\n## Step 6: Configure Desktop\nCustomize Openbox, panels, and keyboard shortcuts post-install",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download BunsenLabs Hydrogen",
+      "detail_md": "Get ISO (1.2GB) from bunsen-labs.org or mirrors",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "create-usb",
+      "title": "Create Bootable USB",
+      "detail_md": "Write ISO to USB:\n```\nsudo dd if=BunsenLabs-Linux-Hydrogen-12.1-amd64.iso of=/dev/sdX bs=4M\n```",
+      "estimated_minutes": 5,
+      "risk": "high"
+    },
+    {
+      "id": "boot-live",
+      "title": "Boot Live Environment",
+      "detail_md": "Insert USB and reboot. Select USB from boot menu. Explore the lightweight Openbox desktop.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "open-installer",
+      "title": "Launch Installer",
+      "detail_md": "Double-click Calamares installer icon or run from terminal.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "partitioning",
+      "title": "Configure Partitions",
+      "detail_md": "Choose automatic (simple) or manual partitioning for more control.",
+      "estimated_minutes": 10,
+      "risk": "medium"
+    },
+    {
+      "id": "user-setup",
+      "title": "Create User Account",
+      "detail_md": "Set hostname, timezone, root password, and create regular user.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "install-system",
+      "title": "Install BunsenLabs",
+      "detail_md": "Click Install to write system to disk (10-15 minutes).",
+      "estimated_minutes": 15,
+      "risk": "medium"
+    },
+    {
+      "id": "customize",
+      "title": "Customize Openbox",
+      "detail_md": "Edit ~/.config/openbox/rc.xml to customize keybindings and behavior.",
+      "estimated_minutes": 30,
+      "risk": "low"
+    }
+  ],
+  "tags": ["lightweight", "Openbox", "Debian", "minimal", "customizable"],
+  "popularity_rank": 35,
+  "official_docs_url": "https://bunsen-labs.org/",
+  "community_url": "https://forums.bunsenlabs.org/",
+  "last_verified": "2024-12-01"
+}

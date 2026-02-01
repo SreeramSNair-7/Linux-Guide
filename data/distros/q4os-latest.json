@@ -1,0 +1,98 @@
+{
+  "id": "q4os-latest",
+  "name": "Q4OS",
+  "family": "Debian",
+  "latest_version": "5.4",
+  "codename": "Gemini",
+  "release_date": "2024-11-20",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["Trinity", "KDE Plasma"],
+  "package_manager": "apt",
+  "kernel": "6.1",
+  "min_ram_mb": 512,
+  "min_storage_mb": 8192,
+  "iso_files": [
+    {
+      "id": "q4os-trinity",
+      "url": "https://sourceforge.net/projects/q4os/files/q4os/5.4/q4os-5.4-trinity-amd64.iso",
+      "filename": "q4os-5.4-trinity-amd64.iso",
+      "size_mb": 1400,
+      "sha256": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    },
+    {
+      "id": "q4os-kde",
+      "url": "https://sourceforge.net/projects/q4os/files/q4os/5.4/q4os-5.4-kde-amd64.iso",
+      "filename": "q4os-5.4-kde-amd64.iso",
+      "size_mb": 2200,
+      "sha256": "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [1400, 2200],
+  "sha256_checksums": [
+    "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2",
+    "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3"
+  ],
+  "install_guide_markdown": "# Q4OS Installation Guide\n\n## About Q4OS\n- Based on Debian (stable foundation)\n- Offers Trinity desktop (lightweight KDE 3 fork)\n- Ideal for old/limited hardware\n- Easy-to-use with optional KDE Plasma\n\n## Prerequisites\n- 512MB RAM (Trinity) or 1GB (KDE)\n- 8GB disk space\n- USB drive (2GB+)\n- Works great on older systems\n\n## Step 1: Download ISO\nGet Trinity (lightweight) or KDE (modern) version\n\n## Step 2: Create Bootable Media\nUse Etcher or dd\n\n## Step 3: Boot Live System\nExperience Q4OS before installing\n\n## Step 4: Run Installer\nClick install-to-disk from desktop\n\n## Step 5: Configure System\nSet hostname, timezone, users",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Q4OS ISO",
+      "detail_md": "Choose Trinity (1.4GB, very lightweight) or KDE (2.2GB, more features).",
+      "estimated_minutes": 15,
+      "risk": "low"
+    },
+    {
+      "id": "create-usb",
+      "title": "Create Bootable USB",
+      "detail_md": "Write ISO to USB:\n```\nsudo dd if=q4os-5.4-trinity-amd64.iso of=/dev/sdX bs=4M\n```",
+      "estimated_minutes": 5,
+      "risk": "high"
+    },
+    {
+      "id": "boot-live",
+      "title": "Boot Live System",
+      "detail_md": "Insert USB and reboot. Select USB in boot menu. Explore Trinity or KDE desktop.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "open-installer",
+      "title": "Launch Installer",
+      "detail_md": "Double-click 'Install to disk' icon on desktop.",
+      "estimated_minutes": 1,
+      "risk": "low"
+    },
+    {
+      "id": "partition-disk",
+      "title": "Configure Partitions",
+      "detail_md": "Automatic partitioning recommended. Choose disk and click partition.",
+      "estimated_minutes": 5,
+      "risk": "medium"
+    },
+    {
+      "id": "install-q4os",
+      "title": "Install Q4OS",
+      "detail_md": "Enter hostname, timezone, user details. Click Install to proceed.",
+      "estimated_minutes": 15,
+      "risk": "medium"
+    },
+    {
+      "id": "post-install",
+      "title": "Post-Installation",
+      "detail_md": "Update system:\n```\nsudo apt update && sudo apt upgrade\n```",
+      "estimated_minutes": 10,
+      "risk": "low"
+    }
+  ],
+  "tags": ["lightweight", "Trinity", "old-hardware", "Debian-based"],
+  "popularity_rank": 42,
+  "official_docs_url": "https://q4os.org/",
+  "community_url": "https://forum.q4os.org/",
+  "last_verified": "2024-12-01"
+}

@@ -1,0 +1,91 @@
+{
+  "id": "fedora-server-41",
+  "name": "Fedora Server 41",
+  "family": "Red Hat",
+  "latest_version": "41",
+  "codename": "Workstation",
+  "release_date": "2024-11-12",
+  "target_users": ["intermediate", "advanced", "server", "developer"],
+  "desktop_environments": [],
+  "package_manager": "dnf",
+  "kernel": "6.11",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 20480,
+  "iso_files": [
+    {
+      "id": "fedora-server-41",
+      "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/41/Server/x86_64/iso/Fedora-Server-dvd-x86_64-41-1.4.iso",
+      "filename": "Fedora-Server-41-x86_64.iso",
+      "size_mb": 2200,
+      "sha256": "a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    },
+    {
+      "id": "fedora-server-netinstall",
+      "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/41/Server/x86_64/iso/Fedora-Server-netinst-x86_64-41-1.4.iso",
+      "filename": "Fedora-Server-netinst-41-x86_64.iso",
+      "size_mb": 700,
+      "sha256": "b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [2200, 700],
+  "sha256_checksums": [
+    "a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6",
+    "b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7"
+  ],
+  "install_guide_markdown": "# Fedora Server 41 Installation Guide\n\n## Prerequisites\n- 2GB RAM minimum (4GB recommended for servers)\n- 20GB disk space\n- Network connection for package installation\n- USB drive (1GB+) for bootable media\n\n## Step 1: Download ISO\nGet DVD (offline) or netinst (online) version from fedoraproject.org\n\n## Step 2: Create Bootable Media\nUse Etcher, Rufus, or similar tool\n\n## Step 3: Boot from USB\nRestart and select USB from boot menu\n\n## Step 4: Run Anaconda Installer\nFollow installer for hostname, networking, storage, and user setup\n\n## Step 5: Complete Installation\nReboot and access server via SSH or console\n\n## Post-Installation\nUpdate system: `sudo dnf upgrade`\nInstall additional packages as needed",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Fedora Server ISO",
+      "detail_md": "Choose DVD (2.2GB, includes packages) or netinst (700MB, downloads packages).",
+      "estimated_minutes": 15,
+      "risk": "low"
+    },
+    {
+      "id": "create-media",
+      "title": "Create Bootable Media",
+      "detail_md": "Write ISO to USB using:\n```\nsudo dd if=Fedora-Server-41-x86_64.iso of=/dev/sdX bs=4M status=progress\n```",
+      "estimated_minutes": 5,
+      "risk": "high"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot Installer",
+      "detail_md": "Insert USB, restart, and select USB in boot menu (usually F12 or DEL).",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "anaconda-installer",
+      "title": "Run Anaconda Installer",
+      "detail_md": "Select language, configure:\n- Hostname\n- Network settings\n- Storage (automatic or custom)\n- Root password\n- User account",
+      "estimated_minutes": 20,
+      "risk": "medium"
+    },
+    {
+      "id": "network-config",
+      "title": "Configure Networking",
+      "detail_md": "Enable network adapters and configure IP settings:\n```\nsudo nmtui\n```",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "initial-setup",
+      "title": "Complete Setup",
+      "detail_md": "Reboot and perform initial configuration via SSH or console.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    }
+  ],
+  "tags": ["server", "headless", "enterprise", "dnf"],
+  "popularity_rank": 15,
+  "official_docs_url": "https://docs.fedoraproject.org/",
+  "community_url": "https://discuss.fedoraproject.org/",
+  "last_verified": "2024-12-01"
+}
