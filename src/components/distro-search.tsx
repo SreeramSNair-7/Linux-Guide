@@ -1,11 +1,10 @@
 // file: src/components/distro-search.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
-import { debounce } from '@/lib/utils';
 
 interface DistroSearchProps {
   initialQuery?: string;
@@ -15,20 +14,36 @@ export function DistroSearch({ initialQuery = '' }: DistroSearchProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(initialQuery);
+  const debounceTimerRef = useRef<NodeJS.Timeout>();
 
-  const handleSearch = debounce((value: string) => {
+  const handleSearch = useCallback((value: string) => {
     const params = new URLSearchParams(searchParams.toString());
-    if (value) {
-      params.set('search', value);
+    if (value.trim()) {
+      params.set('search', value.trim());
     } else {
       params.delete('search');
     }
     router.push(`/distros?${params.toString()}`);
-  }, 300);
+  }, [router, searchParams]);
 
   useEffect(() => {
-    handleSearch(query);
-  }, [query]);
+    // Clear existing timer
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+
+    // Set new timer for debouncing
+    debounceTimerRef.current = setTimeout(() => {
+      handleSearch(query);
+    }, 300);
+
+    // Cleanup on unmount
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
+  }, [query, handleSearch]);
 
   return (
     <div className="relative">
