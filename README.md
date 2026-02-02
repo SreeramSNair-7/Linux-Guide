@@ -8,7 +8,7 @@ A production-ready Next.js application for cataloging, comparing, and discoverin
 
 - 🔍 **Advanced Search**: Filter by family, desktop environment, and requirements with MeiliSearch
 - 🛡️ **Verified Checksums**: SHA256 verification for all ISO downloads with platform-specific commands
-- 🤖 **AI Assistant**: Local Ollama-powered recommendations and installation help
+- 🤖 **AI Assistant**: Cloud-powered (Hugging Face) with local fallback (Ollama)
 - ⚖️ **Compare Tool**: Side-by-side comparison of up to 4 distributions
 - 💝 **Favorites**: Save your favorite distros with localStorage persistence
 - 📱 **PWA Ready**: Installable progressive web app
@@ -23,14 +23,15 @@ A production-ready Next.js application for cataloging, comparing, and discoverin
 - **Backend**: Next.js API Routes, Node.js
 - **Database**: SQLite (dev) / PostgreSQL (production via Supabase)
 - **Search**: MeiliSearch
-- **AI**: Ollama (local inference with mistral-small-3)
+- **AI**: Hugging Face (cloud, free) + Ollama (local fallback)
 - **Testing**: Vitest (unit), Playwright (E2E)
 - **CI/CD**: GitHub Actions + Vercel
 
 ## Prerequisites
 
 - Node.js 18+ and npm 9+
-- Ollama installed locally ([https://ollama.ai](https://ollama.ai))
+- Hugging Face API token (free, from [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens))
+- Ollama (optional, for local AI fallback)
 - MeiliSearch (optional, for search functionality)
 
 ## Setup
@@ -52,13 +53,27 @@ cp .env.example .env
 ```
 
 Required variables:
+- `HUGGING_FACE_API_KEY`: Free token from [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)
 - `DATABASE_URL`: PostgreSQL connection string (or `file:./dev.db` for SQLite)
+
+Optional variables:
 - `OLLAMA_BASE_URL`: Ollama API endpoint (default: `http://localhost:11434`)
 - `OLLAMA_MODEL`: Model name (default: `mistral-small-3`)
 - `MEILISEARCH_HOST`: MeiliSearch endpoint
 - `MEILISEARCH_API_KEY`: MeiliSearch master key
 
-### 3. Start Ollama
+### 3. Configure Hugging Face
+
+Add your Hugging Face API key to `.env.local`:
+
+```bash
+# Get free token from https://huggingface.co/settings/tokens
+HUGGING_FACE_API_KEY="hf_your_token_here"
+```
+
+For detailed setup instructions, see [HUGGINGFACE_SETUP.md](HUGGINGFACE_SETUP.md).
+
+### 4. (Optional) Start Ollama for Local Fallback
 
 ```bash
 # Pull the model
@@ -68,7 +83,7 @@ ollama pull mistral-small-3
 ollama serve
 ```
 
-### 4. Start MeiliSearch (Optional)
+### 5. (Optional) Start MeiliSearch (Optional)
 
 ```bash
 # Using Docker
@@ -77,7 +92,7 @@ docker run -d -p 7700:7700 getmeili/meilisearch:latest
 # Or download binary from https://www.meilisearch.com/
 ```
 
-### 5. Development
+### 6. Development
 
 ```bash
 # Run development server
