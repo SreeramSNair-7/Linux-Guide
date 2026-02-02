@@ -2,6 +2,24 @@
 
 All notable changes to the Linux Distro Catalog are documented in this file.
 
+## [2.3.0] - 2026-02-02
+
+### Added
+- 🤖 **Hugging Face AI Integration**: Cloud-powered AI assistant (free tier)
+- 📖 **HUGGINGFACE_SETUP.md**: Complete setup guide with 2-minute configuration
+- 📋 **AI Provider Selection**: Auto-fallback from Hugging Face to Ollama
+- 🔄 **Provider Health Checks**: Monitoring for both AI providers
+
+### Changed
+- Updated README to highlight Hugging Face as primary AI provider
+- Made Hugging Face API key the primary prerequisite
+- Improved setup documentation with provider options
+
+### Security
+- API key configuration with minimal required permissions
+- Secure token storage in `.env.local`
+- HTTPS endpoint with TLS validation
+
 ## [2.2.0] - 2026-02-01
 
 ### Added
