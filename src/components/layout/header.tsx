@@ -20,20 +20,20 @@ export function Header() {
           </Link>
 
           <nav className="hidden items-center gap-6 md:flex">
-            <Link href="/about" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+            <Link href="/about" className="flex items-center gap-2 text-sm font-medium transition-all cursor-pointer hover:text-primary hover:scale-110">
               <Info className="h-4 w-4" />
               About
             </Link>
-            <Link href="/distros" className="text-sm font-medium transition-colors hover:text-primary">
+            <Link href="/distros" className="text-sm font-medium transition-all cursor-pointer hover:text-primary hover:scale-110">
               Browse
             </Link>
-            <Link href="/distros/quiz" className="text-sm font-medium transition-colors hover:text-primary">
+            <Link href="/distros/quiz" className="text-sm font-medium transition-all cursor-pointer hover:text-primary hover:scale-110">
               🎯 Quiz
             </Link>
-            <Link href="/submit" className="text-sm font-medium transition-colors hover:text-primary">
+            <Link href="/submit" className="text-sm font-medium transition-all cursor-pointer hover:text-primary hover:scale-110">
               Submit
             </Link>
-            <Link href="/favorites" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+            <Link href="/favorites" className="flex items-center gap-2 text-sm font-medium transition-all cursor-pointer hover:text-primary hover:scale-110">
               <Heart className="h-4 w-4" />
               Favorites
             </Link>
@@ -65,20 +65,20 @@ export function Header() {
 
         <div className="border-t bg-background md:hidden">
           <nav className="container mx-auto flex flex-col gap-4 p-4">
-            <Link href="/about" className="flex items-center gap-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="/about" className="flex items-center gap-2 text-sm font-medium transition-all cursor-pointer hover:text-primary hover:translate-x-1" onClick={() => setMobileMenuOpen(false)}>
               <Info className="h-4 w-4" />
               About
             </Link>
-            <Link href="/distros" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="/distros" className="text-sm font-medium transition-all cursor-pointer hover:text-primary hover:translate-x-1" onClick={() => setMobileMenuOpen(false)}>
               Browse
             </Link>
-            <Link href="/distros/quiz" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="/distros/quiz" className="text-sm font-medium transition-all cursor-pointer hover:text-primary hover:translate-x-1" onClick={() => setMobileMenuOpen(false)}>
               🎯 Quiz
             </Link>
-            <Link href="/submit" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="/submit" className="text-sm font-medium transition-all cursor-pointer hover:text-primary hover:translate-x-1" onClick={() => setMobileMenuOpen(false)}>
               Submit
             </Link>
-            <Link href="/favorites" className="flex items-center gap-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="/favorites" className="flex items-center gap-2 text-sm font-medium transition-all cursor-pointer hover:text-primary hover:translate-x-1" onClick={() => setMobileMenuOpen(false)}>
               <Heart className="h-4 w-4" />
               Favorites
             </Link>
