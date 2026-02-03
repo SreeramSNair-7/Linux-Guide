@@ -62,7 +62,7 @@ export function DistroCard({ distro }: DistroCardProps) {
   };
 
   return (
-    <Card className="flex flex-col transition-all cursor-zoom-in hover:shadow-xl hover:-translate-y-1">
+    <Card className="flex flex-col transition-all cursor-all-scroll hover:shadow-xl hover:-translate-y-1">
       <CardHeader>
         <div className="mb-2 flex items-start justify-between">
           <CardTitle className="text-xl">{distro.name}</CardTitle>
