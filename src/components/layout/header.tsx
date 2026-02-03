@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useTheme } from 'next-themes';
-import { Moon, Sun, Menu, Heart } from 'lucide-react';
+import { Moon, Sun, Menu, Heart, Info } from 'lucide-react';
 import { useState } from 'react';
 
 export function Header() {
@@ -32,6 +32,10 @@ export function Header() {
             <Link href="/favorites" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
               <Heart className="h-4 w-4" />
               Favorites
+            </Link>
+            <Link href="/about" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+              <Info className="h-4 w-4" />
+              About
             </Link>
             <Link href="/submit" className="text-sm font-medium transition-colors hover:text-primary">
               Submit
@@ -78,6 +82,10 @@ export function Header() {
             <Link href="/favorites" className="flex items-center gap-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               <Heart className="h-4 w-4" />
               Favorites
+            </Link>
+            <Link href="/about" className="flex items-center gap-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+              <Info className="h-4 w-4" />
+              About
             </Link>
             <Link href="/submit" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Submit
