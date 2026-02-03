@@ -62,7 +62,7 @@ export function DistroCard({ distro }: DistroCardProps) {
   };
 
   return (
-    <Card className="flex flex-col transition-shadow hover:shadow-lg">
+    <Card className="flex flex-col transition-all cursor-move hover:shadow-xl hover:-translate-y-1">
       <CardHeader>
         <div className="mb-2 flex items-start justify-between">
           <CardTitle className="text-xl">{distro.name}</CardTitle>
@@ -142,10 +142,10 @@ export function DistroCard({ distro }: DistroCardProps) {
       </CardContent>
 
       <CardFooter className="flex gap-2">
-        <Button asChild className="flex-1">
+        <Button asChild className="flex-1 cursor-pointer">
           <Link href={`/distros/${distro.id}`}>View Details</Link>
         </Button>
-        <Button asChild variant="outline">
+        <Button asChild variant="outline" className="cursor-pointer">
           <Link href={distro.official_docs_url} target="_blank" rel="noopener noreferrer">
             Docs
           </Link>
