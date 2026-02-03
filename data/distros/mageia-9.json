@@ -7,7 +7,7 @@
   "release_date": "2023-08-18",
   "target_users": ["beginner", "intermediate"],
   "desktop_environments": ["KDE Plasma", "GNOME"],
-  "package_manager": "urpmi",
+  "package_manager": "URPMI",
   "kernel": "6.4",
   "min_ram_mb": 2048,
   "min_storage_mb": 8000,

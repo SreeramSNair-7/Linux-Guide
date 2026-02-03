@@ -7,7 +7,7 @@
   "release_date": "2024-12-15",
   "target_users": ["intermediate", "advanced", "server", "developer"],
   "desktop_environments": ["GNOME", "KDE Plasma", "XFCE", "LXQt", "MATE", "Cinnamon"],
-  "package_manager": "apt",
+  "package_manager": "APT",
   "kernel": "6.1 LTS",
   "min_ram_mb": 1024,
   "min_storage_mb": 10000,

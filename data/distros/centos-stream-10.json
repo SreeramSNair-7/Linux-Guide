@@ -7,7 +7,7 @@
   "release_date": "2024-06-18",
   "target_users": ["intermediate", "advanced", "enterprise", "server"],
   "desktop_environments": ["GNOME", "KDE Plasma (minimal)"],
-  "package_manager": "dnf",
+  "package_manager": "DNF",
   "kernel": "Latest stable",
   "min_ram_mb": 1024,
   "min_storage_mb": 20000,

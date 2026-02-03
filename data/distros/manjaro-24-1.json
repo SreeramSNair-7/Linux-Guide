@@ -7,7 +7,7 @@
   "release_date": "2025-12-10",
   "target_users": ["beginner", "intermediate"],
   "desktop_environments": ["KDE Plasma", "GNOME", "XFCE"],
-  "package_manager": "pacman",
+  "package_manager": "PACMAN",
   "kernel": "6.8 LTS (switchable)",
   "min_ram_mb": 2000,
   "min_storage_mb": 20000,

@@ -7,7 +7,7 @@
   "release_date": "2018-07-16",
   "target_users": ["advanced", "enterprise", "server"],
   "desktop_environments": ["GNOME"],
-  "package_manager": "zypper",
+  "package_manager": "ZYPPER",
   "kernel": "5.14+",
   "min_ram_mb": 2048,
   "min_storage_mb": 15000,

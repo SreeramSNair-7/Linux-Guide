@@ -7,7 +7,7 @@
   "release_date": "2025-10-15",
   "target_users": ["advanced", "developer"],
   "desktop_environments": ["KDE Plasma", "GNOME", "XFCE"],
-  "package_manager": "apt",
+  "package_manager": "APT",
   "kernel": "6.10",
   "min_ram_mb": 2048,
   "min_storage_mb": 20000,

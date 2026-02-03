@@ -7,7 +7,7 @@
   "release_date": "2024-04-25",
   "target_users": ["beginner", "intermediate", "developer"],
   "desktop_environments": ["GNOME", "KDE Plasma", "XFCE", "LXQt", "MATE", "Budgie"],
-  "package_manager": "apt",
+  "package_manager": "APT",
   "kernel": "6.8",
   "min_ram_mb": 4096,
   "min_storage_mb": 25600,

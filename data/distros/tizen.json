@@ -7,7 +7,7 @@
   "release_date": "2020-01-01",
   "target_users": ["advanced", "developer"],
   "desktop_environments": ["Enlightenment", "Custom UI"],
-  "package_manager": "rpm",
+  "package_manager": "RPM",
   "kernel": "5.10+",
   "min_ram_mb": 256,
   "min_storage_mb": 1000,

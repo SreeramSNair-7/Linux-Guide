@@ -7,7 +7,7 @@
   "release_date": "2025-01-25",
   "target_users": ["beginner", "intermediate"],
   "desktop_environments": ["KDE Plasma"],
-  "package_manager": "pacman",
+  "package_manager": "PACMAN",
   "kernel": "Latest stable",
   "min_ram_mb": 4096,
   "min_storage_mb": 25000,

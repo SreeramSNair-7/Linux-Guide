@@ -7,7 +7,7 @@
   "release_date": "2024-05-01",
   "target_users": ["advanced", "developer"],
   "desktop_environments": ["Haiku UI"],
-  "package_manager": "HaikuDepot",
+  "package_manager": "HAIKUDEPOT",
   "kernel": "Haiku Kernel",
   "init_system": "Haiku",
   "min_ram_mb": 256,

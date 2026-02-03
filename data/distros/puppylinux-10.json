@@ -7,7 +7,7 @@
   "release_date": "2024-06-20",
   "target_users": ["beginner", "intermediate"],
   "desktop_environments": ["JWM", "Openbox"],
-  "package_manager": "petget",
+  "package_manager": "PETGET",
   "kernel": "6.1",
   "min_ram_mb": 256,
   "min_storage_mb": 512,

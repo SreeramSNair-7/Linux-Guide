@@ -7,7 +7,7 @@
   "release_date": "2024-12-15",
   "target_users": ["beginner", "intermediate", "developer"],
   "desktop_environments": ["LXDE", "LXQT"],
-  "package_manager": "apt",
+  "package_manager": "APT",
   "kernel": "6.6",
   "min_ram_mb": 512,
   "min_storage_mb": 2048,

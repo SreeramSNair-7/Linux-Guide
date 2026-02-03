@@ -7,7 +7,7 @@
   "release_date": "2024-01-15",
   "target_users": ["developer", "intermediate", "advanced"],
   "desktop_environments": ["Maui Shell"],
-  "package_manager": "apt",
+  "package_manager": "APT",
   "kernel": "6.6",
   "init_system": "systemd",
   "min_ram_mb": 2048,

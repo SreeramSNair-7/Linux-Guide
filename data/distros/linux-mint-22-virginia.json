@@ -7,7 +7,7 @@
   "release_date": "2024-07-01",
   "target_users": ["beginner", "intermediate"],
   "desktop_environments": ["Cinnamon", "MATE", "XFCE"],
-  "package_manager": "apt",
+  "package_manager": "APT",
   "kernel": "6.8 LTS",
   "min_ram_mb": 2048,
   "min_storage_mb": 20000,

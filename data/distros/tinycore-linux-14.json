@@ -7,7 +7,7 @@
   "release_date": "2024-03-15",
   "target_users": ["advanced", "developer"],
   "desktop_environments": ["Fluxbox"],
-  "package_manager": "tce",
+  "package_manager": "TCE",
   "kernel": "6.4",
   "init_system": "BusyBox",
   "min_ram_mb": 32,

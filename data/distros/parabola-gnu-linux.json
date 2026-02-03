@@ -7,7 +7,7 @@
   "release_date": "2024-12-02",
   "target_users": ["advanced", "developer"],
   "desktop_environments": ["XFCE", "Openbox", "IceWM"],
-  "package_manager": "pacman",
+  "package_manager": "PACMAN",
   "kernel": "linux-libre",
   "min_ram_mb": 1024,
   "min_storage_mb": 15360,

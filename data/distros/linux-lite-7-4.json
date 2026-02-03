@@ -7,7 +7,7 @@
   "release_date": "2024-08-15",
   "target_users": ["beginner", "intermediate"],
   "desktop_environments": ["Xfce"],
-  "package_manager": "apt",
+  "package_manager": "APT",
   "kernel": "6.8 LTS",
   "min_ram_mb": 768,
   "min_storage_mb": 12000,

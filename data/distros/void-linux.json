@@ -7,7 +7,7 @@
   "release_date": "2024-01-15",
   "target_users": ["intermediate", "advanced"],
   "desktop_environments": ["XFCE", "KDE Plasma", "MATE", "i3"],
-  "package_manager": "xbps",
+  "package_manager": "XBPS",
   "kernel": "Latest stable",
   "min_ram_mb": 1024,
   "min_storage_mb": 15000,

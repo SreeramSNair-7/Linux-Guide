@@ -7,7 +7,7 @@
   "release_date": "2024-12-20",
   "target_users": ["beginner", "intermediate"],
   "desktop_environments": ["Zorin Desktop (GNOME based)"],
-  "package_manager": "apt",
+  "package_manager": "APT",
   "kernel": "6.8",
   "min_ram_mb": 2000,
   "min_storage_mb": 20000,

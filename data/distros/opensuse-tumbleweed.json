@@ -7,7 +7,7 @@
   "release_date": "2026-01-20",
   "target_users": ["intermediate", "advanced", "developer"],
   "desktop_environments": ["KDE Plasma", "GNOME", "XFCE"],
-  "package_manager": "zypper",
+  "package_manager": "ZYPPER",
   "kernel": "Latest stable",
   "min_ram_mb": 2048,
   "min_storage_mb": 20000,

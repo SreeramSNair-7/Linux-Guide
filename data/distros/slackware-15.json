@@ -7,7 +7,7 @@
   "release_date": "2022-02-02",
   "target_users": ["advanced", "developer"],
   "desktop_environments": ["KDE Plasma", "XFCE", "LightDM"],
-  "package_manager": "pkgtool",
+  "package_manager": "PKGTOOL",
   "kernel": "5.15",
   "min_ram_mb": 512,
   "min_storage_mb": 5000,

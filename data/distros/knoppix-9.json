@@ -7,7 +7,7 @@
   "release_date": "2023-03-01",
   "target_users": ["beginner", "intermediate"],
   "desktop_environments": ["KDE Plasma"],
-  "package_manager": "apt",
+  "package_manager": "APT",
   "kernel": "6.1",
   "min_ram_mb": 512,
   "min_storage_mb": 700,

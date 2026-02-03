@@ -7,7 +7,7 @@
   "release_date": "2024-10-10",
   "target_users": ["beginner", "intermediate"],
   "desktop_environments": ["Xfce"],
-  "package_manager": "apt",
+  "package_manager": "APT",
   "kernel": "6.11 LTS",
   "min_ram_mb": 1024,
   "min_storage_mb": 15000,

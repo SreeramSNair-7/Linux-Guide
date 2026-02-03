@@ -7,7 +7,7 @@
   "release_date": "2022-07-07",
   "target_users": ["beginner", "intermediate"],
   "desktop_environments": ["Xfce"],
-  "package_manager": "apt",
+  "package_manager": "APT",
   "kernel": "5.15",
   "min_ram_mb": 512,
   "min_storage_mb": 5000,

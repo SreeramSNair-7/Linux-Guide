@@ -7,7 +7,7 @@
   "release_date": "2024-12-01",
   "target_users": ["advanced", "developer"],
   "desktop_environments": ["GNOME", "KDE Plasma", "XFCE"],
-  "package_manager": "nix",
+  "package_manager": "NIX",
   "kernel": "6.6",
   "min_ram_mb": 2048,
   "min_storage_mb": 20480,

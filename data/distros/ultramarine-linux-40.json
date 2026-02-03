@@ -7,7 +7,7 @@
   "release_date": "2024-06-20",
   "target_users": ["developer", "intermediate", "advanced"],
   "desktop_environments": ["GNOME", "Budgie", "KDE Plasma"],
-  "package_manager": "dnf",
+  "package_manager": "DNF",
   "kernel": "6.8",
   "init_system": "systemd",
   "min_ram_mb": 2048,

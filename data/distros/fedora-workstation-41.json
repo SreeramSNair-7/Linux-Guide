@@ -7,7 +7,7 @@
   "release_date": "2025-11-05",
   "target_users": ["beginner", "intermediate", "developer"],
   "desktop_environments": ["GNOME"],
-  "package_manager": "dnf5",
+  "package_manager": "DNF5",
   "kernel": "6.8+ (Wayland default)",
   "min_ram_mb": 4096,
   "min_storage_mb": 25000,

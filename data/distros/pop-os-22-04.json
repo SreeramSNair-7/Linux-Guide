@@ -7,7 +7,7 @@
   "release_date": "2024-02-15",
   "target_users": ["beginner", "intermediate", "developer"],
   "desktop_environments": ["COSMIC (GNOME based)"],
-  "package_manager": "apt",
+  "package_manager": "APT",
   "kernel": "6.6 LTS",
   "min_ram_mb": 4096,
   "min_storage_mb": 25000,

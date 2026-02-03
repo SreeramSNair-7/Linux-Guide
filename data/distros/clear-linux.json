@@ -7,7 +7,7 @@
   "release_date": "2023-01-01",
   "target_users": ["advanced", "developer"],
   "desktop_environments": ["GNOME", "KDE Plasma"],
-  "package_manager": "swupd",
+  "package_manager": "SWUPD",
   "kernel": "6.6+",
   "min_ram_mb": 2048,
   "min_storage_mb": 5000,

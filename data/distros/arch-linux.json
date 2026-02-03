@@ -7,7 +7,7 @@
   "release_date": "2026-01-01",
   "target_users": ["advanced", "developer"],
   "desktop_environments": ["User choice"],
-  "package_manager": "pacman",
+  "package_manager": "PACMAN",
   "kernel": "Latest stable",
   "min_ram_mb": 2048,
   "min_storage_mb": 15000,

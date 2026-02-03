@@ -7,7 +7,7 @@
   "release_date": "2024-11-20",
   "target_users": ["beginner", "intermediate"],
   "desktop_environments": ["Budgie", "GNOME", "KDE Plasma", "MATE"],
-  "package_manager": "eopkg",
+  "package_manager": "EOPKG",
   "kernel": "6.10 LTS",
   "min_ram_mb": 2048,
   "min_storage_mb": 20000,

@@ -7,7 +7,7 @@
   "release_date": "2024-12-20",
   "target_users": ["intermediate", "advanced"],
   "desktop_environments": ["KDE Plasma", "GNOME", "XFCE", "i3", "LXQt", "MATE", "Cinnamon", "Budgie"],
-  "package_manager": "pacman",
+  "package_manager": "PACMAN",
   "kernel": "Latest stable",
   "min_ram_mb": 2000,
   "min_storage_mb": 15000,

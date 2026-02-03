@@ -7,7 +7,7 @@
   "release_date": "2013-06-01",
   "target_users": ["advanced", "developer"],
   "desktop_environments": ["Fluxbox", "OpenBox", "i3"],
-  "package_manager": "pacman",
+  "package_manager": "PACMAN",
   "kernel": "6.6+",
   "min_ram_mb": 2048,
   "min_storage_mb": 20000,
