@@ -20,25 +20,22 @@ export function Header() {
           </Link>
 
           <nav className="hidden items-center gap-6 md:flex">
+            <Link href="/about" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+              <Info className="h-4 w-4" />
+              About
+            </Link>
             <Link href="/distros" className="text-sm font-medium transition-colors hover:text-primary">
               Browse
             </Link>
             <Link href="/distros/quiz" className="text-sm font-medium transition-colors hover:text-primary">
               🎯 Quiz
             </Link>
-            <Link href="/distros/compare" className="text-sm font-medium transition-colors hover:text-primary">
-              Compare
+            <Link href="/submit" className="text-sm font-medium transition-colors hover:text-primary">
+              Submit
             </Link>
             <Link href="/favorites" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
               <Heart className="h-4 w-4" />
               Favorites
-            </Link>
-            <Link href="/about" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
-              <Info className="h-4 w-4" />
-              About
-            </Link>
-            <Link href="/submit" className="text-sm font-medium transition-colors hover:text-primary">
-              Submit
             </Link>
           </nav>
         </div>
@@ -66,33 +63,27 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
         <div className="border-t bg-background md:hidden">
           <nav className="container mx-auto flex flex-col gap-4 p-4">
+            <Link href="/about" className="flex items-center gap-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+              <Info className="h-4 w-4" />
+              About
+            </Link>
             <Link href="/distros" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               Browse
             </Link>
             <Link href="/distros/quiz" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               🎯 Quiz
             </Link>
-            <Link href="/distros/compare" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-              Compare
+            <Link href="/submit" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+              Submit
             </Link>
             <Link href="/favorites" className="flex items-center gap-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
               <Heart className="h-4 w-4" />
               Favorites
             </Link>
-            <Link href="/about" className="flex items-center gap-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-              <Info className="h-4 w-4" />
-              About
-            </Link>
-            <Link href="/submit" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-              Submit
-            </Link>
           </nav>
         </div>
-      )}
     </header>
   );
 }
