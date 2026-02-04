@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <!-- Penguin Body -->
+  <ellipse cx="240" cy="280" rx="50" ry="70" fill="#0B1220"/>
+  <circle cx="240" cy="180" r="40" fill="#0B1220"/>
+  
+  <!-- Penguin Eye -->
+  <circle cx="230" cy="170" r="8" fill="white"/>
+  <circle cx="232" cy="171" r="4" fill="#0B1220"/>
+  
+  <!-- Penguin Beak -->
+  <polygon points="250,180 265,175 260,185" fill="#FF7A59"/>
+  
+  <!-- Penguin Flipper -->
+  <ellipse cx="210" cy="250" rx="25" ry="40" fill="#0B1220" transform="rotate(-30 210 250)"/>
+  
+  <!-- Dolphin Body -->
+  <ellipse cx="420" cy="240" rx="80" ry="50" fill="#00B3A4"/>
+  
+  <!-- Dolphin Head -->
+  <circle cx="450" cy="220" r="35" fill="#00B3A4"/>
+  
+  <!-- Dolphin Eye -->
+  <circle cx="465" cy="210" r="6" fill="white"/>
+  <circle cx="466" cy="210" r="3" fill="#0B1220"/>
+  
+  <!-- Dolphin Fin -->
+  <polygon points="500,240 530,220 520,260" fill="#00B3A4"/>
+  <polygon points="380,290 360,310 390,310" fill="#00B3A4"/>
+  
+  <!-- Dolphin Tail -->
+  <ellipse cx="350" cy="270" rx="30" ry="50" fill="#00B3A4" transform="rotate(45 350 270)"/>
+  
+  <!-- Lifebuoy Outer Ring -->
+  <circle cx="330" cy="260" r="45" fill="none" stroke="#BDF3FF" stroke-width="8"/>
+  
+  <!-- Lifebuoy Inner Ring -->
+  <circle cx="330" cy="260" r="30" fill="none" stroke="#BDF3FF" stroke-width="6"/>
+  
+  <!-- Heart -->
+  <path d="M 330,240 Q 320,230 312,230 Q 305,230 305,237 Q 305,245 330,260 Q 355,245 355,237 Q 355,230 348,230 Q 340,230 330,240 Z" fill="#FF7A59"/>
+  
+  <!-- Connection Line 1 -->
+  <line x1="280" y1="250" x2="305" y2="260" stroke="#00B3A4" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Connection Line 2 -->
+  <line x1="355" y1="260" x2="380" y2="270" stroke="#00B3A4" stroke-width="2" opacity="0.6"/>
+</svg>
