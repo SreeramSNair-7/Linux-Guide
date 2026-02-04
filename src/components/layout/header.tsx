@@ -20,9 +20,9 @@ export function Header() {
             <Image 
               src="/logo.svg" 
               alt="Linux Distro Catalog Logo" 
-              width={40} 
-              height={40}
-              className="h-10 w-10"
+              width={56} 
+              height={56}
+              className="h-14 w-14"
             />
             <span className="hidden sm:inline text-xl font-bold">Linux Distro Catalog</span>
           </Link>
