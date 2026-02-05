@@ -51,18 +51,18 @@ export default function HomePage() {
         isFirstVisit={isFirstVisit} 
         onClose={() => localStorage.setItem('tour-completed', 'true')}
       />
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
         {/* Hero Section */}
-        <section className="mb-16 text-center">
-          <h1 className="mb-4 text-5xl font-bold tracking-tight sm:text-6xl">
+        <section className="mb-8 sm:mb-16 text-center">
+          <h1 className="mb-3 sm:mb-4 text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
             Find Your Perfect
             <span className="block text-primary">Linux Distribution</span>
           </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground">
+          <p className="mx-auto mb-6 sm:mb-8 max-w-2xl text-base sm:text-lg text-muted-foreground">
             Explore {allDistros.length}+ Linux distributions with detailed guides, verified ISO
             downloads, and AI-powered recommendations tailored to your needs.
           </p>
-          <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <div className="flex flex-col gap-2 sm:gap-4 sm:flex-row sm:justify-center">
             <Button asChild size="lg" id="quiz-button">
               <Link href="/distros/quiz">🎯 Find My Distro</Link>
             </Button>
@@ -79,9 +79,9 @@ export default function HomePage() {
         </section>
 
         {/* Features Grid */}
-        <section className="mb-16">
-          <h2 className="mb-8 text-center text-3xl font-bold">Why Use Our Catalog?</h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4" id="search-area">
+        <section className="mb-8 sm:mb-16">
+          <h2 className="mb-6 sm:mb-8 text-center text-2xl sm:text-3xl font-bold">Why Use Our Catalog?</h2>
+          <div className="grid gap-3 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" id="search-area">
             <Card>
               <CardHeader>
                 <Search className="mb-2 h-8 w-8 text-primary" aria-hidden="true" />

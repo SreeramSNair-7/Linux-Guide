@@ -63,15 +63,16 @@ export function DistroCard({ distro }: DistroCardProps) {
 
   return (
     <Card className="flex flex-col transition-all cursor-all-scroll hover:shadow-xl hover:-translate-y-1">
-      <CardHeader>
-        <div className="mb-2 flex items-start justify-between">
-          <CardTitle className="text-xl">{distro.name}</CardTitle>
+      <CardHeader className="pb-3 sm:pb-4">
+        <div className="mb-2 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+          <CardTitle className="text-base sm:text-xl">{distro.name}</CardTitle>
           <Button
             variant="ghost"
             size="icon"
             onClick={handleToggleFavorite}
             disabled={isLoading}
             aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'}
+            className="h-8 w-8 sm:h-10 sm:w-10 sm:ml-auto"
           >
             <Heart
               className={`h-4 w-4 transition-colors ${favorite ? 'text-red-500' : 'text-muted-foreground'}`}
@@ -80,33 +81,33 @@ export function DistroCard({ distro }: DistroCardProps) {
           </Button>
         </div>
         {distro.popularity_rank && distro.popularity_rank <= 10 && (
-          <Badge variant="default">Popular</Badge>
+          <Badge variant="default" className="w-fit text-xs">Popular</Badge>
         )}
-        <CardDescription className="mt-1">{distro.family} Family</CardDescription>
-        <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
+        <CardDescription className="mt-1 text-xs sm:text-sm">{distro.family} Family</CardDescription>
+        <div className="mt-2 flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
           <div className="flex items-center gap-1">{renderStars(rating.average)}</div>
           <span>{rating.count > 0 ? rating.average.toFixed(1) : 'No ratings'} ({rating.count})</span>
         </div>
       </CardHeader>
 
-      <CardContent className="flex-1">
-        <div className="mb-4 space-y-2 text-sm">
+      <CardContent className="flex-1 pb-3 sm:pb-4">
+        <div className="mb-4 space-y-1 sm:space-y-2 text-xs sm:text-sm">
           <div className="flex items-center gap-2 text-muted-foreground">
-            <Calendar className="h-4 w-4" aria-hidden="true" />
-            <span>Released: {formatDate(distro.release_date)}</span>
+            <Calendar className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" aria-hidden="true" />
+            <span className="truncate">Released: {formatDate(distro.release_date)}</span>
           </div>
           <div className="flex items-center gap-2 text-muted-foreground">
-            <HardDrive className="h-4 w-4" aria-hidden="true" />
-            <span>Min RAM: {formatFileSize(distro.min_ram_mb)}</span>
+            <HardDrive className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" aria-hidden="true" />
+            <span className="truncate">Min RAM: {formatFileSize(distro.min_ram_mb)}</span>
           </div>
           <div className="flex items-center gap-2 text-muted-foreground">
-            <Cpu className="h-4 w-4" aria-hidden="true" />
-            <span>{distro.package_manager}</span>
+            <Cpu className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" aria-hidden="true" />
+            <span className="truncate">{distro.package_manager}</span>
           </div>
           {primaryIso && (
             <div className="flex items-center gap-2 text-muted-foreground">
-              <Download className="h-4 w-4" aria-hidden="true" />
-              <span>ISO: {formatFileSize(primaryIso.size_mb)}</span>
+              <Download className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" aria-hidden="true" />
+              <span className="truncate">ISO: {formatFileSize(primaryIso.size_mb)}</span>
             </div>
           )}
         </div>
@@ -117,7 +118,7 @@ export function DistroCard({ distro }: DistroCardProps) {
           </div>
           <div className="flex flex-wrap gap-1">
             {distro.target_users.slice(0, 3).map((user) => (
-              <Badge key={user} variant="secondary">
+              <Badge key={user} variant="secondary" className="text-xs">
                 {user}
               </Badge>
             ))}
@@ -130,22 +131,22 @@ export function DistroCard({ distro }: DistroCardProps) {
           </div>
           <div className="flex flex-wrap gap-1">
             {distro.desktop_environments.slice(0, 3).map((de) => (
-              <Badge key={de} variant="outline">
+              <Badge key={de} variant="outline" className="text-xs">
                 {de}
               </Badge>
             ))}
             {distro.desktop_environments.length > 3 && (
-              <Badge variant="outline">+{distro.desktop_environments.length - 3} more</Badge>
+              <Badge variant="outline" className="text-xs">+{distro.desktop_environments.length - 3} more</Badge>
             )}
           </div>
         </div>
       </CardContent>
 
-      <CardFooter className="flex gap-2">
-        <Button asChild className="flex-1 cursor-pointer">
+      <CardFooter className="flex flex-col sm:flex-row gap-2">
+        <Button asChild className="flex-1 cursor-pointer text-xs sm:text-sm h-9 sm:h-10">
           <Link href={`/distros/${distro.id}`}>View Details</Link>
         </Button>
-        <Button asChild variant="outline" className="cursor-pointer">
+        <Button asChild variant="outline" className="flex-1 cursor-pointer text-xs sm:text-sm h-9 sm:h-10">
           <Link href={distro.official_docs_url} target="_blank" rel="noopener noreferrer">
             Docs
           </Link>
