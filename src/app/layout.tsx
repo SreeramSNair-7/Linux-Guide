@@ -6,6 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { ChatWidget } from '@/components/chat-widget';
+import { LoadingScreen } from '@/components/loading-screen';
 
 // const inter = Inter({ subsets: ['latin'] }); // Disabled - cert error
 
@@ -65,6 +66,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="font-sans">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <LoadingScreen />
           <div className="flex min-h-screen flex-col">
             <Header />
             <main className="flex-1">{children}</main>
