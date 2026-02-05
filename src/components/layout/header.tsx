@@ -90,9 +90,6 @@ export function Header() {
             <Mail className="h-3 w-3" />
             Contact
           </Link>
-            <Heart className="h-3 w-3" />
-            Favorites
-          </Link>
         </div>
       </nav>
     </header>
