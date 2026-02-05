@@ -41,13 +41,13 @@ export function Header() {
             <Link href="/submit" className="text-xs lg:text-sm font-medium transition-all cursor-pointer hover:text-primary hover:scale-110 whitespace-nowrap">
               Submit
             </Link>
-            <Link href="/contact" className="flex items-center gap-1 text-xs lg:text-sm font-medium transition-all cursor-pointer hover:text-primary hover:scale-110 whitespace-nowrap">
-              <Mail className="h-4 w-4" />
-              Contact
-            </Link>
             <Link href="/favorites" className="flex items-center gap-1 text-xs lg:text-sm font-medium transition-all cursor-pointer hover:text-primary hover:scale-110 whitespace-nowrap">
               <Heart className="h-4 w-4" />
               Favorites
+            </Link>
+            <Link href="/contact" className="flex items-center gap-1 text-xs lg:text-sm font-medium transition-all cursor-pointer hover:text-primary hover:scale-110 whitespace-nowrap">
+              <Mail className="h-4 w-4" />
+              Contact
             </Link>
           </nav>
         </div>
@@ -82,11 +82,14 @@ export function Header() {
           <Link href="/submit" className="text-xs font-medium transition-all cursor-pointer hover:text-primary px-2 py-1 rounded hover:bg-accent">
             Submit
           </Link>
+          <Link href="/favorites" className="flex items-center gap-1 text-xs font-medium transition-all cursor-pointer hover:text-primary px-2 py-1 rounded hover:bg-accent">
+            <Heart className="h-3 w-3" />
+            Favorites
+          </Link>
           <Link href="/contact" className="flex items-center gap-1 text-xs font-medium transition-all cursor-pointer hover:text-primary px-2 py-1 rounded hover:bg-accent">
             <Mail className="h-3 w-3" />
             Contact
           </Link>
-          <Link href="/favorites" className="flex items-center gap-1 text-xs font-medium transition-all cursor-pointer hover:text-primary px-2 py-1 rounded hover:bg-accent">
             <Heart className="h-3 w-3" />
             Favorites
           </Link>
