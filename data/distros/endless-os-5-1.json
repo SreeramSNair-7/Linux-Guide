@@ -1,0 +1,86 @@
+{
+  "id": "endless-os-5-1",
+  "name": "Endless OS 5.1",
+  "family": "Debian",
+  "latest_version": "5.1.0",
+  "codename": "",
+  "release_date": "2024-01-15",
+  "license": "GPL and various open source licenses",
+  "target_users": ["beginner"],
+  "desktop_environments": ["GNOME"],
+  "package_manager": "FLATPAK",
+  "kernel": "6.1",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 20480,
+  "iso_files": [
+    {
+      "id": "eos-eos5.1-amd64-amd64",
+      "url": "https://images-dl.endlessm.com/release/5.1.0/eos-eos5.1-amd64-amd64.230725-170612.base.iso",
+      "filename": "eos-eos5.1-amd64-amd64.iso",
+      "size_mb": 16000,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [16000],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://support.endlessos.org/",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# Endless OS 5.1 Installation Guide\n\n## Prerequisites\n- 2 GB RAM minimum (4 GB recommended)\n- 20 GB free disk space\n- USB drive (16 GB+) for bootable media\n- Internet connection (for updates and additional apps)\n\n## Step 1: Download and Verify ISO\nDownload from official Endless website.\n\n## Step 2: Create Bootable USB\nUse Endless OS USB Creator tool or Etcher.\n\n## Step 3: Boot from USB\nRestart computer and access boot menu.\n\n## Step 4: Install Endless OS\nFollow simple graphical installer designed for beginners.\n\n## Step 5: Post-Installation\nExplore pre-installed educational content and apps. Install additional apps from App Center (Flatpak).",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Endless OS ISO",
+      "detail_md": "Download Endless OS 5.1 from the official website.\n\n**Full ISO**: 16 GB (includes offline educational content)  \n\nEndless OS is designed for families and education with pre-loaded content.",
+      "estimated_minutes": 45,
+      "risk": "low"
+    },
+    {
+      "id": "verify-checksum",
+      "title": "Verify ISO Checksum",
+      "detail_md": "Verify the downloaded ISO using SHA256 checksum to ensure file integrity.",
+      "estimated_minutes": 3,
+      "risk": "low"
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (16 GB or larger) due to large ISO size.\n\nRecommended: Use Endless OS USB Creator tool or Etcher.\n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 20,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot from USB Drive",
+      "detail_md": "Insert USB drive and restart your computer. Access boot menu to select USB drive.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "install-system",
+      "title": "Install Endless OS",
+      "detail_md": "Follow the beginner-friendly installer:\n- Select language\n- Choose installation disk\n- Create user account\n- Choose whether to share telemetry data\n- Install system",
+      "estimated_minutes": 25,
+      "risk": "high"
+    },
+    {
+      "id": "explore-content",
+      "title": "Explore Pre-loaded Content",
+      "detail_md": "After installation, explore:\n- Encyclopedia content (offline Wikipedia)\n- Educational games and apps\n- Coding tutorials (Hack Computer)\n- App Center for additional Flatpak apps",
+      "estimated_minutes": 15,
+      "risk": "low"
+    }
+  ],
+  "tags": ["education", "family-friendly", "offline-content", "flatpak", "beginner", "kids"],
+  "description": "Endless OS is a user-friendly Linux distribution designed for families and education. It comes with extensive offline educational content, including encyclopedia articles and learning apps.",
+  "long_description": "Endless OS is a unique Linux distribution built specifically for families, students, and educational institutions. It's based on Debian and uses OSTree technology for reliable system updates. The distribution ships with extensive offline content including encyclopedia articles (from Wikipedia), educational videos, games, and learning applications. This makes it ideal for areas with limited or no internet connectivity. Endless OS uses a GNOME-based desktop that's simplified and intuitive for beginners. Instead of traditional package managers, it exclusively uses Flatpak for application installation, ensuring app sandboxing and compatibility. The Hack Computer feature teaches programming concepts interactively. Endless OS is particularly popular in developing countries and educational settings where it provides a complete learning environment out of the box.",
+  "popularity_rank": 52,
+  "homepage": "https://www.endlessos.org/",
+  "documentation_url": "https://support.endlessos.org/",
+  "forum_url": "https://community.endlessos.com/",
+  "support_channels": ["Forum", "Knowledge Base", "Email Support"]
+}

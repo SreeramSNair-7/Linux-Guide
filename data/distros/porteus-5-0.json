@@ -1,0 +1,114 @@
+{
+  "id": "porteus-5-0",
+  "name": "Porteus 5.0",
+  "family": "Slackware",
+  "latest_version": "5.0",
+  "codename": "",
+  "release_date": "2022-07-15",
+  "license": "GPL and various open source licenses",
+  "target_users": ["intermediate", "advanced"],
+  "desktop_environments": ["KDE Plasma", "XFCE", "Openbox", "MATE"],
+  "package_manager": "USM",
+  "kernel": "5.16",
+  "min_ram_mb": 512,
+  "min_storage_mb": 350,
+  "iso_files": [
+    {
+      "id": "porteus-5.0-kde-x86_64",
+      "url": "http://porteus.org/component/ospdownloads/",
+      "filename": "Porteus-KDE-v5.0-x86_64.iso",
+      "size_mb": 340,
+      "sha256": "placeholder_sha256_checksum_here",
+      "region": "Global",
+      "protocol": "http",
+      "hosted": false
+    },
+    {
+      "id": "porteus-5.0-xfce-x86_64",
+      "url": "http://porteus.org/component/ospdownloads/",
+      "filename": "Porteus-XFCE-v5.0-x86_64.iso",
+      "size_mb": 310,
+      "sha256": "placeholder_sha256_checksum_here",
+      "region": "Global",
+      "protocol": "http",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [340, 310],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000",
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "http://www.porteus.org/tutorials.html",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# Porteus 5.0 Usage Guide\n\n## Prerequisites\n- 512 MB RAM minimum (1 GB recommended)\n- USB drive (1 GB+) for portable installation\n- Optional: Hard drive for persistent changes\n\n## Note\nPorteus is designed to run from USB/CD/DVD. It can boot in under 30 seconds and run entirely in RAM.\n\n## Step 1: Download ISO\nDownload from official Porteus website. Choose your preferred desktop edition.\n\n## Step 2: Create Bootable USB\nUse Porteus Installer (Windows/Linux) or dd command.\n\n## Step 3: Boot Porteus\nBoot from USB drive. System loads into RAM for fast performance.\n\n## Step 4: Optional Persistent Storage\nCreate a save file or partition for persistent changes across reboots.\n\n## Step 5: Use Modular System\nInstall software as modules (.xzm files) for easy management.",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Porteus ISO",
+      "detail_md": "Download Porteus 5.0 from the official website. Choose desktop edition:\n\n**KDE Plasma**: 340 MB  \n**XFCE**: 310 MB  \n**Openbox**: ~280 MB  \n**MATE**: ~320 MB  \n\nPorteus is extremely fast, booting in under 30 seconds.",
+      "estimated_minutes": 4,
+      "risk": "low"
+    },
+    {
+      "id": "verify-checksum",
+      "title": "Verify ISO Checksum",
+      "detail_md": "Verify the downloaded ISO using SHA256 checksum to ensure file integrity.",
+      "estimated_minutes": 1,
+      "risk": "low"
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (1 GB or larger).\n\n**Recommended**: Use Porteus Installer tool (available for Windows and Linux)  \n**Alternative**: Use `dd` command on Linux  \n\n**WARNING**: This will format the USB drive.",
+      "estimated_minutes": 5,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-porteus",
+      "title": "Boot Porteus",
+      "detail_md": "Insert USB drive and restart computer. Access boot menu to select USB drive.\n\nPorteus boots very quickly (under 30 seconds) and runs entirely in RAM for maximum speed.",
+      "estimated_minutes": 1,
+      "risk": "low"
+    },
+    {
+      "id": "setup-persistence",
+      "title": "Setup Persistent Storage (Optional)",
+      "detail_md": "To save changes across reboots:\n\n**Option 1**: Create a save.dat file on USB  \n**Option 2**: Use a dedicated save partition  \n**Option 3**: Always Fresh mode (no persistence)  \n\nAccess Porteus Settings Manager to configure.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "install-modules",
+      "title": "Install Software Modules",
+      "detail_md": "Porteus uses modular architecture:\n\nSoftware comes as .xzm modules that can be:\n- Activated/deactivated instantly\n- Stored on USB or hard drive\n- Downloaded from Porteus repository\n\nUse Porteus Package Manager (USM) to search and install modules.",
+      "estimated_minutes": 5,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "usm -u all",
+          "platform": "linux",
+          "explanation": "Update all USM databases"
+        },
+        {
+          "command": "usm -s firefox",
+          "platform": "linux",
+          "explanation": "Search for Firefox package"
+        },
+        {
+          "command": "usm -g firefox",
+          "platform": "linux",
+          "explanation": "Download and install Firefox"
+        }
+      ]
+    }
+  ],
+  "tags": ["portable", "fast", "modular", "live-system", "slackware-based", "usb"],
+  "description": "Porteus is a fast, portable, and modular Linux distribution based on Slackware. It boots in under 30 seconds and runs entirely in RAM from USB, CD, or hard drive.",
+  "long_description": "Porteus is a complete, portable Linux operating system optimized for running from removable media (USB drives, CDs, hard drives) or network boot. Based on Slackware, it's designed to be incredibly fast - typically booting in under 30 seconds - and runs entirely in RAM after boot, making it exceptionally responsive. Porteus uses a unique modular system where software is packaged as .xzm modules that can be activated or deactivated on the fly without rebooting. This makes software management extremely flexible. Users can choose between several desktop environments (KDE, XFCE, Openbox, MATE), each available as a separate edition. Porteus can run in 'Always Fresh' mode (no persistence), or save changes to a file/partition for persistence. The distribution includes the USM (Unified Slackware Package Manager) tool for easy software installation. It's ideal for system rescue, secure browsing, portable workstation, or running Linux on computers where you can't modify the hard drive.",
+  "popularity_rank": 62,
+  "homepage": "http://www.porteus.org/",
+  "documentation_url": "http://www.porteus.org/tutorials.html",
+  "forum_url": "http://forum.porteus.org/",
+  "support_channels": ["Forum", "Documentation", "IRC"]
+}

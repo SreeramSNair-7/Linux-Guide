@@ -1,0 +1,86 @@
+{
+  "id": "feren-os-2024-01",
+  "name": "Feren OS 2024.01",
+  "family": "Debian",
+  "latest_version": "2024.01",
+  "codename": "",
+  "release_date": "2024-01-20",
+  "license": "GPL and various open source licenses",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["KDE Plasma"],
+  "package_manager": "APT",
+  "kernel": "6.5",
+  "min_ram_mb": 4096,
+  "min_storage_mb": 25600,
+  "iso_files": [
+    {
+      "id": "feren-os-2024.01-amd64",
+      "url": "https://ferenoslinux.github.io/download/",
+      "filename": "feren-os-2024.01-amd64.iso",
+      "size_mb": 3800,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [3800],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://feren-os.github.io/",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# Feren OS 2024.01 Installation Guide\n\n## Prerequisites\n- 4 GB RAM minimum (8 GB recommended)\n- 25 GB free disk space\n- USB drive (4 GB+) for bootable media\n- Internet connection recommended\n\n## Step 1: Download and Verify ISO\nDownload from official Feren OS website.\n\n## Step 2: Create Bootable USB\nUse tools like Rufus (Windows), Etcher (cross-platform), or dd (Linux).\n\n## Step 3: Boot from USB\nRestart computer and access boot menu.\n\n## Step 4: Install Feren OS\nFollow graphical Calamares installer.\n\n## Step 5: Post-Installation\nExplore the polished KDE desktop, transfer tool for Windows users, and discover the curated software collection.",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Feren OS ISO",
+      "detail_md": "Download Feren OS 2024.01 from the official website.\n\n**ISO Size**: 3.8 GB  \n\nFeren OS is designed to be familiar for Windows users switching to Linux.",
+      "estimated_minutes": 20,
+      "risk": "low"
+    },
+    {
+      "id": "verify-checksum",
+      "title": "Verify ISO Checksum",
+      "detail_md": "Verify the downloaded ISO using SHA256 checksum to ensure file integrity.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (4 GB or larger) to create bootable installation media.\n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 8,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot from USB Drive",
+      "detail_md": "Insert USB drive and restart your computer. Access boot menu to select USB drive.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "install-system",
+      "title": "Install Feren OS",
+      "detail_md": "Click \"Install Feren OS\" icon on the live desktop.\n\nFollow Calamares installer:\n- Select language and region\n- Configure keyboard layout\n- Set up partitions\n- Create user account\n- Review and install",
+      "estimated_minutes": 25,
+      "risk": "high"
+    },
+    {
+      "id": "transfer-tool",
+      "title": "Use Transfer Tool (Optional)",
+      "detail_md": "For Windows switchers, Feren OS includes a Transfer Tool to import:\n- Browser bookmarks and passwords\n- Desktop wallpapers\n- Documents folder\n\nLaunch from the applications menu after installation.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    }
+  ],
+  "tags": ["user-friendly", "kde-plasma", "windows-like", "beginner", "polished"],
+  "description": "Feren OS is a beautiful, user-friendly Linux distribution based on Ubuntu/Debian with a polished KDE Plasma desktop. Especially designed for users transitioning from Windows.",
+  "long_description": "Feren OS is a thoughtfully designed Linux distribution that prioritizes user experience and aesthetics. Built on Ubuntu/Debian foundations, it features a heavily customized and polished KDE Plasma desktop environment that's both beautiful and intuitive. Feren OS includes unique tools like the Transfer Tool, which helps Windows users migrate their data, bookmarks, and settings seamlessly. The distribution comes with a curated selection of applications and a custom software store. The desktop layout is familiar to Windows users, making the transition smoother. Feren OS emphasizes stability, performance, and visual polish, with careful attention to details like custom themes, icons, and animations. It's an excellent choice for beginners, especially those coming from Windows, while still being powerful enough for experienced users.",
+  "popularity_rank": 45,
+  "homepage": "https://ferenos.weebly.com/",
+  "documentation_url": "https://feren-os.github.io/",
+  "forum_url": "https://discord.gg/P9zqrkq",
+  "support_channels": ["Discord", "Forum", "GitHub Issues"]
+}

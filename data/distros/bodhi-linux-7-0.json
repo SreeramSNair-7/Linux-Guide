@@ -1,0 +1,86 @@
+{
+  "id": "bodhi-linux-7-0",
+  "name": "Bodhi Linux 7.0",
+  "family": "Debian",
+  "latest_version": "7.0.0",
+  "codename": "",
+  "release_date": "2023-04-08",
+  "license": "GPL and various open source licenses",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["Moksha"],
+  "package_manager": "APT",
+  "kernel": "5.15",
+  "min_ram_mb": 512,
+  "min_storage_mb": 10240,
+  "iso_files": [
+    {
+      "id": "bodhi-7.0.0-64",
+      "url": "https://sourceforge.net/projects/bodhilinux/files/7.0.0/bodhi-7.0.0-64.iso",
+      "filename": "bodhi-7.0.0-64.iso",
+      "size_mb": 1100,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [1100],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://www.bodhilinux.com/w/",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# Bodhi Linux 7.0 Installation Guide\n\n## Prerequisites\n- 512 MB RAM minimum (1 GB recommended)\n- 10 GB free disk space\n- USB drive (2 GB+) for bootable media\n\n## Step 1: Download and Verify ISO\nDownload from SourceForge or official Bodhi mirrors.\n\n## Step 2: Create Bootable USB\nUse tools like Rufus (Windows), Etcher (cross-platform), or dd (Linux).\n\n## Step 3: Boot from USB\nRestart computer and access boot menu.\n\n## Step 4: Install Bodhi\nFollow graphical installer prompts using the Ubiquity installer.\n\n## Step 5: Post-Installation\nExplore Moksha Desktop and customize themes through Bodhi's theme manager.",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Bodhi Linux ISO",
+      "detail_md": "Download Bodhi Linux 7.0 from SourceForge or official mirrors.\n\n**Standard ISO**: 1.1 GB  \n\nBodhi is lightweight and beautiful with the Moksha desktop.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "verify-checksum",
+      "title": "Verify ISO Checksum",
+      "detail_md": "Verify the downloaded ISO using SHA256 checksum to ensure file integrity.",
+      "estimated_minutes": 1,
+      "risk": "low"
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (2 GB or larger) to create bootable installation media.\n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 5,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot from USB Drive",
+      "detail_md": "Insert USB drive and restart your computer. Access boot menu to select USB drive.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "install-system",
+      "title": "Install Bodhi Linux",
+      "detail_md": "Click \"Install Bodhi Linux\" icon on the desktop.\n\nFollow Ubiquity installer prompts:\n- Select language\n- Choose keyboard layout\n- Select installation type (alongside or erase disk)\n- Create user account\n- Confirm and install",
+      "estimated_minutes": 20,
+      "risk": "high"
+    },
+    {
+      "id": "customize-moksha",
+      "title": "Customize Moksha Desktop",
+      "detail_md": "After installation, explore the beautiful Moksha desktop environment.\n\nCustomize themes, panels, and appearance through Settings → Theme.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    }
+  ],
+  "tags": ["lightweight", "beautiful", "moksha", "enlightenment", "minimalist"],
+  "description": "Bodhi Linux is a lightweight, elegant distribution featuring the Moksha desktop environment (a continuation of Enlightenment 17). It's designed to be fast, customizable, and beautiful.",
+  "long_description": "Bodhi Linux is an Ubuntu-based distribution that stands out for its beautiful and highly customizable Moksha desktop environment. Moksha is a continuation of Enlightenment 17, providing an elegant yet lightweight interface. Bodhi follows a minimalist philosophy, installing only essential software and allowing users to add what they need. This approach keeps the system lightweight while maintaining a polished, modern appearance. The distribution is particularly suitable for older hardware while still looking great on modern systems. Bodhi includes its own theme manager and offers multiple desktop profiles (Standard, Laptop, Compositing) to suit different needs. Based on Ubuntu LTS releases, it benefits from Ubuntu's package ecosystem and long-term support.",
+  "popularity_rank": 48,
+  "homepage": "https://www.bodhilinux.com/",
+  "documentation_url": "https://www.bodhilinux.com/w/",
+  "forum_url": "https://www.bodhilinux.com/forums/",
+  "support_channels": ["Forum", "Documentation", "IRC"]
+}

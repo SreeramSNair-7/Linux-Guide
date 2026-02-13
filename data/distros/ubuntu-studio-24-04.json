@@ -1,0 +1,98 @@
+{
+  "id": "ubuntu-studio-24-04",
+  "name": "Ubuntu Studio 24.04 LTS",
+  "family": "Debian",
+  "latest_version": "24.04",
+  "codename": "Noble Numbat",
+  "release_date": "2024-04-25",
+  "license": "GPL and various open source licenses",
+  "target_users": ["intermediate", "advanced", "developer"],
+  "desktop_environments": ["KDE Plasma"],
+  "package_manager": "APT",
+  "kernel": "6.8",
+  "min_ram_mb": 4096,
+  "min_storage_mb": 40960,
+  "iso_files": [
+    {
+      "id": "ubuntustudio-24.04-dvd-amd64",
+      "url": "https://cdimage.ubuntu.com/ubuntustudio/releases/24.04/release/ubuntustudio-24.04-dvd-amd64.iso",
+      "filename": "ubuntustudio-24.04-dvd-amd64.iso",
+      "size_mb": 4800,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [4800],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://ubuntustudio.org/documentation/",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# Ubuntu Studio 24.04 LTS Installation Guide\n\n## Prerequisites\n- 4 GB RAM minimum (8 GB+ recommended for production)\n- 40 GB free disk space (100 GB+ for media projects)\n- USB drive (8 GB+) for bootable media\n- Audio interface (optional but recommended)\n\n## Step 1: Download and Verify ISO\nDownload from official Ubuntu Studio mirrors.\n\n## Step 2: Create Bootable USB\nUse tools like Rufus (Windows), Etcher (cross-platform), or dd (Linux).\n\n## Step 3: Boot from USB\nRestart computer and access boot menu.\n\n## Step 4: Install Ubuntu Studio\nFollow graphical installer, similar to Ubuntu installation.\n\n## Step 5: Post-Installation\nConfigure audio with JACK, explore pre-installed creative applications (Ardour, GIMP, Blender, Kdenlive).",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Ubuntu Studio ISO",
+      "detail_md": "Download Ubuntu Studio 24.04 LTS from the official website.\n\n**DVD ISO**: 4.8 GB (includes all multimedia applications)  \n\nUbuntu Studio is pre-configured for audio, video, and graphics production.",
+      "estimated_minutes": 25,
+      "risk": "low"
+    },
+    {
+      "id": "verify-checksum",
+      "title": "Verify ISO Checksum",
+      "detail_md": "Verify the downloaded ISO using SHA256 checksum to ensure file integrity and authenticity.",
+      "estimated_minutes": 2,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "Get-FileHash -Algorithm SHA256 .\\ubuntustudio-24.04-dvd-amd64.iso | Format-List",
+          "platform": "windows",
+          "explanation": "PowerShell command to compute SHA256 hash"
+        },
+        {
+          "command": "sha256sum ubuntustudio-24.04-dvd-amd64.iso",
+          "platform": "linux",
+          "explanation": "Linux command to verify SHA256 checksum"
+        }
+      ]
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (8 GB or larger) to create bootable installation media.\n\n**Windows**: Use Rufus or Etcher  \n**Linux**: Use `dd` command or Startup Disk Creator  \n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 10,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot from USB Drive",
+      "detail_md": "Insert USB drive and restart your computer. Access boot menu (usually F12, F2, ESC, or DEL during startup).\n\nSelect the USB drive to boot Ubuntu Studio installer.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "install-system",
+      "title": "Install Ubuntu Studio",
+      "detail_md": "Click \"Install Ubuntu Studio\" icon.\n\nFollow Ubiquity installer prompts:\n- Select language and keyboard layout\n- Choose installation type (normal or minimal)\n- Select disk and partition scheme\n- Create user account\n- Wait for installation to complete",
+      "estimated_minutes": 30,
+      "risk": "high"
+    },
+    {
+      "id": "configure-audio",
+      "title": "Configure Audio System",
+      "detail_md": "Ubuntu Studio comes with JACK Audio Connection Kit pre-installed.\n\nConfigure audio settings using Ubuntu Studio Controls:\n- Select your audio interface\n- Configure buffer size and sample rate\n- Set up JACK for low-latency audio\n\nTest with included applications like Ardour.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    }
+  ],
+  "tags": ["multimedia", "audio-production", "video-editing", "graphics", "creative", "jack-audio"],
+  "description": "Ubuntu Studio is an official Ubuntu flavor designed for multimedia production: audio recording/editing, video production, graphics design, and photography. Comes with a complete suite of creative applications.",
+  "long_description": "Ubuntu Studio is the official Ubuntu flavor for creative content production. It's specifically configured for audio, video, graphics, photography, and publishing work. The distribution features a low-latency kernel optimized for real-time audio processing, KDE Plasma desktop environment, and JACK Audio Connection Kit for professional audio routing. Ubuntu Studio comes pre-installed with a comprehensive collection of creative software including Ardour (DAW), Audacity, Blender (3D), GIMP (image editing), Inkscape (vector graphics), Kdenlive (video editing), and many more tools. The installation is larger than standard Ubuntu because it includes this complete multimedia production suite. It's ideal for musicians, producers, video editors, graphic designers, and photographers who want a ready-to-use creative workstation.",
+  "popularity_rank": 35,
+  "homepage": "https://ubuntustudio.org/",
+  "documentation_url": "https://ubuntustudio.org/documentation/",
+  "forum_url": "https://discourse.ubuntu.com/c/flavor/ubuntu-studio/",
+  "support_channels": ["Forum", "Documentation", "IRC", "Mailing Lists"]
+}

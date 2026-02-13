@@ -1,0 +1,96 @@
+{
+  "id": "systemrescue-11-00",
+  "name": "SystemRescue 11.00",
+  "family": "Arch",
+  "latest_version": "11.00",
+  "codename": "",
+  "release_date": "2024-02-25",
+  "license": "GPL",
+  "target_users": ["advanced"],
+  "desktop_environments": ["XFCE", "None (CLI)"],
+  "package_manager": "PACMAN",
+  "kernel": "6.7",
+  "min_ram_mb": 1024,
+  "min_storage_mb": 2048,
+  "iso_files": [
+    {
+      "id": "systemrescue-11.00-amd64",
+      "url": "https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/11.00/systemrescue-11.00-amd64.iso",
+      "filename": "systemrescue-11.00-amd64.iso",
+      "size_mb": 950,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [950],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://www.system-rescue.org/manual/",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# SystemRescue 11.00 Usage Guide\n\n## Prerequisites\n- 1 GB RAM minimum\n- USB drive (2 GB+) for bootable media\n- System needing recovery or administration\n\n## Note\nSystemRescue is typically used as a live system for rescue operations, not installed permanently.\n\n## Step 1: Download and Verify ISO\nDownload from official SystemRescue website or SourceForge.\n\n## Step 2: Create Bootable USB\nUse tools like Rufus (Windows), Etcher (cross-platform), or dd (Linux).\n\n## Step 3: Boot from USB\nBoot the system needing recovery from the USB drive.\n\n## Step 4: Use Recovery Tools\nAccess disk utilities, partition editors, data recovery tools, and system administration utilities.\n\n## Common Tasks\n- Partition management with GParted\n- Data recovery with TestDisk/PhotoRec\n- Disk cloning with dd, partclone\n- Password reset and file system repair",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download SystemRescue ISO",
+      "detail_md": "Download SystemRescue 11.00 from SourceForge or official mirrors.\n\n**ISO Size**: 950 MB  \n\nSystemRescue is a bootable rescue system packed with system administration and recovery tools.",
+      "estimated_minutes": 8,
+      "risk": "low"
+    },
+    {
+      "id": "verify-checksum",
+      "title": "Verify ISO Checksum",
+      "detail_md": "Verify the downloaded ISO using SHA256 checksum to ensure file integrity.",
+      "estimated_minutes": 1,
+      "risk": "low"
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (2 GB or larger) to create bootable rescue media.\n\n**Windows**: Use Rufus in DD mode  \n**Linux**: Use `dd` command  \n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 5,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-rescue",
+      "title": "Boot SystemRescue",
+      "detail_md": "Insert USB drive into the system needing recovery.\n\nRestart and access boot menu to boot from USB.\n\nSelect boot option:\n- Default (64-bit, graphical)\n- Alternative kernels\n- Serial console mode",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "use-tools",
+      "title": "Use Recovery Tools",
+      "detail_md": "SystemRescue includes:\n\n**Partition Tools**: GParted, fdisk, parted  \n**Data Recovery**: TestDisk, PhotoRec  \n**Disk Cloning**: dd, partclone, partimage  \n**File Systems**: Support for ext2/3/4, XFS, Btrfs, NTFS, FAT  \n**Network Tools**: SSH, rsync, lftp  \n**Editors**: vim, nano  \n\nFor graphical interface, type: `startx`",
+      "estimated_minutes": 60,
+      "risk": "high",
+      "commands": [
+        {
+          "command": "startx",
+          "platform": "linux",
+          "explanation": "Start XFCE graphical environment"
+        },
+        {
+          "command": "gparted",
+          "platform": "linux",
+          "explanation": "Launch partition editor"
+        },
+        {
+          "command": "testdisk",
+          "platform": "linux",
+          "explanation": "Launch data recovery tool"
+        }
+      ]
+    }
+  ],
+  "tags": ["rescue", "recovery", "system-administration", "live-cd", "tools", "emergency"],
+  "description": "SystemRescue is a bootable system rescue toolkit based on Arch Linux. It provides tools for administering or repairing your system and data after a crash.",
+  "long_description": "SystemRescue (formerly SystemRescueCD) is a specialized Linux distribution designed for system rescue, recovery, and administration tasks. Based on Arch Linux, it runs entirely from bootable media (USB/CD) without requiring installation. The distribution includes a comprehensive collection of system tools for partition management (GParted), data recovery (TestDisk, PhotoRec), disk cloning, filesystem repair, backup/restore operations, and network administration. SystemRescue supports a wide range of filesystems including ext2/3/4, XFS, Btrfs, NTFS, and FAT. It's an essential tool for system administrators, IT professionals, and anyone needing to rescue data or repair systems that won't boot. The distribution boots into a console environment by default but includes an XFCE desktop that can be started with the 'startx' command.",
+  "popularity_rank": 38,
+  "homepage": "https://www.system-rescue.org/",
+  "documentation_url": "https://www.system-rescue.org/manual/",
+  "forum_url": "https://forums.system-rescue.org/",
+  "support_channels": ["Forum", "Documentation", "Mailing List"]
+}

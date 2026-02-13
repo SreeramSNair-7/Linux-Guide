@@ -1,0 +1,111 @@
+{
+  "id": "trisquel-11-0",
+  "name": "Trisquel GNU/Linux 11.0",
+  "family": "Debian",
+  "latest_version": "11.0",
+  "codename": "Aramo",
+  "release_date": "2023-11-01",
+  "license": "GPL (100% Free Software)",
+  "target_users": ["intermediate", "advanced"],
+  "desktop_environments": ["MATE", "LXDE", "KDE Plasma"],
+  "package_manager": "APT",
+  "kernel": "5.15-libre",
+  "min_ram_mb": 1024,
+  "min_storage_mb": 20480,
+  "iso_files": [
+    {
+      "id": "trisquel-11.0-mate-amd64",
+      "url": "https://cdimage.trisquel.org/trisquel-images/trisquel_11.0_amd64.iso",
+      "filename": "trisquel_11.0_amd64.iso",
+      "size_mb": 2200,
+      "sha256": "placeholder_sha256_checksum_here",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    },
+    {
+      "id": "trisquel-mini-11.0-lxde-amd64",
+      "url": "https://cdimage.trisquel.org/trisquel-images/trisquel-mini_11.0_amd64.iso",
+      "filename": "trisquel-mini_11.0_amd64.iso",
+      "size_mb": 1200,
+      "sha256": "placeholder_sha256_checksum_here",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [2200, 1200],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000",
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://trisquel.info/en/wiki",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# Trisquel GNU/Linux 11.0 Installation Guide\n\n## Prerequisites\n- 1 GB RAM minimum (2 GB recommended)\n- 20 GB free disk space\n- USB drive (4 GB+) for bootable media\n- Hardware that works with free software drivers only\n\n## Important Note\nTrisquel is 100% free software and doesn't include proprietary drivers or firmware. Verify hardware compatibility before installation.\n\n## Step 1: Download and Verify ISO\nDownload from official Trisquel mirrors.\n\n## Step 2: Create Bootable USB\nUse tools like Rufus (Windows), Etcher (cross-platform), or dd (Linux).\n\n## Step 3: Boot from USB\nRestart computer and access boot menu.\n\n## Step 4: Install Trisquel\nFollow Ubiquity graphical installer (similar to Ubuntu).\n\n## Step 5: Post-Installation\nAll software is free (as in freedom). Use Trisquel's repositories for additional applications.",
+  "install_steps": [
+    {
+      "id": "check-hardware",
+      "title": "Check Hardware Compatibility",
+      "detail_md": "Before installation, verify your hardware works with free software drivers.\n\nTrisquel **does not** include:\n- Proprietary firmware\n- Binary blobs\n- Non-free drivers\n\nCheck the h-node.org database for compatible hardware.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "download-iso",
+      "title": "Download Trisquel ISO",
+      "detail_md": "Download Trisquel 11.0 from the official website.\n\n**Standard Edition (MATE)**: 2.2 GB  \n**Mini Edition (LXDE)**: 1.2 GB  \n\nTrisquel is FSF-endorsed and 100% free software.",
+      "estimated_minutes": 12,
+      "risk": "low"
+    },
+    {
+      "id": "verify-checksum",
+      "title": "Verify ISO Checksum",
+      "detail_md": "Verify the downloaded ISO using SHA256 checksum to ensure file integrity and authenticity.",
+      "estimated_minutes": 1,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sha256sum trisquel_11.0_amd64.iso",
+          "platform": "linux",
+          "explanation": "Linux command to verify SHA256 checksum"
+        }
+      ]
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (4 GB or larger) to create bootable installation media.\n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 8,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot from USB Drive",
+      "detail_md": "Insert USB drive and restart your computer. Access boot menu to select USB drive.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "install-system",
+      "title": "Install Trisquel",
+      "detail_md": "Click \"Install Trisquel\" icon on the live desktop.\n\nFollow Ubiquity installer:\n- Select language\n- Configure keyboard layout\n- Set up disk partitions\n- Create user account\n- Install system",
+      "estimated_minutes": 25,
+      "risk": "high"
+    },
+    {
+      "id": "free-software",
+      "title": "Enjoy Free Software",
+      "detail_md": "Trisquel repositories contain only free software as defined by the GNU Project.\n\nAll applications respect your freedom:\n- No proprietary software\n- No binary blobs\n- No DRM or restrictions\n\nInstall additional software from Trisquel's repositories.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    }
+  ],
+  "tags": ["free-software", "fsf-endorsed", "gnu", "freedom", "libre", "ethical"],
+  "description": "Trisquel is a fully free GNU/Linux distribution endorsed by the Free Software Foundation. It contains only free software and libre Linux kernel without binary blobs.",
+  "long_description": "Trisquel GNU/Linux is a fully free operating system for home users, small enterprises, and educational institutions. It's based on Ubuntu but with all proprietary software, firmware, and blobs removed, replaced with the Linux-libre kernel. Trisquel is officially endorsed by the Free Software Foundation and meets their strict guidelines for free distributions. The project's goal is to provide a completely free operating system that respects user freedom and privacy. Trisquel includes only software that is free as in freedom - you can run, study, share, and modify all included software. The default edition features the MATE desktop environment, while Trisquel Mini offers a lightweight LXDE option. It's ideal for users who prioritize software freedom and want to avoid proprietary software entirely.",
+  "popularity_rank": 55,
+  "homepage": "https://trisquel.info/",
+  "documentation_url": "https://trisquel.info/en/wiki",
+  "forum_url": "https://trisquel.info/en/forum",
+  "support_channels": ["Forum", "Wiki", "IRC", "Mailing Lists"]
+}

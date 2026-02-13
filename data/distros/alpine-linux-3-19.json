@@ -1,0 +1,128 @@
+{
+  "id": "alpine-linux-3-19",
+  "name": "Alpine Linux 3.19",
+  "family": "Independent",
+  "latest_version": "3.19",
+  "codename": "",
+  "release_date": "2023-12-07",
+  "license": "GPL and various open source licenses",
+  "target_users": ["advanced", "developer", "server"],
+  "desktop_environments": ["XFCE", "MATE", "LXQt", "None (Server)"],
+  "package_manager": "APK",
+  "kernel": "6.6",
+  "min_ram_mb": 128,
+  "min_storage_mb": 700,
+  "iso_files": [
+    {
+      "id": "alpine-standard-3.19-x86_64",
+      "url": "https://dl-cdn.alpinelinux.org/alpine/v3.19/releases/x86_64/alpine-standard-3.19.0-x86_64.iso",
+      "filename": "alpine-standard-3.19.0-x86_64.iso",
+      "size_mb": 184,
+      "sha256": "placeholder_sha256_checksum_here",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    },
+    {
+      "id": "alpine-extended-3.19-x86_64",
+      "url": "https://dl-cdn.alpinelinux.org/alpine/v3.19/releases/x86_64/alpine-extended-3.19.0-x86_64.iso",
+      "filename": "alpine-extended-3.19.0-x86_64.iso",
+      "size_mb": 800,
+      "sha256": "placeholder_sha256_checksum_here",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [184, 800],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000",
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://wiki.alpinelinux.org/",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# Alpine Linux 3.19 Installation Guide\n\n## Prerequisites\n- 128 MB RAM minimum (512 MB recommended)\n- 700 MB free disk space\n- USB drive (1 GB+) for bootable media\n- Basic Linux command-line knowledge\n\n## Step 1: Download and Verify ISO\nDownload from official Alpine mirrors and verify SHA256 checksum.\n\n## Step 2: Create Bootable USB\nUse tools like Rufus (Windows), Etcher (cross-platform), or dd (Linux).\n\n## Step 3: Boot from USB\nRestart computer and access boot menu (F12, F2, or DEL key).\n\n## Step 4: Install Alpine\nLogin as root (no password) and run `setup-alpine` command. Follow the prompts.\n\n## Step 5: Post-Installation\nInstall desktop environment if needed: `apk add xfce4` or configure as server.",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Alpine Linux ISO",
+      "detail_md": "Download Alpine Linux 3.19 from the official website. Choose Standard for minimal setup or Extended for desktop environments.\n\n**Standard ISO**: 184 MB (minimal)  \n**Extended ISO**: 800 MB (includes desktop)\n\nAlpine is extremely lightweight and security-focused.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "verify-checksum",
+      "title": "Verify ISO Checksum",
+      "detail_md": "Verify the downloaded ISO using SHA256 checksum to ensure file integrity.\n\nCheck official Alpine website for current checksums.",
+      "estimated_minutes": 1,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "Get-FileHash -Algorithm SHA256 .\\alpine-standard-3.19.0-x86_64.iso | Format-List",
+          "platform": "windows",
+          "explanation": "PowerShell command to compute SHA256 hash"
+        },
+        {
+          "command": "sha256sum alpine-standard-3.19.0-x86_64.iso",
+          "platform": "linux",
+          "explanation": "Linux command to verify SHA256 checksum"
+        }
+      ]
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (1 GB or larger) to create bootable installation media.\n\n**Windows**: Use Rufus or Etcher  \n**Linux**: Use `dd` command  \n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 5,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot from USB Drive",
+      "detail_md": "Insert USB drive and restart your computer. Access boot menu (usually F12, F2, ESC, or DEL during startup).\n\nSelect the USB drive to boot Alpine installer.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "run-setup",
+      "title": "Run setup-alpine",
+      "detail_md": "Login as root (no password required).\n\nRun the setup script:\n```\nsetup-alpine\n```\n\nFollow prompts for keyboard layout, hostname, network, timezone, proxy, SSH, NTP, and disk setup.",
+      "estimated_minutes": 15,
+      "risk": "high",
+      "commands": [
+        {
+          "command": "setup-alpine",
+          "platform": "linux",
+          "explanation": "Alpine Linux installation wizard"
+        }
+      ]
+    },
+    {
+      "id": "install-desktop",
+      "title": "Install Desktop Environment (Optional)",
+      "detail_md": "For desktop use, install XFCE or other environment:\n\n```\nsetup-desktop\n```\n\nOr manually:\n```\napk add xfce4 xfce4-terminal xorg-server\n```",
+      "estimated_minutes": 10,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "setup-desktop",
+          "platform": "linux",
+          "explanation": "Setup desktop environment for Alpine"
+        },
+        {
+          "command": "apk add xfce4 xfce4-terminal xorg-server",
+          "platform": "linux",
+          "explanation": "Manually install XFCE desktop"
+        }
+      ]
+    }
+  ],
+  "tags": ["security", "lightweight", "docker", "containers", "musl", "minimal"],
+  "description": "Alpine Linux is a security-oriented, lightweight Linux distribution based on musl libc and busybox. Widely used in Docker containers due to its small size and security features.",
+  "long_description": "Alpine Linux is an independent, security-focused distribution that's extremely lightweight and efficient. It uses musl libc instead of glibc, and busybox for core utilities, resulting in a minimal footprint. Alpine has become the go-to choice for Docker containers and cloud deployments due to its small image size (typically under 5 MB for base images) and security-first approach with PaX and grsecurity patches. The distribution uses its own package manager called apk (Alpine Package Keeper) which is fast and efficient. While it can run desktop environments, Alpine is primarily targeted at servers, containers, and embedded systems. The distribution follows a rolling release model with stable branches.",
+  "popularity_rank": 14,
+  "homepage": "https://alpinelinux.org/",
+  "documentation_url": "https://wiki.alpinelinux.org/",
+  "forum_url": "https://forum.alpinelinux.org/",
+  "support_channels": ["Forum", "IRC", "Mailing Lists"]
+}

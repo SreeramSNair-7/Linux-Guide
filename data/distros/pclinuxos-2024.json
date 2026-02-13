@@ -1,0 +1,97 @@
+{
+  "id": "pclinuxos-2024",
+  "name": "PCLinuxOS 2024",
+  "family": "Independent",
+  "latest_version": "2024.02",
+  "codename": "",
+  "release_date": "2024-02-15",
+  "license": "GPL and various open source licenses",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["KDE Plasma", "MATE", "XFCE"],
+  "package_manager": "APT",
+  "kernel": "6.6",
+  "min_ram_mb": 1024,
+  "min_storage_mb": 15360,
+  "iso_files": [
+    {
+      "id": "pclinuxos-kde-2024",
+      "url": "https://www.pclinuxos.com/get-pclinuxos/",
+      "filename": "pclinuxos-kde-2024.02.iso",
+      "size_mb": 2800,
+      "sha256": "placeholder_sha256_checksum_here",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    },
+    {
+      "id": "pclinuxos-mate-2024",
+      "url": "https://www.pclinuxos.com/get-pclinuxos/",
+      "filename": "pclinuxos-mate-2024.02.iso",
+      "size_mb": 2200,
+      "sha256": "placeholder_sha256_checksum_here",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [2800, 2200],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000",
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://www.pclinuxos.com/forum/index.php/board,47.0.html",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# PCLinuxOS 2024 Installation Guide\n\n## Prerequisites\n- 1 GB RAM minimum (2 GB recommended)\n- 15 GB free disk space\n- USB drive (4 GB+) for bootable media\n- Internet connection recommended\n\n## Step 1: Download and Verify ISO\nDownload from official PCLinuxOS mirrors.\n\n## Step 2: Create Bootable USB\nUse tools like Rufus (Windows), Etcher (cross-platform), or dd (Linux).\n\n## Step 3: Boot from USB\nRestart computer and access boot menu.\n\n## Step 4: Install PCLinuxOS\nFollow graphical installer from the live environment.\n\n## Step 5: Post-Installation\nUse Synaptic Package Manager to install additional software. Explore MyLiveCD tool to create custom live USBs.",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download PCLinuxOS ISO",
+      "detail_md": "Download PCLinuxOS 2024 from the official website. Choose your preferred desktop:\n\n**KDE Edition**: 2.8 GB  \n**MATE Edition**: 2.2 GB  \n**XFCE Edition**: Available from community repos\n\nPCLinuxOS is a rolling release distribution known for ease of use.",
+      "estimated_minutes": 15,
+      "risk": "low"
+    },
+    {
+      "id": "verify-checksum",
+      "title": "Verify ISO Checksum",
+      "detail_md": "Verify the downloaded ISO using SHA256 checksum to ensure file integrity.",
+      "estimated_minutes": 1,
+      "risk": "low"
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (4 GB or larger) to create bootable installation media.\n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 8,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot from USB Drive",
+      "detail_md": "Insert USB drive and restart your computer. Access boot menu to select USB drive.\n\nPCLinuxOS boots into a full live environment.",
+      "estimated_minutes": 3,
+      "risk": "low"
+    },
+    {
+      "id": "install-system",
+      "title": "Install PCLinuxOS",
+      "detail_md": "From the live desktop, launch the PCLinuxOS installer.\n\nFollow the installer prompts:\n- Select language\n- Configure disk partitions\n- Set timezone and keyboard\n- Create user account\n- Install bootloader",
+      "estimated_minutes": 20,
+      "risk": "high"
+    },
+    {
+      "id": "package-manager",
+      "title": "Explore Synaptic Package Manager",
+      "detail_md": "PCLinuxOS uses APT/RPM hybrid with Synaptic Package Manager for easy software installation.\n\nAccess extensive package repository for additional software.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    }
+  ],
+  "tags": ["rolling-release", "user-friendly", "desktop", "beginner", "mylivecd"],
+  "description": "PCLinuxOS is a user-friendly rolling release distribution with excellent hardware detection. It uses APT package management and is known for its polished desktop experience.",
+  "long_description": "PCLinuxOS is an independent rolling release distribution that originated as a Mandrake Linux fork. It's designed to be very user-friendly while maintaining a rolling release model, providing cutting-edge software without the need for major version upgrades. PCLinuxOS uses the APT package manager (adapted from Debian) combined with RPM packages, offering a vast software repository. The distribution is famous for its excellent hardware detection and out-of-the-box functionality. It features the MyLiveCD tool, which allows users to create their own customized live USB/CD versions of their installed system. The default desktop is KDE Plasma, but MATE and XFCE editions are also available. PCLinuxOS has a strong community focus with active forums and maintains a balance between stability and up-to-date software.",
+  "popularity_rank": 42,
+  "homepage": "https://www.pclinuxos.com/",
+  "documentation_url": "https://www.pclinuxos.com/forum/index.php/board,47.0.html",
+  "forum_url": "https://www.pclinuxos.com/forum/",
+  "support_channels": ["Forum", "Wiki", "IRC"]
+}

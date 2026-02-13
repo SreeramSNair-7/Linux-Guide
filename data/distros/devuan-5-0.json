@@ -1,0 +1,104 @@
+{
+  "id": "devuan-5-0",
+  "name": "Devuan GNU+Linux 5.0",
+  "family": "Debian",
+  "latest_version": "5.0",
+  "codename": "Daedalus",
+  "release_date": "2023-08-14",
+  "license": "GPL and various open source licenses",
+  "target_users": ["intermediate", "advanced"],
+  "desktop_environments": ["XFCE", "Cinnamon", "MATE", "LXQt", "None (Server)"],
+  "package_manager": "APT",
+  "kernel": "6.1",
+  "min_ram_mb": 1024,
+  "min_storage_mb": 10240,
+  "iso_files": [
+    {
+      "id": "devuan-5.0-desktop-amd64",
+      "url": "https://www.devuan.org/get-devuan",
+      "filename": "devuan_daedalus_5.0.0_amd64_desktop.iso",
+      "size_mb": 1800,
+      "sha256": "placeholder_sha256_checksum_here",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    },
+    {
+      "id": "devuan-5.0-server-amd64",
+      "url": "https://www.devuan.org/get-devuan",
+      "filename": "devuan_daedalus_5.0.0_amd64_server.iso",
+      "size_mb": 650,
+      "sha256": "placeholder_sha256_checksum_here",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [1800, 650],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000",
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://git.devuan.org/devuan/devuan-project/wikis/home",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# Devuan GNU+Linux 5.0 Installation Guide\n\n## Prerequisites\n- 1 GB RAM minimum (2 GB recommended)\n- 10 GB free disk space\n- USB drive (2 GB+) for bootable media\n- Basic Linux knowledge recommended\n\n## About Devuan\nDevuan is a fork of Debian without systemd. It uses traditional SysVinit or OpenRC init systems.\n\n## Step 1: Download and Verify ISO\nDownload from official Devuan mirrors.\n\n## Step 2: Create Bootable USB\nUse tools like Rufus (Windows), Etcher (cross-platform), or dd (Linux).\n\n## Step 3: Boot from USB\nRestart computer and access boot menu.\n\n## Step 4: Install Devuan\nFollow Debian-style installer (text or graphical).\n\n## Step 5: Post-Installation\nConfigure your chosen init system. Enjoy Debian without systemd.",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Devuan ISO",
+      "detail_md": "Download Devuan 5.0 (Daedalus) from the official website.\n\n**Desktop ISO**: 1.8 GB (includes XFCE)  \n**Server ISO**: 650 MB (minimal installation)  \n\nDevuan is Debian without systemd, using SysVinit or OpenRC instead.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    },
+    {
+      "id": "verify-checksum",
+      "title": "Verify ISO Checksum",
+      "detail_md": "Verify the downloaded ISO using SHA256 checksum to ensure file integrity.",
+      "estimated_minutes": 1,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "sha256sum devuan_daedalus_5.0.0_amd64_desktop.iso",
+          "platform": "linux",
+          "explanation": "Linux command to verify SHA256 checksum"
+        }
+      ]
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (2 GB or larger) to create bootable installation media.\n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 6,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot from USB Drive",
+      "detail_md": "Insert USB drive and restart your computer. Access boot menu to select USB drive.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "install-system",
+      "title": "Install Devuan",
+      "detail_md": "Choose installation method:\n- Graphical install (easier)\n- Text install (advanced)\n\nFollow Debian-style installer:\n- Select language and location\n- Configure network\n- Partition disks\n- Select init system (SysVinit, OpenRC, or runit)\n- Choose software to install\n- Install bootloader",
+      "estimated_minutes": 25,
+      "risk": "high"
+    },
+    {
+      "id": "configure-init",
+      "title": "Configure Init System",
+      "detail_md": "Devuan offers choice of init systems:\n\n**SysVinit**: Traditional, simple, stable  \n**OpenRC**: Modern, dependency-based  \n**runit**: Lightweight, fast  \n\nDefault is SysVinit. Init choice was made during installation.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    }
+  ],
+  "tags": ["systemd-free", "init-freedom", "debian-fork", "sysvinit", "openrc"],
+  "description": "Devuan is a fork of Debian that uses traditional init systems (SysVinit, OpenRC, or runit) instead of systemd. It provides init freedom and simpler system administration.",
+  "long_description": "Devuan GNU+Linux is a Debian fork created to provide users with init freedom - the ability to choose their init system without systemd. Born from the controversy surrounding Debian's adoption of systemd, Devuan maintains full Debian compatibility while offering traditional SysVinit as default, with OpenRC and runit as alternatives. The distribution aims to be simple, stable, and free from unnecessary complexity. Devuan is fully compatible with Debian packages that don't depend on systemd, giving users access to Debian's vast software repository. The project emphasizes user choice, transparency, and adherence to Unix philosophy. It's popular among system administrators and users who prefer traditional init systems or who have concerns about systemd's design. Devuan offers multiple desktop environments and can be used for both desktop and server deployments.",
+  "popularity_rank": 58,
+  "homepage": "https://www.devuan.org/",
+  "documentation_url": "https://git.devuan.org/devuan/devuan-project/wikis/home",
+  "forum_url": "https://dev1galaxy.org/",
+  "support_channels": ["Forum", "IRC", "Mailing Lists", "Wiki"]
+}
