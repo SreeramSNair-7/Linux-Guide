@@ -1,0 +1,79 @@
+{
+  "id": "wattos-r12",
+  "name": "wattOS R12",
+  "family": "Debian",
+  "latest_version": "R12",
+  "codename": "",
+  "release_date": "2023-07-01",
+  "license": "GPL and various open source licenses",
+  "target_users": ["beginner", "intermediate"],
+  "desktop_environments": ["LXDE"],
+  "package_manager": "APT",
+  "kernel": "6.1",
+  "min_ram_mb": 512,
+  "min_storage_mb": 8192,
+  "iso_files": [
+    {
+      "id": "wattos-R12",
+      "url": "https://planetwatt.com/new/index.php/downloads",
+      "filename": "wattOS-R12.iso",
+      "size_mb": 950,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [950],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://planetwatt.com/",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# wattOS R12 Installation Guide\n\n## Prerequisites\n- 512 MB RAM minimum (1 GB recommended)\n- 8 GB free disk space\n- USB drive (2 GB+) for bootable media\n\n## Step 1: Download ISO\nDownload from Planet Watt website.\n\n## Step 2: Create Bootable USB\nUse tools like Rufus (Windows), Etcher (cross-platform), or dd (Linux).\n\n## Step 3: Boot from USB\nRestart computer and access boot menu.\n\n## Step 4: Install wattOS\nFollow simple graphical installer.\n\n## Step 5: Post-Installation\nEnjoy extremely lightweight, fast system ideal for older hardware.",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download wattOS ISO",
+      "detail_md": "Download wattOS R12 from Planet Watt website.\n\n**ISO Size**: 950 MB  \n\nwattOS is extremely lightweight and energy-efficient.",
+      "estimated_minutes": 8,
+      "risk": "low"
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (2 GB or larger).\n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 5,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot from USB Drive",
+      "detail_md": "Insert USB drive and restart computer. Access boot menu.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "install-system",
+      "title": "Install wattOS",
+      "detail_md": "Follow the simple installer:\n- Select language\n- Configure disk\n- Set user account\n- Install system\n\nInstallation is very quick on most hardware.",
+      "estimated_minutes": 15,
+      "risk": "high"
+    },
+    {
+      "id": "lightweight-setup",
+      "title": "Enjoy Lightweight Performance",
+      "detail_md": "wattOS is optimized for:\n\n**Low resource usage** - Runs great on old hardware  \n**Energy efficiency** - Minimal power consumption  \n**Speed** - Fast boot and responsive  \n**LXDE desktop** - Lightweight but functional  \n\nIdeal for netbooks and older computers.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    }
+  ],
+  "tags": ["lightweight", "energy-efficient", "old-hardware", "minimal", "lxde"],
+  "description": "wattOS is an extremely lightweight, energy-efficient Linux distribution based on Debian. It's designed for low-spec hardware and focuses on minimal resource usage with LXDE desktop.",
+  "long_description": "wattOS is a lightweight Linux distribution based on Debian, specifically designed for energy efficiency and minimal resource consumption. It uses the LXDE desktop environment and comes pre-configured with lightweight applications suitable for low-spec hardware. wattOS is ideal for reviving older computers, netbooks, or any system where performance and battery life are priorities. The distribution emphasizes speed, simplicity, and low power consumption. Despite its minimal footprint, wattOS provides a complete desktop experience with web browsing, document editing, and multimedia playback capabilities. It boots quickly and responds snappily even on aging hardware. The distribution is particularly popular for extending the life of older laptops and extending battery life.",
+  "popularity_rank": 76,
+  "homepage": "https://planetwatt.com/",
+  "documentation_url": "https://planetwatt.com/",
+  "forum_url": "https://planetwatt.com/new/index.php/forum",
+  "support_channels": ["Forum", "Website"]
+}

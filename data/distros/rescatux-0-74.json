@@ -1,0 +1,72 @@
+{
+  "id": "rescatux-0-74",
+  "name": "Rescatux 0.74",
+  "family": "Debian",
+  "latest_version": "0.74",
+  "codename": "",
+  "release_date": "2023-05-20",
+  "license": "GPL",
+  "target_users": ["intermediate", "advanced"],
+  "desktop_environments": ["LXDE"],
+  "package_manager": "APT",
+  "kernel": "6.1",
+  "min_ram_mb": 1024,
+  "min_storage_mb": 1024,
+  "iso_files": [
+    {
+      "id": "rescatux-0.74-amd64",
+      "url": "https://www.supergrubdisk.org/rescatux/",
+      "filename": "rescatux-0.74b_amd64.iso",
+      "size_mb": 860,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [860],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://www.supergrubdisk.org/rescatux/",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# Rescatux 0.74 Usage Guide\n\n## Prerequisites\n- 1 GB RAM minimum\n- USB drive (2 GB+) for bootable media\n- System needing repair\n\n## Note\nRescatux is a rescue Linux distribution designed to repair broken systems, recover passwords, and fix bootloader issues.\n\n## Step 1: Download ISO\nDownload from Super Grub Disk website.\n\n## Step 2: Create Bootable USB\nUse tools like Rufus (Windows), Etcher (cross-platform), or dd (Linux).\n\n## Step 3: Boot Rescatux\nBoot from USB on the system needing repair.\n\n## Step 4: Use Rescue Tools\nAccess easy-to-use wizards for common repair tasks.",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Rescatux ISO",
+      "detail_md": "Download Rescatux 0.74 from Super Grub Disk website.\n\n**ISO Size**: 860 MB  \n\nRescatux is designed for system rescue and repair with user-friendly wizards.",
+      "estimated_minutes": 7,
+      "risk": "low"
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (2 GB or larger).\n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 6,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-rescatux",
+      "title": "Boot Rescatux",
+      "detail_md": "Insert USB into the system needing repair.\n\nBoot from USB and select Rescatux from boot menu.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "rescue-operations",
+      "title": "Use Rescue Wizards",
+      "detail_md": "Rescatux provides easy wizards for:\n\n**Bootloader Repair** - Fix GRUB, restore Windows bootloader  \n**File System Check** - Repair corrupted filesystems  \n**Password Reset** - Reset Windows/Linux passwords  \n**MBR Repair** - Restore Master Boot Record  \n**Partition Recovery** - Restore deleted partitions  \n**File Recovery** - Recover deleted files  \n\nClick on rescue icons to launch wizards.",
+      "estimated_minutes": 45,
+      "risk": "high"
+    }
+  ],
+  "tags": ["rescue", "recovery", "bootloader-repair", "password-reset", "system-repair"],
+  "description": "Rescatux is a GNU/Linux rescue distribution designed to repair unbootable systems and recover from various system problems. Features easy-to-use rescue wizards for common repair tasks.",
+  "long_description": "Rescatux is a Debian-based rescue Linux distribution that focuses on repairing unbootable systems and solving common computer problems. Unlike other rescue distributions that require command-line expertise, Rescatux provides user-friendly graphical wizards that guide users through repair operations. It can fix bootloader problems (GRUB, Windows bootloader), reset forgotten passwords (Windows and Linux), repair filesystems, restore the Master Boot Record, and recover deleted files and partitions. The distribution is particularly useful for users who need to repair systems but lack advanced technical knowledge. Rescatux includes the Super Grub2 Disk feature for advanced boot management. It's an essential tool for system administrators, IT support personnel, and home users dealing with boot failures or system corruption.",
+  "popularity_rank": 74,
+  "homepage": "https://www.supergrubdisk.org/rescatux/",
+  "documentation_url": "https://www.supergrubdisk.org/wiki/Rescatux",
+  "forum_url": "https://www.supergrubdisk.org/forum/",
+  "support_channels": ["Forum", "Wiki", "Documentation"]
+}

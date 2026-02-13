@@ -1,0 +1,72 @@
+{
+  "id": "gparted-live-1-6",
+  "name": "GParted Live 1.6.0",
+  "family": "Debian",
+  "latest_version": "1.6.0-1",
+  "codename": "",
+  "release_date": "2024-02-05",
+  "license": "GPL",
+  "target_users": ["intermediate", "advanced"],
+  "desktop_environments": ["Fluxbox", "None (CLI)"],
+  "package_manager": "APT",
+  "kernel": "6.1",
+  "min_ram_mb": 512,
+  "min_storage_mb": 512,
+  "iso_files": [
+    {
+      "id": "gparted-live-1.6.0-1-amd64",
+      "url": "https://gparted.org/download.php",
+      "filename": "gparted-live-1.6.0-1-amd64.iso",
+      "size_mb": 480,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [480],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://gparted.org/documentation.php",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# GParted Live Usage Guide\n\n## Prerequisites\n- 512 MB RAM minimum\n- USB drive (1 GB+) for bootable media\n\n## Note\nGParted Live is a bootable tool for partition management, not a full operating system.\n\n## Step 1: Download ISO\nDownload from official GParted website.\n\n## Step 2: Create Bootable USB\nUse tools like Rufus (Windows), Etcher (cross-platform), or dd (Linux).\n\n## Step 3: Boot GParted Live\nBoot from USB to access partition management tools.\n\n## Step 4: Manage Partitions\nResize, create, delete, or format partitions safely.",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download GParted Live ISO",
+      "detail_md": "Download GParted Live from the official website.\n\n**ISO Size**: 480 MB  \n\nGParted is the industry-standard partition editor.",
+      "estimated_minutes": 5,
+      "risk": "low"
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (1 GB or larger).\n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 5,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-gparted",
+      "title": "Boot GParted Live",
+      "detail_md": "Insert USB and boot from it.\n\nSelect language and keymap, then GParted launches automatically.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "manage-partitions",
+      "title": "Manage Disk Partitions",
+      "detail_md": "GParted allows you to:\n\n**Resize** partitions without data loss  \n**Create** new partitions  \n**Delete** unwanted partitions  \n**Format** with various filesystems  \n**Copy/Paste** partitions  \n**Check and repair** filesystem errors  \n\n**WARNING**: Always backup data before partition operations!",
+      "estimated_minutes": 30,
+      "risk": "high"
+    }
+  ],
+  "tags": ["partition-editor", "disk-management", "live-cd", "system-tool", "utility"],
+  "description": "GParted Live is a bootable Linux distribution containing GParted partition editor and other system tools. Essential for partition management, resizing, and disk operations.",
+  "long_description": "GParted Live is a small bootable GNU/Linux distribution for x86 based computers. It enables you to use all the features of the latest versions of the GParted application. GParted is a free partition editor for graphically managing your disk partitions. With GParted you can resize, copy, and move partitions without data loss, create space for new operating systems, and attempt data rescue from lost partitions. The live distribution includes additional tools for system administration and data recovery. GParted supports various filesystems including ext2/3/4, btrfs, NTFS, FAT16/32, XFS, and many others. It's an essential tool for system administrators, IT professionals, and anyone needing to manage disk partitions. The distribution boots quickly and provides a simple, focused interface for partition management tasks.",
+  "popularity_rank": 60,
+  "homepage": "https://gparted.org/",
+  "documentation_url": "https://gparted.org/documentation.php",
+  "forum_url": "https://gparted-forum.surf4.info/",
+  "support_channels": ["Forum", "Documentation", "Mailing List"]
+}
