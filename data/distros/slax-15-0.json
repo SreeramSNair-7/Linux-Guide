@@ -1,0 +1,65 @@
+{
+  "id": "slax-15-0",
+  "name": "Slax 15.0",
+  "family": "Debian",
+  "latest_version": "15.0.0",
+  "codename": "",
+  "release_date": "2023-12-20",
+  "license": "GPL and various open source licenses",
+  "target_users": ["intermediate", "advanced"],
+  "desktop_environments": ["Fluxbox", "KDE Plasma"],
+  "package_manager": "APT",
+  "kernel": "6.1",
+  "min_ram_mb": 512,
+  "min_storage_mb": 300,
+  "iso_files": [
+    {
+      "id": "slax-64bit-15.0.0",
+      "url": "https://www.slax.org/",
+      "filename": "slax-64bit-15.0.0.iso",
+      "size_mb": 280,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [280],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://www.slax.org/",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# Slax 15.0 Usage Guide\n\n## Prerequisites\n- 512 MB RAM minimum\n- USB drive (1 GB+) for portable installation\n\n## Note\nSlax is designed to run from USB in your pocket. Fast, portable, and modular.\n\n## Step 1: Download ISO\nDownload from official Slax website.\n\n## Step 2: Create Bootable USB\nUse Rufus, Etcher, or dd command.\n\n## Step 3: Boot Slax\nBoot from USB drive for instant portable desktop.\n\n## Step 4: Persistence\nCreate persistent changes with save file feature.",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Slax ISO",
+      "detail_md": "Download Slax 15.0 from the official website.\n\n**ISO Size**: 280 MB  \n\nSlax is a pocket operating system - small, fast, and portable.",
+      "estimated_minutes": 3,
+      "risk": "low"
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (1 GB or larger).\n\nSlax includes built-in installer for Windows and Linux.\n\n**WARNING**: This will format the USB drive.",
+      "estimated_minutes": 5,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-slax",
+      "title": "Boot Slax",
+      "detail_md": "Insert USB and boot from it.\n\nSlax loads into RAM and boots very quickly.",
+      "estimated_minutes": 1,
+      "risk": "low"
+    }
+  ],
+  "tags": ["portable", "lightweight", "modular", "debian", "pocket-os"],
+  "description": "Slax is a modern, portable, small and fast Linux operating system with a modular approach. It fits in your pocket and boots from USB drive in seconds.",
+  "long_description": "Slax is a Debian-based Linux distribution designed to be portable, fast, and modular. It's small enough to fit in your pocket (under 300 MB) and can run from a USB drive. Slax uses a modular system where applications can be added or removed as modules. The distribution boots quickly into a Fluxbox desktop by default, though KDE Plasma is also available. Slax allows persistent storage on USB, so changes are saved across reboots. It's ideal for system administration, data recovery, or having a portable Linux system that you can carry anywhere. The distribution emphasizes speed and simplicity.",
+  "popularity_rank": 68,
+  "homepage": "https://www.slax.org/",
+  "documentation_url": "https://www.slax.org/",
+  "forum_url": "https://www.slax.org/forum/",
+  "support_channels": ["Forum", "Documentation"]
+}

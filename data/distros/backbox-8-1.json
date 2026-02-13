@@ -1,0 +1,79 @@
+{
+  "id": "backbox-8-1",
+  "name": "BackBox Linux 8.1",
+  "family": "Debian",
+  "latest_version": "8.1",
+  "codename": "",
+  "release_date": "2023-09-15",
+  "license": "GPL and various open source licenses",
+  "target_users": ["advanced", "developer"],
+  "desktop_environments": ["XFCE"],
+  "package_manager": "APT",
+  "kernel": "6.1",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 20480,
+  "iso_files": [
+    {
+      "id": "backbox-8.1-amd64",
+      "url": "https://www.backbox.org/download/",
+      "filename": "backbox-8.1-amd64.iso",
+      "size_mb": 3500,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [3500],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://www.backbox.org/documentation",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# BackBox Linux 8.1 Installation Guide\n\n## Prerequisites\n- 2 GB RAM minimum (4 GB recommended)\n- 20 GB free disk space\n- USB drive (4 GB+) for bootable media\n- Technical knowledge recommended\n\n## Important Note\nBackBox is designed for penetration testing and security assessment. Use only on systems you own or have permission to test.\n\n## Step 1: Download and Verify ISO\nDownload from official BackBox website.\n\n## Step 2: Create Bootable USB\nUse tools like Rufus (Windows), Etcher (cross-platform), or dd (Linux).\n\n## Step 3: Boot from USB\nRestart computer and access boot menu.\n\n## Step 4: Install BackBox\nFollow graphical installer.\n\n## Step 5: Post-Installation\nExplore pre-installed security and penetration testing tools.",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download BackBox ISO",
+      "detail_md": "Download BackBox 8.1 from the official website.\n\n**ISO Size**: 3.5 GB  \n\nBackBox is an Ubuntu-based penetration testing distribution.",
+      "estimated_minutes": 20,
+      "risk": "low"
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (4 GB or larger).\n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 10,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot from USB Drive",
+      "detail_md": "Insert USB drive and restart computer. Access boot menu.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "install-system",
+      "title": "Install BackBox",
+      "detail_md": "Follow the graphical installer:\n- Select language\n- Configure keyboard\n- Set up partitions\n- Create user account\n- Install system",
+      "estimated_minutes": 25,
+      "risk": "high"
+    },
+    {
+      "id": "explore-tools",
+      "title": "Explore Security Tools",
+      "detail_md": "BackBox includes:\n\n**Network Analysis**: Wireshark, tcpdump, nmap  \n**Vulnerability Assessment**: OpenVAS, Nikto  \n**Exploitation**: Metasploit Framework  \n**Password Attacks**: John the Ripper, Hydra  \n**Web Application Testing**: Burp Suite, sqlmap  \n\nUse responsibly and legally.",
+      "estimated_minutes": 30,
+      "risk": "low"
+    }
+  ],
+  "tags": ["security", "penetration-testing", "hacking", "ethical-hacking", "ubuntu-based"],
+  "description": "BackBox is an Ubuntu-based Linux distribution designed for penetration testing and security assessment. It includes a comprehensive collection of security and analysis tools.",
+  "long_description": "BackBox Linux is a penetration testing and security assessment oriented Linux distribution providing a network and systems analysis toolkit. Based on Ubuntu, it features a custom XFCE desktop environment optimized for security professionals and ethical hackers. BackBox includes a comprehensive suite of security tools for network analysis, vulnerability assessment, exploitation, password attacks, wireless security testing, and web application testing. The distribution is designed to be fast, easy to use, and provide minimal but complete desktop experience. Tools are organized by category in the application menu for easy access. BackBox aims to provide an efficient environment for security professionals, ethical hackers, and IT administrators who need to perform security assessments and penetration tests.",
+  "popularity_rank": 72,
+  "homepage": "https://www.backbox.org/",
+  "documentation_url": "https://www.backbox.org/documentation",
+  "forum_url": "https://forum.backbox.org/",
+  "support_channels": ["Forum", "Documentation", "Community"]
+}

@@ -1,0 +1,97 @@
+{
+  "id": "calculate-linux-23",
+  "name": "Calculate Linux 23",
+  "family": "Gentoo",
+  "latest_version": "23.0",
+  "codename": "",
+  "release_date": "2023-12-28",
+  "license": "GPL",
+  "target_users": ["intermediate", "advanced"],
+  "desktop_environments": ["KDE Plasma", "XFCE", "Cinnamon", "MATE"],
+  "package_manager": "PORTAGE",
+  "kernel": "6.1",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 25600,
+  "iso_files": [
+    {
+      "id": "calculate-linux-kde-23",
+      "url": "https://www.calculate-linux.org/main/en/download",
+      "filename": "cld-23-x86_64.iso",
+      "size_mb": 2800,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    },
+    {
+      "id": "calculate-linux-xfce-23",
+      "url": "https://www.calculate-linux.org/main/en/download",
+      "filename": "cldx-23-x86_64.iso",
+      "size_mb": 2300,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [2800, 2300],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000",
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://wiki.calculate-linux.org/",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# Calculate Linux 23 Installation Guide\n\n## Prerequisites\n- 2 GB RAM minimum (4 GB recommended)\n- 25 GB free disk space\n- USB drive (4 GB+) for bootable media\n- Some Linux experience recommended\n\n## Step 1: Download and Verify ISO\nDownload from official Calculate Linux mirrors.\n\n## Step 2: Create Bootable USB\nUse tools like Rufus (Windows), Etcher (cross-platform), or dd (Linux).\n\n## Step 3: Boot from USB\nRestart computer and access boot menu.\n\n## Step 4: Install Calculate Linux\nFollow graphical installer based on Qt.\n\n## Step 5: Post-Installation\nEnjoy optimized Gentoo-based system with binary packages for fast updates.",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download Calculate Linux ISO",
+      "detail_md": "Download Calculate Linux 23 from the official website. Choose your edition:\n\n**KDE Plasma (CLD)**: 2.8 GB  \n**XFCE (CLDX)**: 2.3 GB  \n**Cinnamon/MATE**: Also available\n\nCalculate Linux is Gentoo-based but user-friendly.",
+      "estimated_minutes": 16,
+      "risk": "low"
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (4 GB or larger).\n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 8,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot from USB Drive",
+      "detail_md": "Insert USB drive and restart computer. Access boot menu.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "install-system",
+      "title": "Install Calculate Linux",
+      "detail_md": "Launch installer from live environment.\n\nFollow Qt-based graphical installer:\n- Select language\n- Configure disk layout\n- Set timezone and keyboard\n- Create user account\n- Install system",
+      "estimated_minutes": 30,
+      "risk": "high"
+    },
+    {
+      "id": "binary-updates",
+      "title": "Understanding Binary Updates",
+      "detail_md": "Calculate Linux uses Gentoo's Portage but provides:\n\n**Binary packages** for common software (fast updates)  \n**Source compilation** for customization when needed  \n\nUpdate system:\n```\ncl-update\n```",
+      "estimated_minutes": 10,
+      "risk": "low",
+      "commands": [
+        {
+          "command": "cl-update",
+          "platform": "linux",
+          "explanation": "Update Calculate Linux system"
+        }
+      ]
+    }
+  ],
+  "tags": ["gentoo", "source-based", "optimized", "russia", "enterprise"],
+  "description": "Calculate Linux is a Gentoo-based distribution optimized for desktop and server use. It provides the power of Gentoo with easier installation and binary packages for faster updates.",
+  "long_description": "Calculate Linux is a family of distributions based on Gentoo Linux, designed to be more user-friendly while retaining Gentoo's power and flexibility. It uses Gentoo's Portage package management system but provides pre-compiled binary packages for common software, significantly reducing update times. Calculate Linux offers multiple editions with different desktop environments (KDE Plasma, XFCE, Cinnamon, MATE) and specific variants for servers and scratch installations. The distribution features a graphical installer, automated hardware detection, and the Calculate utilities for system administration. It's particularly popular in Russia and Eastern Europe. Calculate Linux is suitable for users who want Gentoo's optimization and customization capabilities without the complexity of manual installation and compilation.",
+  "popularity_rank": 70,
+  "homepage": "https://www.calculate-linux.org/",
+  "documentation_url": "https://wiki.calculate-linux.org/",
+  "forum_url": "https://forum.calculate-linux.org/",
+  "support_channels": ["Forum", "Wiki", "IRC", "Telegram"]
+}

@@ -1,0 +1,90 @@
+{
+  "id": "sparkylinux-7-3",
+  "name": "SparkyLinux 7.3",
+  "family": "Debian",
+  "latest_version": "7.3",
+  "codename": "Orion Belt",
+  "release_date": "2024-03-10",
+  "license": "GPL and various open source licenses",
+  "target_users": ["beginner", "intermediate", "advanced"],
+  "desktop_environments": ["KDE Plasma", "XFCE", "LXQt", "MATE"],
+  "package_manager": "APT",
+  "kernel": "6.1",
+  "min_ram_mb": 2048,
+  "min_storage_mb": 20480,
+  "iso_files": [
+    {
+      "id": "sparkylinux-7.3-kde",
+      "url": "https://sparkylinux.org/download/",
+      "filename": "sparkylinux-7.3-x86_64-kde.iso",
+      "size_mb": 3200,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    },
+    {
+      "id": "sparkylinux-7.3-xfce",
+      "url": "https://sparkylinux.org/download/",
+      "filename": "sparkylinux-7.3-x86_64-xfce.iso",
+      "size_mb": 2100,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "region": "Global",
+      "protocol": "https",
+      "hosted": false
+    }
+  ],
+  "iso_sizes_mb": [3200, 2100],
+  "sha256_checksums": [
+    "0000000000000000000000000000000000000000000000000000000000000000",
+    "0000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "official_docs_url": "https://sparkylinux.org/wiki/",
+  "last_verified": "2024-02-13",
+  "install_guide_markdown": "# SparkyLinux 7.3 Installation Guide\n\n## Prerequisites\n- 2 GB RAM minimum (4 GB recommended)\n- 20 GB free disk space\n- USB drive (4 GB+) for bootable media\n\n## Step 1: Download and Verify ISO\nDownload from official SparkyLinux mirrors.\n\n## Step 2: Create Bootable USB\nUse tools like Rufus (Windows), Etcher (cross-platform), or dd (Linux).\n\n## Step 3: Boot from USB\nRestart computer and access boot menu.\n\n## Step 4: Install SparkyLinux\nFollow Calamares graphical installer.\n\n## Step 5: Post-Installation\nUse APTus tools for system configuration and application installation.",
+  "install_steps": [
+    {
+      "id": "download-iso",
+      "title": "Download SparkyLinux ISO",
+      "detail_md": "Download SparkyLinux 7.3 from the official website. Choose your edition:\n\n**KDE Plasma**: 3.2 GB  \n**XFCE**: 2.1 GB  \n**LXQt/MATE**: Also available\n\nSparkyLinux is fast, lightweight, and fully-featured.",
+      "estimated_minutes": 18,
+      "risk": "low"
+    },
+    {
+      "id": "create-bootable-usb",
+      "title": "Create Bootable USB Drive",
+      "detail_md": "Use a USB drive (4 GB or larger).\n\n**WARNING**: This will erase all data on the USB drive.",
+      "estimated_minutes": 8,
+      "risk": "medium"
+    },
+    {
+      "id": "boot-installer",
+      "title": "Boot from USB Drive",
+      "detail_md": "Insert USB drive and restart computer. Access boot menu.",
+      "estimated_minutes": 2,
+      "risk": "low"
+    },
+    {
+      "id": "install-system",
+      "title": "Install SparkyLinux",
+      "detail_md": "Click \"Install Sparky\" icon.\n\nFollow Calamares installer for easy setup.",
+      "estimated_minutes": 20,
+      "risk": "high"
+    },
+    {
+      "id": "aptus-tools",
+      "title": "Explore APTus Tools",
+      "detail_md": "SparkyLinux includes APTus - a set of tools for:\n- System upgrades\n- Application installation\n- System configuration\n- Multimedia codecs\n\nAccess from the menu.",
+      "estimated_minutes": 10,
+      "risk": "low"
+    }
+  ],
+  "tags": ["debian", "lightweight", "fast", "aptus", "rolling-updates"],
+  "description": "SparkyLinux is a lightweight, fast, and fully featured operating system based on Debian testing. It offers multiple desktop editions and includes APTus tools for easy system management.",
+  "long_description": "SparkyLinux is a Debian-based distribution built on Debian testing, providing a balance between stability and up-to-date software. It's designed to be fast, lightweight, and fully featured out-of-the-box. SparkyLinux offers multiple editions with different desktop environments (KDE Plasma, XFCE, LXQt, MATE) to suit various hardware capabilities. The distribution includes APTus - a collection of custom tools for system management, application installation, and system upgrades. SparkyLinux comes with multimedia codecs pre-installed and a curated selection of applications. It uses a semi-rolling release model based on Debian testing, offering newer packages than Debian stable while maintaining good stability. The distribution is particularly suitable for users who want Debian's reliability with more current software.",
+  "popularity_rank": 64,
+  "homepage": "https://sparkylinux.org/",
+  "documentation_url": "https://sparkylinux.org/wiki/",
+  "forum_url": "https://sparkylinux.org/forum/",
+  "support_channels": ["Forum", "Wiki", "IRC"]
+}
