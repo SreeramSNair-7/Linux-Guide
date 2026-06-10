@@ -1,14 +1,15 @@
 // file: src/lib/huggingface-client.ts
 
 import https from 'node:https';
+import { isTruthyEnvValue, isRetryableAiStatus } from './ai-config';
 
 const HF_API_KEY = process.env.HUGGING_FACE_API_KEY || process.env.HF_API_KEY;
 const HF_MODEL = process.env.HF_MODEL || 'HuggingFaceH4/zephyr-7b-beta';
 const HF_API_URL = 'https://router.huggingface.co/v1/chat/completions';
 const REQUEST_TIMEOUT_MS = 60000;
 const ALLOW_INSECURE_TLS =
-  process.env.HF_ALLOW_INSECURE_TLS === 'true' ||
-  process.env.HUGGING_FACE_INSECURE_TLS === '1' ||
+  isTruthyEnvValue(process.env.HF_ALLOW_INSECURE_TLS) ||
+  isTruthyEnvValue(process.env.HUGGING_FACE_INSECURE_TLS) ||
   process.env.NODE_ENV !== 'production';
 
 export const HF_CONFIG = {
@@ -113,7 +114,7 @@ export async function checkHuggingFaceHealth(): Promise<{
       });
 
     let response = await makeRequest();
-    if (!response.ok && [429, 503, 504].includes(response.status)) {
+    if (!response.ok && isRetryableAiStatus(response.status)) {
       await sleep(1500);
       response = await makeRequest();
     }
@@ -166,7 +167,7 @@ export async function generateHuggingFaceResponse(
       });
 
     let response = await makeRequest();
-    if (!response.ok && [429, 503, 504].includes(response.status)) {
+    if (!response.ok && isRetryableAiStatus(response.status)) {
       await sleep(1500);
       response = await makeRequest();
     }
