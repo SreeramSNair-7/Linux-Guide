@@ -28,13 +28,17 @@ export async function checkOllamaHealth(): Promise<{
     return {
       running: true,
       modelAvailable,
-      error: modelAvailable ? undefined : `Model ${OLLAMA_MODEL} not found. Run: ollama pull ${OLLAMA_MODEL}`,
+      error: modelAvailable
+        ? undefined
+        : `Model ${OLLAMA_MODEL} not found at ${OLLAMA_BASE_URL}. Run: ollama pull ${OLLAMA_MODEL}`,
     };
   } catch (error) {
+    const details = error instanceof Error ? error.message : 'Unknown error';
+
     return {
       running: false,
       modelAvailable: false,
-      error: 'Ollama is not running. Start it with: ollama serve',
+      error: `Ollama is not running at ${OLLAMA_BASE_URL}. Start it with: ollama serve (${details})`,
     };
   }
 }
@@ -100,7 +104,7 @@ export async function listModels() {
       modified: m.modified_at,
     }));
   } catch (error) {
-    console.error('Failed to list models:', error);
+    console.error(`Failed to list models at ${OLLAMA_BASE_URL}:`, error);
     return [];
   }
 }
