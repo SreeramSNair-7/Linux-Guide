@@ -71,7 +71,9 @@ Add your Hugging Face API key to `.env.local`:
 HUGGING_FACE_API_KEY="hf_your_token_here"
 ```
 
-For detailed setup instructions, see [HUGGINGFACE_SETUP.md](HUGGINGFACE_SETUP.md).
+Use a fine-grained token with the **Make calls to Inference Providers** permission.
+
+If Hugging Face returns an auth error, create a fresh token and paste it into `.env.local`.
 
 ### 4. (Optional) Start Ollama for Local Fallback
 
@@ -216,7 +218,7 @@ npm run search:index
 
 ## AI Bot (Ollama)
 
-This project includes an intelligent AI assistant powered by Ollama for providing Linux distribution recommendations, installation help, and troubleshooting.
+This project includes an intelligent AI assistant powered by Hugging Face with Ollama as a local fallback.
 
 ### Quick Setup
 
