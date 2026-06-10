@@ -7,7 +7,9 @@ const HF_MODEL = process.env.HF_MODEL || 'HuggingFaceH4/zephyr-7b-beta';
 const HF_API_URL = 'https://router.huggingface.co/v1/chat/completions';
 const REQUEST_TIMEOUT_MS = 60000;
 const ALLOW_INSECURE_TLS =
-  process.env.HF_ALLOW_INSECURE_TLS === 'true' || process.env.NODE_ENV !== 'production';
+  process.env.HF_ALLOW_INSECURE_TLS === 'true' ||
+  process.env.HUGGING_FACE_INSECURE_TLS === '1' ||
+  process.env.NODE_ENV !== 'production';
 
 export const HF_CONFIG = {
   apiKey: HF_API_KEY,
