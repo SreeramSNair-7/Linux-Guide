@@ -8,7 +8,7 @@ export async function GET() {
     // Check both providers
     const ollamaHealth = await checkOllamaHealth();
     const hfHealth = await checkHuggingFaceHealth();
-    const models = await listModels();
+    const models = ollamaHealth.running ? await listModels() : [];
 
     // System is healthy if either provider is available
     const isHealthy =
