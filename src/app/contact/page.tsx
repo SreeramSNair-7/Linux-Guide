@@ -73,8 +73,8 @@ export default function ContactPage() {
           </CardHeader>
           <CardContent>
             <CardDescription className="text-sm sm:text-base">
-              <a href="mailto:info@linuxdistrocatalog.com" className="hover:text-primary transition-colors">
-                info@linuxdistrocatalog.com
+              <a href="mailto:sreeramsnair1511@gmail.com" className="hover:text-primary transition-colors">
+                sreeramsnair1511@gmail.com
               </a>
             </CardDescription>
           </CardContent>
